@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BacklogType
-{
-    DisablePreviousScreen,
-    KeepPreviousScreen,
-    ClearTop,
-    Ignore,
-    RemovePreviousScreen
-}
-
 public class BackLogService : MonoBehaviour
 {
     public List<GameObject> pileOfScreen = new List<GameObject>();

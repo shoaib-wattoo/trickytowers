@@ -25,16 +25,6 @@ public class Services : SingletonMonobehaviour<Services>
         }
     }
 
-    public bool IsInternetConntected()
-    {
-        if (Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     #region public api
 
     public static BackLogService BackLogService
