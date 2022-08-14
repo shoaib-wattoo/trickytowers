@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class UIService : MonoBehaviour
 {
-    public UiOrganizer uiOrganizer;
+
 }

@@ -8,6 +8,8 @@ public class Services : SingletonMonobehaviour<Services>
 
     #region Variables
 
+    public Canvas canvas;
+
     [SerializeField]
     private BackLogService _backLogService;
 
@@ -24,6 +26,13 @@ public class Services : SingletonMonobehaviour<Services>
     private UIService _uiService;
 
     #endregion
+
+    private void Awake()
+    {
+        base.Awake();
+
+        SplashScreen.Show();
+    }
 
     private void Update()
     {
@@ -69,9 +78,14 @@ public class Services : SingletonMonobehaviour<Services>
     [SerializeField]
     private SplashScreen _splashScreen;
 
-    public static SplashScreen SettingsScreen
+    public static SplashScreen SplashScreen
     {
-        get { return instance._splashScreen; }
+        get {
+            if (!instance._splashScreen)
+                instance._splashScreen = Instantiate(TrickyElements.splashScreen, instance.canvas.gameObject.transform);
+
+            return instance._splashScreen;
+        }
     }
 
     [SerializeField]
@@ -79,7 +93,12 @@ public class Services : SingletonMonobehaviour<Services>
 
     public static HomeScreen HomeScreen
     {
-        get { return instance._homeScreen; }
+        get {
+            if(!instance._homeScreen)
+                instance._homeScreen = Instantiate(TrickyElements.homeScreen, instance.canvas.gameObject.transform);
+
+            return instance._homeScreen;
+        }
     }
 
     #endregion

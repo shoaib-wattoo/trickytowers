@@ -8,7 +8,7 @@ public class SplashScreen : TrickyMonoBehaviour
     {
         Extensions.PerformActionWithDelay(this, 5f, ()=> {
             Services.HomeScreen.Show();
-            Hide();
+            Hide(destroy:true);
         });
     }
 }
