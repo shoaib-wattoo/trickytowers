@@ -6,6 +6,8 @@ public class Services : SingletonMonobehaviour<Services>
 {
     public bool clearPrefs;
 
+    #region Variables
+
     [SerializeField]
     private BackLogService _backLogService;
 
@@ -14,7 +16,15 @@ public class Services : SingletonMonobehaviour<Services>
 
     [SerializeField]
     private GameObject _debugConsole;
-    
+
+    [SerializeField]
+    private TrickyElements _trickyElements;
+
+    [SerializeField]
+    private UIService _uiService;
+
+    #endregion
+
     private void Update()
     {
         if (clearPrefs)
@@ -42,8 +52,35 @@ public class Services : SingletonMonobehaviour<Services>
         get { return instance._debugConsole; }
     }
 
+    public static TrickyElements TrickyElements
+    {
+        get { return instance._trickyElements; }
+    }
+
+    public static UIService UIService
+    {
+        get { return instance._uiService; }
+    }
+
     #endregion
 
     #region UI Screens
+
+    [SerializeField]
+    private SplashScreen _splashScreen;
+
+    public static SplashScreen SettingsScreen
+    {
+        get { return instance._splashScreen; }
+    }
+
+    [SerializeField]
+    private HomeScreen _homeScreen;
+
+    public static HomeScreen HomeScreen
+    {
+        get { return instance._homeScreen; }
+    }
+
     #endregion
 }
