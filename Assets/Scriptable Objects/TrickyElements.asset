@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8615284bc22574a9babf735d00d421c9, type: 3}
   m_Name: TrickyElements
   m_EditorClassIdentifier: 
-  prefabName: 
-  numberOfPrefabsToCreate: 0
-  spawnPoints: []
+  tetrisSprites: []
+  splashScreen: {fileID: 8190513833329637244, guid: 7f5b59e2c11574863941a52c2fdb6af0, type: 3}
+  homeScreen: {fileID: 4623369086073574629, guid: dab11514f85834e9dad390d11b7a29d5, type: 3}
