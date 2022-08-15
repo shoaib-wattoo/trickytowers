@@ -1,116 +1,89 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
 
 public class SwipeService : MonoBehaviour
 {
-    private Vector2 fingerDownPos;
-    private Vector2 fingerUpPos;
 
-    public bool detectSwipeAfterRelease = false;
+    public float swipeThreshold = 50f;
+    public float timeThreshold = 0.3f;
 
-    public float SWIPE_THRESHOLD = 20f;
+    public UnityEvent OnSwipeLeft;
+    public UnityEvent OnSwipeRight;
+    public UnityEvent OnSwipeUp;
+    public UnityEvent OnSwipeDown;
 
-    // Update is called once per frame
-    void Update()
+    private Vector2 fingerDown;
+    private DateTime fingerDownTime;
+    private Vector2 fingerUp;
+    private DateTime fingerUpTime;
+
+    private void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            this.fingerDown = Input.mousePosition;
+            this.fingerUp = Input.mousePosition;
+            this.fingerDownTime = DateTime.Now;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            this.fingerDown = Input.mousePosition;
+            this.fingerUpTime = DateTime.Now;
+            this.CheckSwipe();
+        }
         foreach (Touch touch in Input.touches)
         {
             if (touch.phase == TouchPhase.Began)
             {
-                fingerUpPos = touch.position;
-                fingerDownPos = touch.position;
+                this.fingerDown = touch.position;
+                this.fingerUp = touch.position;
+                this.fingerDownTime = DateTime.Now;
             }
-
-            //Detects Swipe while finger is still moving on screen
-            if (touch.phase == TouchPhase.Moved)
-            {
-                if (!detectSwipeAfterRelease)
-                {
-                    fingerDownPos = touch.position;
-                    DetectSwipe();
-                }
-            }
-
-            //Detects swipe after finger is released from screen
             if (touch.phase == TouchPhase.Ended)
             {
-                fingerDownPos = touch.position;
-                DetectSwipe();
+                this.fingerDown = touch.position;
+                this.fingerUpTime = DateTime.Now;
+                this.CheckSwipe();
             }
         }
     }
 
-    void DetectSwipe()
+    private void CheckSwipe()
     {
+        float duration = (float)this.fingerUpTime.Subtract(this.fingerDownTime).TotalSeconds;
+        if (duration > this.timeThreshold) return;
 
-        if (VerticalMoveValue() > SWIPE_THRESHOLD && VerticalMoveValue() > HorizontalMoveValue())
+        float deltaX = this.fingerDown.x - this.fingerUp.x;
+        if (Mathf.Abs(deltaX) > this.swipeThreshold)
         {
-            Debug.Log("Vertical Swipe Detected!");
-            if (fingerDownPos.y - fingerUpPos.y > 0)
+            if (deltaX > 0)
             {
-                OnSwipeUp();
+                this.OnSwipeRight.Invoke();
+                Debug.Log("right");
             }
-            else if (fingerDownPos.y - fingerUpPos.y < 0)
+            else if (deltaX < 0)
             {
-                OnSwipeDown();
+                this.OnSwipeLeft.Invoke();
+                Debug.Log("left");
             }
-            fingerUpPos = fingerDownPos;
-
         }
-        else if (HorizontalMoveValue() > SWIPE_THRESHOLD && HorizontalMoveValue() > VerticalMoveValue())
+
+        float deltaY = fingerDown.y - fingerUp.y;
+        if (Mathf.Abs(deltaY) > this.swipeThreshold)
         {
-            Debug.Log("Horizontal Swipe Detected!");
-            if (fingerDownPos.x - fingerUpPos.x > 0)
+            if (deltaY > 0)
             {
-                OnSwipeRight();
+                this.OnSwipeUp.Invoke();
+                Debug.Log("up");
             }
-            else if (fingerDownPos.x - fingerUpPos.x < 0)
+            else if (deltaY < 0)
             {
-                OnSwipeLeft();
+                this.OnSwipeDown.Invoke();
+                Debug.Log("down");
             }
-            fingerUpPos = fingerDownPos;
-
         }
-        else
-        {
-            Debug.Log("No Swipe Detected!");
-        }
-    }
 
-    float VerticalMoveValue()
-    {
-        return Mathf.Abs(fingerDownPos.y - fingerUpPos.y);
-    }
-
-    float HorizontalMoveValue()
-    {
-        return Mathf.Abs(fingerDownPos.x - fingerUpPos.x);
-    }
-
-    void OnSwipeUp()
-    {
-        //Do something when swiped up
-        Debug.Log("OnSwipeUp");
-    }
-
-    void OnSwipeDown()
-    {
-        //Do something when swiped down
-        Debug.Log("OnSwipeDown");
-    }
-
-    void OnSwipeLeft()
-    {
-        //Do something when swiped left
-        Debug.Log("OnSwipeLeft");
-    }
-
-    void OnSwipeRight()
-    {
-        //Do something when swiped right
-        Debug.Log("OnSwipeRight");
+        this.fingerUp = this.fingerDown;
     }
 }
