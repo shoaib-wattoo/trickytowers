@@ -25,7 +25,12 @@ public class Services : SingletonMonobehaviour<Services>
     [SerializeField]
     private UIService _uiService;
 
+    [SerializeField]
+    private AudioService _audioService;
+
     #endregion
+
+
 
     private void Awake()
     {
@@ -43,6 +48,8 @@ public class Services : SingletonMonobehaviour<Services>
             Debug.Log("Prefs Cleared");
         }
     }
+
+
 
     #region public api
 
@@ -71,11 +78,15 @@ public class Services : SingletonMonobehaviour<Services>
         get { return instance._uiService; }
     }
 
+    public static AudioService AudioService
+    {
+        get { return instance._audioService; }
+    }
+
     #endregion
 
     #region UI Screens
 
-    [SerializeField]
     private SplashScreen _splashScreen;
 
     public static SplashScreen SplashScreen
@@ -88,7 +99,6 @@ public class Services : SingletonMonobehaviour<Services>
         }
     }
 
-    [SerializeField]
     private HomeScreen _homeScreen;
 
     public static HomeScreen HomeScreen
