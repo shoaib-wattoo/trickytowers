@@ -17,6 +17,11 @@ public class CameraShake : MonoBehaviour{
 		_initShakeIntensity = shakeIntensity;
 	}
 
+	public void ShakeCamera()
+    {
+		StartCoroutine(Shake());
+    }
+
 	public IEnumerator Shake(){
 		originPosition = transform.position;
 		originRotation = transform.rotation;
