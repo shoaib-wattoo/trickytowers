@@ -12,24 +12,24 @@ public class ScoreService : MonoBehaviour
         if (Services.GameService.stats.highScore != 0)
         {
             highScore = Services.GameService.stats.highScore;
-            //TODO//Update Score on UI here
         }
         else
         {
             highScore = 0;
-            //TODO//Update Score on UI here
         }
 
         totalScore = Services.GameService.stats.totalScore;
+
+        //TODO//Update Score on UI here
     }
 
     public void OnScore(int scoreIncreaseAmount)
     {
         currentScore += scoreIncreaseAmount;
         CheckHighScore();
-        //TODO//Update score on UI here
         totalScore += scoreIncreaseAmount;
         Services.GameService.stats.totalScore = totalScore;
+        //TODO//Update score on UI here
     }
 
     public void CheckHighScore()
