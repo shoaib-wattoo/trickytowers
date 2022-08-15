@@ -36,8 +36,10 @@ public class Services : SingletonMonobehaviour<Services>
 
     [SerializeField]
     private GameService _gameService;
-    #endregion
 
+    [SerializeField]
+    private ScoreService _scoreService;
+    #endregion
 
 
     private new void Awake()
@@ -102,6 +104,11 @@ public class Services : SingletonMonobehaviour<Services>
     public static GameService GameService
     {
         get { return instance._gameService; }
+    }
+
+    public static ScoreService ScoreService
+    {
+        get { return instance._scoreService; }
     }
 
     #endregion
