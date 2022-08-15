@@ -8,19 +8,11 @@ public class Services : SingletonMonobehaviour<Services>
 
     #region Variables
 
-    public Canvas canvas;
-
     [SerializeField]
     private BackLogService _backLogService;
 
     [SerializeField]
     private InputService _inputService;
-
-    [SerializeField]
-    private GameObject _debugConsole;
-
-    [SerializeField]
-    private TrickyElements _trickyElements;
 
     [SerializeField]
     private UIService _uiService;
@@ -39,15 +31,17 @@ public class Services : SingletonMonobehaviour<Services>
 
     [SerializeField]
     private ScoreService _scoreService;
+
+    [SerializeField]
+    private TrickyElements _trickyElements;
+
+    [SerializeField]
+    private Canvas _canvas;
+
+    [SerializeField]
+    private GameObject _debugConsole;
+
     #endregion
-
-
-    private new void Awake()
-    {
-        base.Awake();
-
-        SplashScreen.Show();
-    }
 
     private void Update()
     {
@@ -60,6 +54,11 @@ public class Services : SingletonMonobehaviour<Services>
     }
 
     #region public api
+
+    public static Canvas Canvas
+    {
+        get { return instance._canvas; }
+    }
 
     public static BackLogService BackLogService
     {
@@ -109,34 +108,6 @@ public class Services : SingletonMonobehaviour<Services>
     public static ScoreService ScoreService
     {
         get { return instance._scoreService; }
-    }
-
-    #endregion
-
-    #region UI Screens
-
-    private SplashScreen _splashScreen;
-
-    public static SplashScreen SplashScreen
-    {
-        get {
-            if (!instance._splashScreen)
-                instance._splashScreen = Instantiate(TrickyElements.splashScreen, instance.canvas.gameObject.transform);
-
-            return instance._splashScreen;
-        }
-    }
-
-    private HomeScreen _homeScreen;
-
-    public static HomeScreen HomeScreen
-    {
-        get {
-            if(!instance._homeScreen)
-                instance._homeScreen = Instantiate(TrickyElements.homeScreen, instance.canvas.gameObject.transform);
-
-            return instance._homeScreen;
-        }
     }
 
     #endregion

@@ -779,10 +779,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearPrefs: 0
-  canvas: {fileID: 1526704032}
   _backLogService: {fileID: 1027684140}
   _inputService: {fileID: 1971183255}
-  _debugConsole: {fileID: 203991553}
   _trickyElements: {fileID: 11400000, guid: 9092d6b40eb8b4053abb75a153729b5a, type: 2}
   _uiService: {fileID: 1024577226}
   _audioService: {fileID: 661003872}
@@ -790,6 +788,8 @@ MonoBehaviour:
   _colorService: {fileID: 886387904}
   _gameService: {fileID: 1946077485}
   _scoreService: {fileID: 1708692099}
+  _canvas: {fileID: 1526704032}
+  _debugConsole: {fileID: 203991553}
 --- !u!4 &1322798738
 Transform:
   m_ObjectHideFlags: 0

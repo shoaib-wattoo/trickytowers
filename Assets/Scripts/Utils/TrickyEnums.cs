@@ -23,3 +23,9 @@ public enum InputMethod
     MouseInput,
     TouchInput
 }
+
+public enum Screens
+{
+    SPLASH,
+    HOME
+}
