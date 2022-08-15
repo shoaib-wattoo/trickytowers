@@ -14,7 +14,7 @@ public class Services : SingletonMonobehaviour<Services>
     private BackLogService _backLogService;
 
     [SerializeField]
-    private SwipeService _swipeService;
+    private InputService _inputService;
 
     [SerializeField]
     private GameObject _debugConsole;
@@ -40,7 +40,7 @@ public class Services : SingletonMonobehaviour<Services>
 
 
 
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
 
@@ -57,8 +57,6 @@ public class Services : SingletonMonobehaviour<Services>
         }
     }
 
-
-
     #region public api
 
     public static BackLogService BackLogService
@@ -66,9 +64,9 @@ public class Services : SingletonMonobehaviour<Services>
         get { return instance._backLogService; }
     }
 
-    public static SwipeService SwipeService
+    public static InputService InputService
     {
-        get { return instance._swipeService; }
+        get { return instance._inputService; }
     }
 
     public static GameObject DebugConsole

@@ -16,3 +16,10 @@ public enum ColorTheme
     PASTEL,
     GRAM
 }
+
+public enum InputMethod
+{
+    KeyboardInput,
+    MouseInput,
+    TouchInput
+}

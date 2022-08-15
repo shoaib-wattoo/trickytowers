@@ -781,14 +781,14 @@ MonoBehaviour:
   clearPrefs: 0
   canvas: {fileID: 1526704032}
   _backLogService: {fileID: 1027684140}
-  _swipeService: {fileID: 1971183255}
+  _inputService: {fileID: 0}
   _debugConsole: {fileID: 203991553}
   _trickyElements: {fileID: 11400000, guid: 9092d6b40eb8b4053abb75a153729b5a, type: 2}
   _uiService: {fileID: 1024577226}
   _audioService: {fileID: 661003872}
   _cameraService: {fileID: 1675378002}
   _colorService: {fileID: 886387904}
-  _gameService: {fileID: 0}
+  _gameService: {fileID: 1946077485}
 --- !u!4 &1322798738
 Transform:
   m_ObjectHideFlags: 0
@@ -1356,6 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   stats: {fileID: 11400000, guid: 507517c7ecdac47c8b1459adee42b961, type: 2}
+  currentShape: {fileID: 1946077483}
 --- !u!1 &1971183253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1368,7 @@ GameObject:
   - component: {fileID: 1971183254}
   - component: {fileID: 1971183255}
   m_Layer: 0
-  m_Name: SwipeService
+  m_Name: InputService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,17 +1400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6ab7584fb4e48538744d9246e26b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeThreshold: 50
-  timeThreshold: 0.3
-  OnSwipeLeft:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSwipeRight:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSwipeUp:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSwipeDown:
-    m_PersistentCalls:
-      m_Calls: []
+  isActive: 1
+  inputType: 0
+  tapInterval: 0
