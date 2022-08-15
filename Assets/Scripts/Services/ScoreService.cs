@@ -9,16 +9,16 @@ public class ScoreService : MonoBehaviour
 
     void Start()
     {
-        if (Services.UserService.stats.highScore != 0)
+        if (Services.UserService.GetHighScore() != 0)
         {
-            highScore = Services.UserService.stats.highScore;
+            highScore = Services.UserService.GetHighScore();
         }
         else
         {
             highScore = 0;
         }
 
-        totalScore = Services.UserService.stats.totalScore;
+        totalScore = Services.UserService.GetTotalScore();
 
         //TODO//Update Score on UI here
     }
@@ -28,7 +28,7 @@ public class ScoreService : MonoBehaviour
         currentScore += scoreIncreaseAmount;
         CheckHighScore();
         totalScore += scoreIncreaseAmount;
-        Services.UserService.stats.totalScore = totalScore;
+        Services.UserService.SetTotalScore(totalScore);
         //TODO//Update score on UI here
     }
 
@@ -37,14 +37,14 @@ public class ScoreService : MonoBehaviour
         if (highScore < currentScore)
         {
             highScore = currentScore;
-            Services.UserService.stats.highScore = currentScore;
+            Services.UserService.SetHighScore(currentScore);
         }
     }
 
     public void ResetScore()
     {
         currentScore = 0;
-        highScore = Services.UserService.stats.highScore;
+        highScore = Services.UserService.GetHighScore();
         //TODO//Update score on UI here
     }
 
