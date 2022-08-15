@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfa4ddea1153453985c13f48e1b458d, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  playerName: Guest
   highScore: 0
   totalScore: 0
   timeSpent: 0

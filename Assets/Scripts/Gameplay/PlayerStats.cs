@@ -7,6 +7,7 @@ using UnityEditor;
 #endif
 public class PlayerStats : ScriptableObject
 {
+    public string playerName;
     public int highScore = 0;
     public int totalScore = 0;
     public float timeSpent = 0;

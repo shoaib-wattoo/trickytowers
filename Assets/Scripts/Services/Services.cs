@@ -9,6 +9,9 @@ public class Services : SingletonMonobehaviour<Services>
     #region Variables
 
     [SerializeField]
+    private UserService _userService;
+
+    [SerializeField]
     private BackLogService _backLogService;
 
     [SerializeField]
@@ -58,6 +61,11 @@ public class Services : SingletonMonobehaviour<Services>
     public static Canvas Canvas
     {
         get { return instance._canvas; }
+    }
+
+    public static UserService UserService
+    {
+        get { return instance._userService; }
     }
 
     public static BackLogService BackLogService
