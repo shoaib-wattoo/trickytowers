@@ -62,4 +62,13 @@ public static class Extensions
 		TimeSpan remainingTime = eventTime - DateTime.Now;
 		return (float)remainingTime.TotalSeconds;
 	}
+
+	public static string SecondsToHMS(float seconds)
+	{
+		TimeSpan time = TimeSpan.FromSeconds(seconds);
+		
+		string str = string.Format("{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
+
+		return str;
+	}
 }

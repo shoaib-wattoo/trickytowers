@@ -10,3 +10,9 @@ public enum BacklogType
     Ignore,
     RemovePreviousScreen
 }
+
+public enum ColorTheme
+{
+    PASTEL,
+    GRAM
+}
