@@ -28,6 +28,9 @@ public class Services : SingletonMonobehaviour<Services>
     [SerializeField]
     private AudioService _audioService;
 
+    [SerializeField]
+    private CameraService _cameraService;
+
     #endregion
 
 
@@ -81,6 +84,11 @@ public class Services : SingletonMonobehaviour<Services>
     public static AudioService AudioService
     {
         get { return instance._audioService; }
+    }
+
+    public static CameraService CameraService
+    {
+        get { return instance._cameraService; }
     }
 
     #endregion
