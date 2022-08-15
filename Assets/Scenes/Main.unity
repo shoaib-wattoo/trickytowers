@@ -1080,6 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main: {fileID: 519420031}
+  zoomSpeed: 0.25
   shaker: {fileID: 0}
 --- !u!1 &1708692098
 GameObject:

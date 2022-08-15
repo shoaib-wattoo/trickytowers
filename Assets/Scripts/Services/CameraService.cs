@@ -6,8 +6,9 @@ public class CameraService : MonoBehaviour
 
     public Camera main;
 
-    private float _zoomOutLimit = 8f;
+    private float _zoomOutLimit = 10f;
     private float _zoomInLimit = 5f;
+    public float zoomSpeed = 1f;
 
     [HideInInspector]
     public CameraShake shaker;
@@ -28,7 +29,7 @@ public class CameraService : MonoBehaviour
         print("Zoomed In");
         if (main.orthographicSize != _zoomOutLimit)
         {
-            iTween.ValueTo(gameObject, iTween.Hash("from", _zoomInLimit, "to", _zoomOutLimit, "time", 2, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue"));
+            iTween.ValueTo(gameObject, iTween.Hash("from", _zoomInLimit, "to", _zoomOutLimit, "time", zoomSpeed, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue"));
         }
     }
 
@@ -37,7 +38,7 @@ public class CameraService : MonoBehaviour
         print("Zoomed Out");
         if (main.orthographicSize != _zoomInLimit)
         {
-            iTween.ValueTo(gameObject, iTween.Hash("from", _zoomOutLimit, "to", _zoomInLimit, "time", 2, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue"));
+            iTween.ValueTo(gameObject, iTween.Hash("from", _zoomOutLimit, "to", _zoomInLimit, "time", zoomSpeed, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue"));
         }
     }
 
