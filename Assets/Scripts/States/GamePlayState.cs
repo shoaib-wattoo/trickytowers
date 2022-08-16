@@ -24,7 +24,6 @@ public class GamePlayState : _StatesBase {
 	{
         if(Services.GameService.currentShape!=null)
 			Services.GameService.currentShape.movementController.ShapeUpdate();
-		Debug.Log ("Gameplay State OnUpdate");
 	}
 	#endregion
 

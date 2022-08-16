@@ -22,7 +22,6 @@ public class GameOverState : _StatesBase {
 
 	public override void OnUpdate ()
 	{
-		Debug.Log ("Game Over State OnUpdate");
 	}
 	#endregion
 

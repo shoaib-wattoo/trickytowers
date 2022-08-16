@@ -11,7 +11,7 @@ public class InputService : MonoBehaviour
 #if UNITY_EDITOR
         inputType = InputMethod.KeyboardInput;
 #else
-        inputType = InputMethod.MouseInput;
+        inputType = InputMethod.TouchInput;
 #endif
 
     }
