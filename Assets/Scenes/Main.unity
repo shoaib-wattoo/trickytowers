@@ -511,7 +511,7 @@ Transform:
   - {fileID: 308786746}
   - {fileID: 191836629}
   m_Father: {fileID: 1322798738}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &661003872
 MonoBehaviour:
@@ -655,12 +655,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886387903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1322798738}
-  m_RootOrder: 5
+  m_Father: {fileID: 1946077484}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1024577224
 GameObject:
@@ -785,7 +785,6 @@ MonoBehaviour:
   _uiService: {fileID: 1024577226}
   _audioService: {fileID: 661003872}
   _cameraService: {fileID: 1675378002}
-  _colorService: {fileID: 886387904}
   _gameService: {fileID: 1946077485}
   _scoreService: {fileID: 1708692099}
   _trickyElements: {fileID: 11400000, guid: 9092d6b40eb8b4053abb75a153729b5a, type: 2}
@@ -807,9 +806,8 @@ Transform:
   - {fileID: 1971183254}
   - {fileID: 1024577225}
   - {fileID: 1675378001}
-  - {fileID: 886387905}
-  - {fileID: 1946077484}
   - {fileID: 1708692100}
+  - {fileID: 1946077484}
   - {fileID: 661003871}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1125,7 +1123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1322798738}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1879647630
 PrefabInstance:
@@ -1432,7 +1430,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 886387905}
   m_Father: {fileID: 1322798738}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1448,6 +1447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be3ff7ae460d40f3b882090fc85e562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorService: {fileID: 886387904}
   isGameActive: 0
   currentShape: {fileID: 686474574}
 --- !u!1 &1971183253

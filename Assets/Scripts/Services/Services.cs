@@ -27,9 +27,6 @@ public class Services : SingletonMonobehaviour<Services>
     private CameraService _cameraService;
 
     [SerializeField]
-    private ColorService _colorService;
-
-    [SerializeField]
     private GameService _gameService;
 
     [SerializeField]
@@ -101,11 +98,6 @@ public class Services : SingletonMonobehaviour<Services>
     public static CameraService CameraService
     {
         get { return instance._cameraService; }
-    }
-
-    public static ColorService ColorService
-    {
-        get { return instance._colorService; }
     }
 
     public static GameService GameService
