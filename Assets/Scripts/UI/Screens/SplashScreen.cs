@@ -6,7 +6,7 @@ public class SplashScreen : TrickyMonoBehaviour
 {
     private void Start()
     {
-        Extensions.PerformActionWithDelay(this, 5f, ()=> {
+        Extensions.PerformActionWithDelay(this, 2f, ()=> {
             Services.UIService.ActivateUIScreen(Screens.HOME);
             Hide(destroy:true);
         });

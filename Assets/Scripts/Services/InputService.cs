@@ -11,7 +11,7 @@ public class InputService : MonoBehaviour
 #if UNITY_EDITOR
         inputType = InputMethod.KeyboardInput;
 #else
-        inputType = InputMethod.TouchInput;
+        inputType = InputMethod.MouseInput;
 #endif
 
     }
@@ -181,17 +181,20 @@ public class InputService : MonoBehaviour
     private void MoveHorizontal(Vector2 vector2)
     {
         print("MoveHorizontal : " + vector2.ToString());
+        Services.GameService.currentShape.movementController.MoveHorizontal(vector2);
     }
 
     private void InstantFall()
     {
         print("InstantFall");
+        Services.GameService.currentShape.movementController.InstantFall();
     }
 
     private void RotateClockWise(bool rotateClockwise)
     {
         print("RotateClockWise : " + rotateClockwise);
+        Services.GameService.currentShape.movementController.RotateClockWise(rotateClockwise);
     }
-#endregion
+    #endregion
 
 }

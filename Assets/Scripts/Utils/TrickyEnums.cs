@@ -29,3 +29,14 @@ public enum Screens
     SPLASH,
     HOME
 }
+
+public enum ShapeType
+{
+    I,
+    T,
+    O,
+    L,
+    J,
+    S,
+    Z
+}

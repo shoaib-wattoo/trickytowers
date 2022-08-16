@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8615284bc22574a9babf735d00d421c9, type: 3}
   m_Name: TrickyElements
   m_EditorClassIdentifier: 
-  tetrisSprites: []
+  shapeTypes:
+  - {fileID: 1000013774893932, guid: f454e904e20af4070b0c264b29b3464e, type: 3}
+  - {fileID: 1000013607061508, guid: eac3660922dce467b92da2c4b0971829, type: 3}
+  - {fileID: 1000010848202762, guid: 5d3dc58b570d3402cb003cb12509142c, type: 3}
+  - {fileID: 1000010735536160, guid: 45129a437af9844e6ad9303d21c0cc71, type: 3}
+  - {fileID: 1000010743416826, guid: 6b56587a2a38a4cb28cb3960a8ea45a2, type: 3}
+  - {fileID: 1000011639141054, guid: 38fc6a1a95e314b549fa40f76b7cc310, type: 3}
+  - {fileID: 1000013836595148, guid: 7e623096ac1b34c439f530631d099229, type: 3}
   splashScreen: {fileID: 8190513833329637244, guid: 7f5b59e2c11574863941a52c2fdb6af0, type: 3}
   homeScreen: {fileID: 4623369086073574629, guid: dab11514f85834e9dad390d11b7a29d5, type: 3}

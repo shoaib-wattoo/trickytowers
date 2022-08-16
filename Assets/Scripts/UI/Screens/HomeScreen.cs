@@ -38,4 +38,9 @@ public class HomeScreen : TrickyMonoBehaviour
         Services.ScoreService.OnScore(1);
         UpdateScore();
     }
+
+    public void OnClickPlayButton()
+    {
+        Services.GameService.SetState(typeof(GamePlayState));
+    }
 }
