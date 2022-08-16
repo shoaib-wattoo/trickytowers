@@ -20,7 +20,6 @@ public class TrickyShape : MonoBehaviour
     void AssignRandomColor()
     {
         Color temp = Services.GameService.colorService.TurnRandomColorFromTheme();
-        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>().ToList())
-            renderer.color = temp;
+        GetComponent<SpriteRenderer>().color = temp;
     }
 }

@@ -6,6 +6,13 @@ public class ShapeMovementController : MonoBehaviour {
     public Transform rotationPivot;
     public float fallingSpeed = 2f;
     public float fastFallingSpeed = 5f;
+    Rigidbody2D rigidbody2D;
+    public bool isCollided = false;
+
+    private void Start()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
 
     public void ShapeUpdate()
     {
@@ -38,5 +45,17 @@ public class ShapeMovementController : MonoBehaviour {
     public void InstantFall()
     {
         fallingSpeed = fastFallingSpeed;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (isCollided)
+            return;
+
+        isCollided = true;
+        Services.GameService.currentShape = null;
+        rigidbody2D.constraints = RigidbodyConstraints2D.None;
+        FindObjectOfType<SpawnManager>().Spawn();
+        //Destroy(this);
     }
 }
