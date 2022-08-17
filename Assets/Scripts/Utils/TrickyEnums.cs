@@ -27,7 +27,10 @@ public enum InputMethod
 public enum Screens
 {
     SPLASH,
-    HOME
+    HOME,
+    PLAY,
+    PAUSE,
+    OVER
 }
 
 public enum ShapeType

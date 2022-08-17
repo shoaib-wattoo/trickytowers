@@ -55,7 +55,6 @@ public class CameraService : MonoBehaviour
 
     void OnTweenComplete()
     {
-        Debug.Log("OnTweenComplete");
         zoomCallback?.Invoke();
     }
 

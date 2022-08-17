@@ -8,10 +8,11 @@ public class GamePlayState : _StatesBase {
 	#region implemented abstract members of _StatesBase
 	public override void OnActivate ()
 	{
-		//Services.UIService.ActivateUIScreen(Screen.INGAME);
-		Debug.Log("Gameplay State OnActive");
+		Debug.Log("Game Play State OnActive");
 
+		Services.UIService.ActivateUIScreen(Screens.PLAY);
 		gamePlayDuration = Time.time;
+
         Services.CameraService.ZoomIn(()=> {
 			Services.GameService.myGameplayManager.SpawnShape();
 		});
@@ -19,7 +20,7 @@ public class GamePlayState : _StatesBase {
 	public override void OnDeactivate ()
 	{
         Services.PlayerService.SetTimeSpent(Time.time - gamePlayDuration);
-		Debug.Log ("Gameplay State OnDeactivate");
+		Debug.Log ("Game Play State OnDeactivate");
 	}
 
 	public override void OnUpdate ()

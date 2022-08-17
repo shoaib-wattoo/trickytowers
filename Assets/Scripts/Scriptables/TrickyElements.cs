@@ -10,4 +10,7 @@ public class TrickyElements : ScriptableObject
     [Header("UI Screens")]
     public SplashScreen splashScreen;
     public HomeScreen homeScreen;
+    public GamePlayScreen gamePlayScreen;
+    public GamePauseScreen gamePauseScreen;
+    public GameOverScreen gameOverScreen;
 }

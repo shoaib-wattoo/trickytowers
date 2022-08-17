@@ -8,7 +8,7 @@ public class UIService : MonoBehaviour
 
     private void Start()
     {
-        ActivateUIScreen(Screens.SPLASH);
+        Services.GameService.SetState(typeof(SplashState));
     }
 
     public void ActivateUIScreen(Screens screenType)
@@ -21,10 +21,21 @@ public class UIService : MonoBehaviour
         {
             HomeScreen.Show();
         }
+        else if (screenType.Equals(Screens.PLAY))
+        {
+            GamePlayScreen.Show();
+        }
+        else if (screenType.Equals(Screens.PAUSE))
+        {
+            GamePauseScreen.Show();
+        }
+        else if (screenType.Equals(Screens.OVER))
+        {
+            GameOverScreen.Show();
+        }
     }
 
     private SplashScreen _splashScreen;
-
     public SplashScreen SplashScreen
     {
         get
@@ -37,7 +48,6 @@ public class UIService : MonoBehaviour
     }
 
     private HomeScreen _homeScreen;
-
     public HomeScreen HomeScreen
     {
         get
@@ -46,6 +56,42 @@ public class UIService : MonoBehaviour
                 _homeScreen = Instantiate(Services.TrickyElements.homeScreen, Services.Canvas.gameObject.transform);
 
             return _homeScreen;
+        }
+    }
+
+    private GamePlayScreen _gamePlayScreen;
+    public GamePlayScreen GamePlayScreen
+    {
+        get
+        {
+            if (_gamePlayScreen == null)
+                _gamePlayScreen = Instantiate(Services.TrickyElements.gamePlayScreen, Services.Canvas.gameObject.transform);
+
+            return _gamePlayScreen;
+        }
+    }
+
+    private GamePauseScreen _gamePauseScreen;
+    public GamePauseScreen GamePauseScreen
+    {
+        get
+        {
+            if (_gamePauseScreen == null)
+                _gamePauseScreen = Instantiate(Services.TrickyElements.gamePauseScreen, Services.Canvas.gameObject.transform);
+
+            return _gamePauseScreen;
+        }
+    }
+
+    private GameOverScreen _gameOverScreen;
+    public GameOverScreen GameOverScreen
+    {
+        get
+        {
+            if (_gameOverScreen == null)
+                _gameOverScreen = Instantiate(Services.TrickyElements.gameOverScreen, Services.Canvas.gameObject.transform);
+
+            return _gameOverScreen;
         }
     }
 

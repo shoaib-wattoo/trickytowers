@@ -44,9 +44,4 @@ public class GameService : MonoBehaviour
 		}
 	}
 
-	void Start()
-	{
-		SetState(typeof(MenuState));
-	}
-
 }

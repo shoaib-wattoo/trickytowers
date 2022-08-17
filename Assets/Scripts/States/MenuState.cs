@@ -9,8 +9,7 @@ public class MenuState : _StatesBase {
 	{		
 		Debug.Log ("Menu State OnActive");	
 
-		//Services.UIService.ActivateUIScreen (Screens.HOME);
-        Services.CameraService.ZoomOut();
+		Services.UIService.ActivateUIScreen (Screens.HOME);
     }
 
 	public override void OnDeactivate ()
