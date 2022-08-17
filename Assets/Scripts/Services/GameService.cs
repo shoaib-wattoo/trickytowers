@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 public class GameService : MonoBehaviour
@@ -6,6 +7,8 @@ public class GameService : MonoBehaviour
 	public bool isGameActive;
 	public ColorService colorService;
 	public TrickyShape currentShape;
+	public GameplayManager myGameplayManager;
+	public GameplayManager opponentGameplayManager;
 
 	void Awake()
 	{

@@ -8,6 +8,7 @@ public class ShapeMovementController : MonoBehaviour {
     public float fastFallingSpeed = 5f;
     Rigidbody2D rigidbody2D;
     public bool isCollided = false;
+    public GameplayOwner owner;
 
     private void Start()
     {
@@ -54,8 +55,16 @@ public class ShapeMovementController : MonoBehaviour {
 
         isCollided = true;
         Services.GameService.currentShape = null;
-        rigidbody2D.constraints = RigidbodyConstraints2D.None;
-        FindObjectOfType<SpawnManager>().Spawn();
-        //Destroy(this);
+        rigidbody2D.gravityScale = 0.5f;
+
+        SpawnNextShape();
+    }
+
+    void SpawnNextShape()
+    {
+        if (owner == GameplayOwner.Player)
+            Services.GameService.myGameplayManager.SpawnShape();
+        else
+            Services.GameService.opponentGameplayManager.SpawnShape();
     }
 }

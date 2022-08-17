@@ -1,14 +1,16 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class CameraService : MonoBehaviour
 {
-
     public Camera main;
 
-    public float _zoomOutLimit = 25f;
-    public float _zoomInLimit = 20f;
+    public float _zoomOutLimit = 30f;
+    public float _zoomInLimit = 25f;
     public float zoomSpeed = 1f;
+    public iTween.EaseType easeType;
+    Action zoomCallback;
 
     [HideInInspector]
     public CameraShake shaker;
@@ -16,6 +18,7 @@ public class CameraService : MonoBehaviour
     void Awake()
     {
         shaker = main.gameObject.GetComponent<CameraShake>();
+        main.orthographicSize = _zoomOutLimit;
     }
 
     public void ShakeCamera()
@@ -24,21 +27,25 @@ public class CameraService : MonoBehaviour
         shaker.ShakeCamera();
     }
 
-    public void ZoomIn()
+    public void ZoomIn(Action zoomListener = null)
     {
+        zoomCallback = zoomListener;
+
         if(main.orthographicSize > _zoomInLimit)
             StartTween(_zoomOutLimit, _zoomInLimit);
     }
 
-    public void ZoomOut()
+    public void ZoomOut(Action zoomListener = null)
     {
+        zoomCallback = zoomListener;
+
         if (main.orthographicSize < _zoomOutLimit)
             StartTween(_zoomInLimit,_zoomOutLimit);
     }
 
     void StartTween(float initialValue, float finalValue)
     {
-        iTween.ValueTo(gameObject, iTween.Hash("from", initialValue, "to", finalValue, "time", zoomSpeed, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", initialValue, "to", finalValue, "time", zoomSpeed, "easetype", easeType, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue", "oncomplete", "OnTweenComplete"));
     }
 
     void OnUpdateValue(float newValue)
@@ -46,4 +53,15 @@ public class CameraService : MonoBehaviour
         main.orthographicSize = newValue;
     }
 
+    void OnTweenComplete()
+    {
+        Debug.Log("OnTweenComplete");
+        zoomCallback?.Invoke();
+    }
+
+    public Vector3 GetCameraPosition()
+    {
+        Vector3 camPos = main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        return new Vector3(0, camPos.y + 5f , 0);
+    }
 }

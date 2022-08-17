@@ -40,3 +40,9 @@ public enum ShapeType
     S,
     Z
 }
+
+public enum GameplayOwner
+{
+    Player,
+    Opponent
+}
