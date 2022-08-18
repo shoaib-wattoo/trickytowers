@@ -56,7 +56,7 @@ public class ShapeMovementController : MonoBehaviour {
         isCollided = true;
         Services.GameService.currentShape = null;
         rigidbody2D.gravityScale = 0.5f;
-
+        Services.CameraService.ShakeCamera();
         SpawnNextShape();
     }
 
