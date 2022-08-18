@@ -14,10 +14,12 @@ public class CameraService : MonoBehaviour
 
     [HideInInspector]
     public CameraShake shaker;
+    public SmoothFollow smoothFollow;
 
     void Awake()
     {
         shaker = main.gameObject.GetComponent<CameraShake>();
+        smoothFollow = main.gameObject.GetComponent<SmoothFollow>();
         main.orthographicSize = _zoomOutLimit;
     }
 

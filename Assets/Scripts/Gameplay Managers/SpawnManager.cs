@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour {
 
-    public void Spawn(Transform parent, GameplayOwner owner)
+    public void Spawn(Transform parent, GameplayOwner owner, GameplayManager gmManager)
 	{
         Services.AudioService.PlayBlockSpawnSound();
 
@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour {
             temp.transform.position = Services.CameraService.GetCameraTopPosition();
             Services.GameService.currentShape = temp.GetComponent<TrickyShape>();
             temp.transform.parent = parent;
-            temp.GetComponent<ShapeMovementController>().owner = owner;
+            temp.GetComponent<TrickyShape>().gameplayManager = gmManager;
             Services.InputService.isActive = true;
 
         });

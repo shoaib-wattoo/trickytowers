@@ -26,7 +26,7 @@ public class GamePlayState : _StatesBase {
 	public override void OnUpdate ()
 	{
         if(Services.GameService.currentShape!=null)
-			Services.GameService.currentShape.movementController.ShapeUpdate();
+			Services.GameService.currentShape.ShapeUpdate();
 	}
 	#endregion
 

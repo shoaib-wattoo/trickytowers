@@ -181,19 +181,19 @@ public class InputService : MonoBehaviour
     private void MoveHorizontal(Vector2 vector2)
     {
         print("MoveHorizontal : " + vector2.ToString());
-        Services.GameService.currentShape.movementController.MoveHorizontal(vector2);
+        Services.GameService.currentShape.MoveHorizontal(vector2);
     }
 
     private void InstantFall()
     {
         print("InstantFall");
-        Services.GameService.currentShape.movementController.InstantFall();
+        Services.GameService.currentShape.InstantFall();
     }
 
     private void RotateClockWise(bool rotateClockwise)
     {
         print("RotateClockWise : " + rotateClockwise);
-        Services.GameService.currentShape.movementController.RotateClockWise(rotateClockwise);
+        Services.GameService.currentShape.RotateClockWise(rotateClockwise);
     }
     #endregion
 

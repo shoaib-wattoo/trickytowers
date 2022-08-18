@@ -8,6 +8,8 @@ public class GameplayManager : MonoBehaviour
     public GameObject cloud;
     SpawnManager spawnManager;
     public GameplayOwner owner;
+    public List<TrickyShape> shapesList;
+    public Camera gameplayCamera;
 
     void Start()
     {
@@ -26,11 +28,45 @@ public class GameplayManager : MonoBehaviour
 
     public void SpawnShape()
     {
-        spawnManager.Spawn(blockHolder, owner);
+        spawnManager.Spawn(blockHolder, owner, this);
     }
 
     public void SpawnShape(float delay)
     {
         Extensions.PerformActionWithDelay(this, delay, SpawnShape);
+    }
+
+    public void AddShapeInList(TrickyShape shape)
+    {
+        shapesList.Add(shape);
+    }
+
+    public void RemoveShapeFromList(TrickyShape shape)
+    {
+        shapesList.Remove(shape);
+    }
+
+    public TrickyShape GetHighestShapePosition()
+    {
+        if (shapesList.Count == 0)
+            return null;
+            
+        TrickyShape highestShape = shapesList[0];
+
+        foreach (TrickyShape shape in shapesList)
+        {
+            if (shape.transform.position.y > highestShape.transform.position.y)
+                highestShape = shape;
+        }
+
+        return highestShape;
+    }
+
+    public void UpdateCameraFollowTarget()
+    {
+        if (gameplayCamera == null)
+            return;
+
+        gameplayCamera.GetComponent<SmoothFollow>().target = GetHighestShapePosition().gameObject;
     }
 }
