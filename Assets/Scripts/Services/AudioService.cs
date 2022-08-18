@@ -18,6 +18,9 @@ public class AudioService : MonoBehaviour
 	public AudioClip loseSound;
 	public AudioClip popUpOpen;
 	public AudioClip popUpClose;
+	public AudioClip explosionSound;
+	public AudioClip blockSpawnSound;
+
 	#endregion
 
 
@@ -61,7 +64,17 @@ public class AudioService : MonoBehaviour
 
 	public void PlayDropSound()
 	{
-		soundSource.clip = dropSound;
+		soundSource.PlayOneShot(dropSound);
+	}
+
+	public void PlayExplosionSound()
+	{
+		soundSource.PlayOneShot(explosionSound);
+	}
+
+	public void PlayBlockSpawnSound()
+	{
+		soundSource.clip = blockSpawnSound;
 		soundSource.Play();
 	}
 

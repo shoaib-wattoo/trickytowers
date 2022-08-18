@@ -6,7 +6,7 @@ using System;
 public class EffectService : MonoBehaviour
 {
 
-    public void PlayEffect(Effects effect, Vector3 position, Action callback)
+    public void PlayEffect(Effects effect, Vector3 position, Action callback = null)
     {
 
         GameObject obj = Services.TrickyElements.effects.Find(x => x.name.Equals(effect.ToString()));
@@ -15,7 +15,10 @@ public class EffectService : MonoBehaviour
         {
             GameObject particleEffect = Instantiate(obj);
             particleEffect.transform.position = position;
-            Extensions.PerformActionWithDelay(this, 0.2f, callback);
+
+            Extensions.PerformActionWithDelay(this, 0.2f, ()=> {
+                callback?.Invoke();
+            });
         }
         else
         {

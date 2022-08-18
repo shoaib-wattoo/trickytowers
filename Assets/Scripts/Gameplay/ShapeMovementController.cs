@@ -7,7 +7,7 @@ public class ShapeMovementController : MonoBehaviour {
     public float fallingSpeed = 2f;
     public float fastFallingSpeed = 5f;
     Rigidbody2D rigidbody2D;
-    public bool isCollided = false;
+    public bool isSpawnedNextBlock = false;
     public GameplayOwner owner;
 
     private void Start()
@@ -50,18 +50,29 @@ public class ShapeMovementController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (isCollided)
-            return;
+        if (col.gameObject.tag.Equals("Ground"))
+        {
+            Services.EffectService.PlayEffect(Effects.ChestAppearBlue, col.contacts[0].point);
+            Services.AudioService.PlayExplosionSound();
+            SpawnNextShape();
 
-        isCollided = true;
-        Services.GameService.currentShape = null;
-        rigidbody2D.gravityScale = 0.5f;
-        Services.CameraService.ShakeCamera();
+            Destroy(gameObject);
+        }
+
         SpawnNextShape();
     }
 
     void SpawnNextShape()
     {
+        if (isSpawnedNextBlock)
+            return;
+
+        isSpawnedNextBlock = true;
+
+        Services.GameService.currentShape = null;
+        rigidbody2D.gravityScale = 0.5f;
+        Services.CameraService.ShakeCamera();
+
         if (owner == GameplayOwner.Player)
             Services.GameService.myGameplayManager.SpawnShape();
         else
