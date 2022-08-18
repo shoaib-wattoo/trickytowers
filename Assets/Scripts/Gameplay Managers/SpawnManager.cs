@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour {
     public void Spawn(Transform parent, GameplayOwner owner)
 	{
         Services.AudioService.PlayBlockSpawnSound();
+
         Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, Services.CameraService.GetCameraTopPosition(), ()=> {
 
             // Random Shape

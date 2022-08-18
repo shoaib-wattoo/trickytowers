@@ -19,6 +19,7 @@ public class CameraShake : MonoBehaviour{
 
 	public void ShakeCamera()
     {
+		StopAllCoroutines();
 		StartCoroutine(Shake());
     }
 

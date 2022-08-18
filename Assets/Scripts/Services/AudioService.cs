@@ -4,11 +4,13 @@ using System.Collections;
 public class AudioService : MonoBehaviour
 {
 
-	#region Game Spesific
-	public AudioClip dropSound;
+	#region Gameplay Spesific
+	public AudioClip shapePlaceSound;
+	public AudioClip explosionSound;
+	public AudioClip blockSpawnSound;
 	#endregion
 
-	#region Template Fields
+	#region Audio Sources Fields
 	public AudioSource musicSource;
 	public AudioSource soundSource;
 
@@ -18,8 +20,6 @@ public class AudioService : MonoBehaviour
 	public AudioClip loseSound;
 	public AudioClip popUpOpen;
 	public AudioClip popUpClose;
-	public AudioClip explosionSound;
-	public AudioClip blockSpawnSound;
 
 	#endregion
 
@@ -62,9 +62,9 @@ public class AudioService : MonoBehaviour
 
 	}
 
-	public void PlayDropSound()
+	public void PlayShapePlaceSound()
 	{
-		soundSource.PlayOneShot(dropSound);
+		soundSource.PlayOneShot(shapePlaceSound);
 	}
 
 	public void PlayExplosionSound()

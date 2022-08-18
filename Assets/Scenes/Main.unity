@@ -608,7 +608,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 70
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -811,7 +811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0568efe2778a42889fb4f8b35d1afeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSound: {fileID: 0}
+  shapePlaceSound: {fileID: 8300000, guid: a009cffd439454dc9b3c5dfa60e93c0f, type: 3}
+  explosionSound: {fileID: 8300000, guid: 96bbf34d7aee725449bb8a5f1a46bfbb, type: 3}
+  blockSpawnSound: {fileID: 8300000, guid: 14b16ff40093aba47bc467e148746cab, type: 3}
   musicSource: {fileID: 308786747}
   soundSource: {fileID: 191836628}
   gameMusic: {fileID: 0}
@@ -820,8 +822,6 @@ MonoBehaviour:
   loseSound: {fileID: 0}
   popUpOpen: {fileID: 0}
   popUpClose: {fileID: 0}
-  explosionSound: {fileID: 8300000, guid: 96bbf34d7aee725449bb8a5f1a46bfbb, type: 3}
-  blockSpawnSound: {fileID: 8300000, guid: 14b16ff40093aba47bc467e148746cab, type: 3}
 --- !u!1 &886387903
 GameObject:
   m_ObjectHideFlags: 0

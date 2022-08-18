@@ -11,6 +11,8 @@ public class TrickyShape : MonoBehaviour
     [HideInInspector]
     public ShapeMovementController movementController;
 
+    public Color shapeColor;
+
     void Awake()
     {
         movementController = GetComponent<ShapeMovementController>();
@@ -19,7 +21,8 @@ public class TrickyShape : MonoBehaviour
 
     void AssignRandomColor()
     {
-        Color temp = Services.GameService.colorService.TurnRandomColorFromTheme();
-        GetComponent<SpriteRenderer>().color = temp;
+        shapeColor = Services.GameService.colorService.TurnRandomColorFromTheme();
+        GetComponent<SpriteRenderer>().color = shapeColor;
+        movementController.shapeColor = shapeColor;
     }
 }

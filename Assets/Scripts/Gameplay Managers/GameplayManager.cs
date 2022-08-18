@@ -28,4 +28,9 @@ public class GameplayManager : MonoBehaviour
     {
         spawnManager.Spawn(blockHolder, owner);
     }
+
+    public void SpawnShape(float delay)
+    {
+        Extensions.PerformActionWithDelay(this, delay, SpawnShape);
+    }
 }

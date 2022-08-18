@@ -7,8 +7,9 @@ public class ShapeMovementController : MonoBehaviour {
     public float fallingSpeed = 2f;
     public float fastFallingSpeed = 5f;
     Rigidbody2D rigidbody2D;
-    public bool isSpawnedNextBlock = false;
+    public bool isSpawnedNextBlock, isPlaced = false;
     public GameplayOwner owner;
+    [HideInInspector] public Color shapeColor;
 
     private void Start()
     {
@@ -52,30 +53,50 @@ public class ShapeMovementController : MonoBehaviour {
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-            Services.EffectService.PlayEffect(Effects.ChestAppearBlue, col.contacts[0].point);
-            Services.AudioService.PlayExplosionSound();
-            SpawnNextShape();
-
-            Destroy(gameObject);
+            OnCollisionWithGround(col);
+            return;
         }
 
-        SpawnNextShape();
+        OnCollisionWithOtherShapes();
     }
 
-    void SpawnNextShape()
+    void OnCollisionWithOtherShapes()
+    {
+        rigidbody2D.gravityScale = 0.5f;
+        SpawnNextShape(1f);
+        PlayEffectOnFirstTimePlaced();
+    }
+
+    void OnCollisionWithGround(Collision2D col)
+    {
+        Services.CameraService.ShakeCamera();
+        Services.AudioService.PlayExplosionSound();
+        Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, shapeColor);
+        SpawnNextShape(1.5f);
+        Destroy(gameObject);
+    }
+
+    void PlayEffectOnFirstTimePlaced()
+    {
+        if (!isPlaced)
+        {
+            isPlaced = true;
+            Services.AudioService.PlayShapePlaceSound();
+            Services.CameraService.ShakeCamera();
+        }
+    }
+
+    void SpawnNextShape(float delay = 0)
     {
         if (isSpawnedNextBlock)
             return;
 
         isSpawnedNextBlock = true;
-
         Services.GameService.currentShape = null;
-        rigidbody2D.gravityScale = 0.5f;
-        Services.CameraService.ShakeCamera();
 
         if (owner == GameplayOwner.Player)
-            Services.GameService.myGameplayManager.SpawnShape();
+            Services.GameService.myGameplayManager.SpawnShape(delay);
         else
-            Services.GameService.opponentGameplayManager.SpawnShape();
+            Services.GameService.opponentGameplayManager.SpawnShape(delay);
     }
 }
