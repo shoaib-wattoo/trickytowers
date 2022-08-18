@@ -58,9 +58,9 @@ public class CameraService : MonoBehaviour
         zoomCallback?.Invoke();
     }
 
-    public Vector3 GetCameraPosition()
+    public Vector3 GetCameraTopPosition()
     {
         Vector3 camPos = main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        return new Vector3(0, camPos.y + 5f , 0);
+        return new Vector3(0, camPos.y - 5f , 0);
     }
 }

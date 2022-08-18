@@ -49,3 +49,19 @@ public enum GameplayOwner
     Player,
     Opponent
 }
+
+public enum Effects
+{
+    CartoonyBodySlam,
+    ChestAppearBlue,
+    ChestAppearPurple,
+    ChestAppearWhite,
+    ChestAppearYellow,
+    ConfettiBlastBlue,
+    FlashExplosion,
+    FlashExplosion2,
+    FlashExplosionRadial,
+    HeartPoof,
+    SmokeExplosionWhite,
+    SoftBodySlam
+}

@@ -25,3 +25,16 @@ MonoBehaviour:
   gamePlayScreen: {fileID: 102680818079442727, guid: 6b571e87af9084ca1adb09a23e7b3cae, type: 3}
   gamePauseScreen: {fileID: 8038155812128359598, guid: f93decf9ce38a4e4080ebf9284578698, type: 3}
   gameOverScreen: {fileID: 3391967675758541344, guid: f1f4d16193c994afe8a105c7c23d303d, type: 3}
+  effects:
+  - {fileID: 904930838023874053, guid: 95e714e1f50f64ebd9cbcb0ca0293876, type: 3}
+  - {fileID: 7054221390351005321, guid: 6307cb6f4e7804a5986784a815d38314, type: 3}
+  - {fileID: 4891871283669001736, guid: 113da151498e14738ae9e199dfe34fe7, type: 3}
+  - {fileID: 6849066325019393167, guid: 956cb6741072243af8c27c51ff98ddeb, type: 3}
+  - {fileID: 260592916767859527, guid: 9b3c915e936cf4762ab93ffc16d3ae4d, type: 3}
+  - {fileID: 5455573203389971455, guid: 986479d7ef71d410b93773aab6e3b059, type: 3}
+  - {fileID: 903383108237566713, guid: a9f4a492ca5b94ff39f2de190c6af972, type: 3}
+  - {fileID: 868772764072109720, guid: 45d164edc440d4add836b3b774dd8b9c, type: 3}
+  - {fileID: 253938997516905414, guid: 1c4d39055cb4c44b3822d5320f8cda3e, type: 3}
+  - {fileID: 5984461465020296579, guid: 8d931ceea8f49469084e190bad3dc35e, type: 3}
+  - {fileID: 4773154230789002469, guid: 6e919b4d2016b4c9e8d9d7ee4f886334, type: 3}
+  - {fileID: 6712900286533471608, guid: 1d0835b0e7d2e4b3eba95613ef86e0be, type: 3}

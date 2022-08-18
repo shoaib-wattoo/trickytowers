@@ -13,4 +13,9 @@ public class TrickyElements : ScriptableObject
     public GamePlayScreen gamePlayScreen;
     public GamePauseScreen gamePauseScreen;
     public GameOverScreen gameOverScreen;
+
+    [Header("Particle Effects")]
+    public List<GameObject> effects;
+
+
 }
