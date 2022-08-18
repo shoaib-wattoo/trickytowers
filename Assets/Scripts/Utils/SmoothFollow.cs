@@ -6,6 +6,7 @@ public class SmoothFollow : MonoBehaviour
 	public float interpVelocity;
 	public GameObject target;
 	Vector3 targetPos;
+	public Vector3 lowerBoundry = Vector3.zero;
 
 	// Use this for initialization
 	void Start()
@@ -29,7 +30,8 @@ public class SmoothFollow : MonoBehaviour
 
 			Vector3 finalPos = Vector3.Lerp(transform.position, targetPos, 0.25f);
 
-			transform.position = new Vector3(transform.position.x , finalPos.y, finalPos.z);
+			if(finalPos.y > lowerBoundry.y)
+				transform.position = new Vector3(transform.position.x , finalPos.y, finalPos.z);
 		}
 	}
 }
