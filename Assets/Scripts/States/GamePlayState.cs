@@ -14,7 +14,9 @@ public class GamePlayState : _StatesBase {
 		gamePlayDuration = Time.time;
 
         Services.CameraService.ZoomIn(()=> {
-			Services.GameService.myGameplayManager.SpawnShape(1f);
+			if(Services.GameService.myGameplayManager) Services.GameService.myGameplayManager.SpawnShape(1f);
+			if (Services.GameService.opponentGameplayManager) Services.GameService.opponentGameplayManager.SpawnShape(1f);
+
 		});
 	}
 	public override void OnDeactivate ()

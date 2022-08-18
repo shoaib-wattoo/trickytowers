@@ -111,8 +111,8 @@ public class TrickyShape : MonoBehaviour
         Services.GameService.currentShape = null;
 
         if (owner == GameplayOwner.Player)
-            Services.GameService.myGameplayManager.SpawnShape(delay);
+            gameplayManager.SpawnShape(delay);
         else
-            Services.GameService.opponentGameplayManager.SpawnShape(delay);
+            gameplayManager.SpawnShape(delay);
     }
 }
