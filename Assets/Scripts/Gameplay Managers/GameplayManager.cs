@@ -8,8 +8,10 @@ public class GameplayManager : MonoBehaviour
     public GameObject cloud;
     SpawnManager spawnManager;
     public GameplayOwner owner;
-    public List<TrickyShape> shapesList;
     public Camera gameplayCamera;
+    ScreenUtility screenUtility;
+    public SpriteRenderer vertileShadow;
+    public List<TrickyShape> shapesList;
 
     void Start()
     {
@@ -24,6 +26,25 @@ public class GameplayManager : MonoBehaviour
         }
 
         spawnManager = GetComponent<SpawnManager>();
+        screenUtility = gameplayCamera.GetComponent<ScreenUtility>();
+    }
+
+    public void SetShadowScale(TrickyShape shape)
+    {
+        vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, screenUtility.Height, 0);
+    }
+
+    public void DisableShadowShape(TrickyShape trickyShape)
+    {
+        if(Services.GameService.currentShape == trickyShape)
+        {
+            vertileShadow.transform.localScale = Vector3.zero;
+        }
+    }
+
+    public void SetShadowPosition(Vector3 position)
+    {
+        vertileShadow.transform.position = new Vector3(position.x, 0, 0);
     }
 
     public void SpawnShape()

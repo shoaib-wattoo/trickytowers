@@ -22,6 +22,8 @@ public class SpawnManager : MonoBehaviour {
             temp.GetComponent<TrickyShape>().gameplayManager = gameplayManager;
             Services.InputService.gameplayManager = gameplayManager;
             Services.InputService.isActive = true;
+            gameplayManager.SetShadowScale(temp.GetComponent<TrickyShape>());
+            gameplayManager.SetShadowPosition(temp.transform.position);
 
         });
     }

@@ -11,13 +11,15 @@ public class TrickyShape : MonoBehaviour
     public float fallingSpeed = 2f;
     public float normalFallingSpeed = 2f;
     public float fastFallingSpeed = 5f;
-    Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidbody2D;
     public bool isSpawnedNextBlock, isPlaced = false;
     public GameplayOwner owner;
     public Color shapeColor;
+    public SpriteRenderer spriteRenderer;
 
     void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         AssignRandomColor();
     }
@@ -38,17 +40,18 @@ public class TrickyShape : MonoBehaviour
         float rotationDegree = (isCw) ? 90.0f : -90.0f;
 
         transform.RotateAround(rotationPivot.position, Vector3.forward, rotationDegree);
+
+        gameplayManager.SetShadowScale(this);
     }
 
     public void MoveHorizontal(Vector2 direction)
     {
         float deltaMovement = (direction.Equals(Vector2.right)) ? 1.0f : -1.0f;
 
-        transform.position += new Vector3(deltaMovement, 0, 0);
-
-        if(!Services.CameraService.IsInCamView(gameplayManager.gameplayCamera, transform.position))
+        if (Services.CameraService.IsInCamView(gameplayManager.gameplayCamera, new Vector3(transform.position.x + deltaMovement, 0, 0)))
         {
-            transform.position -= new Vector3(deltaMovement, 0, 0);
+            transform.position += new Vector3(deltaMovement, 0, 0);
+            gameplayManager.SetShadowPosition(transform.position);
         }
     }
 
@@ -72,6 +75,8 @@ public class TrickyShape : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        gameplayManager.DisableShadowShape(this);
+
         if (col.gameObject.tag.Equals("Ground"))
         {
             OnCollisionWithGround(col);

@@ -78,6 +78,22 @@ public class ScreenUtility : MonoBehaviour
         }
     }
 
+    public float Height
+    {
+        get
+        {
+            return cam.orthographicSize * 2f;
+        }
+    }
+
+    public float Width
+    {
+        get
+        {
+            return (cam.orthographicSize * 2f) * cam.aspect;
+        }
+    }
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
