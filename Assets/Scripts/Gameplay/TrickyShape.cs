@@ -6,7 +6,6 @@ using System.Linq;
 public class TrickyShape : MonoBehaviour
 {
     public GameplayManager gameplayManager;
-    public ShapeType type;
 
     public Transform rotationPivot;
     public float fallingSpeed = 2f;

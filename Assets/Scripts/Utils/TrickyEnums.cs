@@ -33,17 +33,6 @@ public enum Screens
     OVER
 }
 
-public enum ShapeType
-{
-    I,
-    T,
-    O,
-    L,
-    J,
-    S,
-    Z
-}
-
 public enum GameplayOwner
 {
     Player,

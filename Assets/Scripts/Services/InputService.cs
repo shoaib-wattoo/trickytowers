@@ -9,7 +9,7 @@ public class InputService : MonoBehaviour
     void Awake()
     {
 #if UNITY_EDITOR
-        inputType = InputMethod.KeyboardInput;
+        inputType = InputMethod.MouseInput;
 #else
         inputType = InputMethod.TouchInput;
 #endif
