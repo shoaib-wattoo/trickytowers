@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000014044525618}
   - component: {fileID: 114000011248546266}
-  - component: {fileID: 114000010387999096}
   - component: {fileID: 4523428197565089752}
   - component: {fileID: 1652632436634380813}
   - component: {fileID: 8202148579851727285}
@@ -48,24 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a508d1e1d0606471595d9163ceabab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameplayManager: {fileID: 0}
   type: 5
-  movementController: {fileID: 0}
-  shapeColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114000010387999096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010743416826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2cbdc4a01ea148f88ed557e41d3b190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationPivot: {fileID: 4000011406727730}
+  rotationPivot: {fileID: 0}
   fallingSpeed: 2
-  fastFallingSpeed: 8
+  fastFallingSpeed: 5
   isSpawnedNextBlock: 0
   isPlaced: 0
   owner: 0
