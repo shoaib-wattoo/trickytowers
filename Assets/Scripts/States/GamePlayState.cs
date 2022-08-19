@@ -27,8 +27,8 @@ public class GamePlayState : _StatesBase {
 
 	public override void OnUpdate ()
 	{
-        if(Services.GameService.currentShape!=null)
-			Services.GameService.currentShape.ShapeUpdate();
+        if(Services.GameService.myGameplayManager.currentShape != null)
+			Services.GameService.myGameplayManager.currentShape.ShapeUpdate();
 	}
 	#endregion
 

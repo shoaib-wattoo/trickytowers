@@ -6,7 +6,6 @@ public class GameService : MonoBehaviour
 {
 	public bool isGameActive;
 	public ColorService colorService;
-	public TrickyShape currentShape;
 	public GameplayManager myGameplayManager;
 	public GameplayManager opponentGameplayManager;
 

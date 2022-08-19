@@ -122,7 +122,7 @@ public class TrickyShape : MonoBehaviour
             return;
 
         isSpawnedNextBlock = true;
-        Services.GameService.currentShape = null;
+        gameplayManager.currentShape = null;
 
         if (owner == GameplayOwner.Player)
             gameplayManager.SpawnShape(delay);

@@ -42,7 +42,7 @@ public class InputService : MonoBehaviour
             MoveHorizontal(Vector2.right);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (Services.GameService.currentShape != null)
+            if (gameplayManager.currentShape != null)
             {
                 isActive = false;
                 InstantFall();
@@ -127,26 +127,26 @@ public class InputService : MonoBehaviour
 
     private void MoveHorizontal(Vector2 vector2)
     {
-        if (Services.GameService.currentShape != null)
-            Services.GameService.currentShape.MoveHorizontal(vector2);
+        if (gameplayManager.currentShape != null)
+            gameplayManager.currentShape.MoveHorizontal(vector2);
     }
 
     private void InstantFall()
     {
-        if (Services.GameService.currentShape != null)
-            Services.GameService.currentShape.InstantFall();
+        if (gameplayManager.currentShape != null)
+            gameplayManager.currentShape.InstantFall();
     }
 
     private void NormalFall()
     {
-        if (Services.GameService.currentShape != null)
-            Services.GameService.currentShape.NormalFall();
+        if (gameplayManager.currentShape != null)
+            gameplayManager.currentShape.NormalFall();
     }
 
     private void RotateClockWise(bool rotateClockwise)
     {
-        if (Services.GameService.currentShape != null)
-            Services.GameService.currentShape.RotateClockWise(rotateClockwise);
+        if (gameplayManager.currentShape != null)
+            gameplayManager.currentShape.RotateClockWise(rotateClockwise);
     }
     #endregion
 

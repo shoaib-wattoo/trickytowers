@@ -12,6 +12,7 @@ public class GameplayManager : MonoBehaviour
     ScreenUtility screenUtility;
     public SpriteRenderer vertileShadow;
     public List<TrickyShape> shapesList;
+    public TrickyShape currentShape;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class GameplayManager : MonoBehaviour
 
     public void DisableShadowShape(TrickyShape trickyShape)
     {
-        if(Services.GameService.currentShape == trickyShape)
+        if(currentShape == trickyShape)
         {
             vertileShadow.transform.localScale = Vector3.zero;
         }

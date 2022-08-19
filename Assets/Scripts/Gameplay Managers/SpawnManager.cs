@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour {
             // Spawn shape at current Position
             GameObject temp = Instantiate(Services.TrickyElements.shapeTypes[i]);
             temp.transform.position = spawnPos;
-            Services.GameService.currentShape = temp.GetComponent<TrickyShape>();
+            gameplayManager.currentShape = temp.GetComponent<TrickyShape>();
             temp.transform.parent = parent;
             temp.GetComponent<TrickyShape>().gameplayManager = gameplayManager;
             Services.InputService.gameplayManager = gameplayManager;
