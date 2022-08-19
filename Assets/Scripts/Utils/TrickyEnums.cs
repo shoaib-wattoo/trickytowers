@@ -20,8 +20,7 @@ public enum ColorTheme
 public enum InputMethod
 {
     KeyboardInput,
-    MouseInput,
-    TouchInput
+    MouseInput
 }
 
 public enum Screens

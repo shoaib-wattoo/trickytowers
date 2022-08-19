@@ -9,6 +9,7 @@ public class TrickyShape : MonoBehaviour
 
     public Transform rotationPivot;
     public float fallingSpeed = 2f;
+    public float normalFallingSpeed = 2f;
     public float fastFallingSpeed = 5f;
     Rigidbody2D rigidbody2D;
     public bool isSpawnedNextBlock, isPlaced = false;
@@ -43,8 +44,12 @@ public class TrickyShape : MonoBehaviour
     {
         float deltaMovement = (direction.Equals(Vector2.right)) ? 1.0f : -1.0f;
 
-        // Modify position
         transform.position += new Vector3(deltaMovement, 0, 0);
+
+        if(!Services.CameraService.IsInCamView(gameplayManager.gameplayCamera, transform.position))
+        {
+            transform.position -= new Vector3(deltaMovement, 0, 0);
+        }
     }
 
     public void FreeFall()
@@ -58,6 +63,11 @@ public class TrickyShape : MonoBehaviour
     public void InstantFall()
     {
         fallingSpeed = fastFallingSpeed;
+    }
+
+    public void NormalFall()
+    {
+        fallingSpeed = normalFallingSpeed;
     }
 
     void OnCollisionEnter2D(Collision2D col)

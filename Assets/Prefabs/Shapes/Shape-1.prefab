@@ -84,10 +84,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayManager: {fileID: 0}
-  type: 0
   rotationPivot: {fileID: 4000011453353334}
   fallingSpeed: 2
-  fastFallingSpeed: 5
+  normalFallingSpeed: 4
+  fastFallingSpeed: 10
   isSpawnedNextBlock: 0
   isPlaced: 0
   owner: 0

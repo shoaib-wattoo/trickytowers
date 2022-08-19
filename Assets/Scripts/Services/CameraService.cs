@@ -60,9 +60,20 @@ public class CameraService : MonoBehaviour
         zoomCallback?.Invoke();
     }
 
-    public Vector3 GetCameraTopPosition()
+    public Vector3 GetCameraTopPosition(Camera cam)
     {
-        Vector3 camPos = main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        return new Vector3(0, camPos.y - 5f , 0);
+        ScreenUtility screenUtility = cam.GetComponent<ScreenUtility>();
+
+        return new Vector3(0, screenUtility.Top, 0);
+    }
+
+    public bool IsInCamView(Camera cam, Vector3 pos)
+    {
+        ScreenUtility screenUtility = cam.GetComponent<ScreenUtility>();
+        if (screenUtility.Right > pos.x && screenUtility.Left < pos.x && screenUtility.Top > pos.y && screenUtility.Bottom < pos.y)
+            return true;
+
+        return false;
+
     }
 }
