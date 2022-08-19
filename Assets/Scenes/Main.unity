@@ -544,6 +544,7 @@ MonoBehaviour:
   gameplayCamera: {fileID: 519420031}
   vertileShadow: {fileID: 1196225706}
   shapesList: []
+  currentShape: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1333,7 @@ Transform:
   m_GameObject: {fileID: 1196225704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 440655980}
   m_RootOrder: 4
@@ -2247,7 +2248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   colorService: {fileID: 886387904}
-  currentShape: {fileID: 0}
   myGameplayManager: {fileID: 0}
   opponentGameplayManager: {fileID: 0}
 --- !u!1 &1971183253

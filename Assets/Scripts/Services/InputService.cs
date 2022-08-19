@@ -113,9 +113,8 @@ public class InputService : MonoBehaviour
             //create vector from the two points
             _currentSwipe = new Vector2(_endPressPosition.x - _firstPressPosition.x, _endPressPosition.y - _firstPressPosition.y);
 
-
             //swipe left
-            if (_currentSwipe.x > -1f && _currentSwipe.x < 1f && _currentSwipe.y > -1f && _currentSwipe.y < 1f)
+            if (_currentSwipe.x > -0.1f && _currentSwipe.x < 0.1f && _currentSwipe.y > -0.1f && _currentSwipe.y < 0.1f)
             {
                 RotateClockWise(true);
             }

@@ -90,7 +90,7 @@ public class TrickyShape : MonoBehaviour
 
     void OnCollisionWithOtherShapes()
     {
-        rigidbody2D.gravityScale = 0.5f;
+        rigidbody2D.gravityScale = 1f;
         SpawnNextShape(1f);
         PlayEffectOnFirstTimePlaced();
     }

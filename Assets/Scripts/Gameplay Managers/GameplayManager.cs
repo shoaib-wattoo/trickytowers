@@ -33,6 +33,7 @@ public class GameplayManager : MonoBehaviour
     public void SetShadowScale(TrickyShape shape)
     {
         vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, screenUtility.Height, 0);
+        print("Shadow Size :: " + vertileShadow.size);
     }
 
     public void DisableShadowShape(TrickyShape trickyShape)

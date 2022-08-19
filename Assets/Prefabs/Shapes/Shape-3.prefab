@@ -56,6 +56,7 @@ MonoBehaviour:
   isPlaced: 0
   owner: 0
   shapeColor: {r: 0, g: 0, b: 0, a: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!212 &6534450148312325091
 SpriteRenderer:
   m_ObjectHideFlags: 0
