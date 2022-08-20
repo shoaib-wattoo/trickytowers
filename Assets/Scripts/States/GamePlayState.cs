@@ -13,10 +13,23 @@ public class GamePlayState : _StatesBase {
 		Services.UIService.ActivateUIScreen(Screens.PLAY);
 		gamePlayDuration = Time.time;
 
-        Services.CameraService.ZoomIn(Services.GameService.player1_Manager ,()=> {
-			Services.GameService.player1_Manager.SpawnShape(1f);
+		if (Services.GameService.GetPlayerManager(GameplayOwner.Player1) != null)
+		{
+			Services.CameraService.ZoomIn(Services.GameService.player1_Manager, () =>
+			{
+				Services.GameService.player1_Manager.SpawnShape(1f);
 
-		});
+			});
+		}
+
+		if (Services.GameService.GetPlayerManager(GameplayOwner.Player2) != null)
+		{
+			Services.CameraService.ZoomIn(Services.GameService.player2_Manager, () =>
+			{
+				Services.GameService.player2_Manager.SpawnShape(1f);
+
+			});
+		}
 	}
 	public override void OnDeactivate ()
 	{
