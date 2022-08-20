@@ -53,3 +53,9 @@ public enum Effects
     SmokeExplosionWhite,
     SoftBodySlam
 }
+
+public enum GameMode
+{
+    SinglePlayer,
+    MultiPlayer
+}

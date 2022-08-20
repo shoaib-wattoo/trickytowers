@@ -39,10 +39,29 @@ public class HomeScreen : TrickyMonoBehaviour
         UpdateScore();
     }
 
-    public void OnClickPlayButton()
+    public void OnClickSinglePlayerButton()
     {
-        Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
-        Services.GameService.SpawnGamePlay(GameplayOwner.Player2);
+        Services.GameService.gameMode = GameMode.SinglePlayer;
+        StartGame();
+    }
+
+    public void OnClickMultiplePlayerButton()
+    {
+        Services.GameService.gameMode = GameMode.MultiPlayer;
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        if (Services.GameService.gameMode == GameMode.SinglePlayer)
+        {
+            Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
+        }
+        else if (Services.GameService.gameMode == GameMode.MultiPlayer)
+        {
+            Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
+            Services.GameService.SpawnGamePlay(GameplayOwner.Player2);
+        }
 
         Services.GameService.SetState(typeof(GamePlayState));
     }

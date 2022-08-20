@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GameService : MonoBehaviour
 {
+	public GameMode gameMode;
 	public bool isGameActive;
 	public ColorService colorService;
 	public GameplayManager player1_Manager;

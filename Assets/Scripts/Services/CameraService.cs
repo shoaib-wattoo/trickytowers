@@ -15,6 +15,7 @@ public class CameraService : MonoBehaviour
         {
             Camera camera = Instantiate(Services.TrickyElements.gamePlayCamera, Services.GameService.GetPlayerManager(owner).transform);
             Services.GameService.GetPlayerManager(owner).gameplayCamera = camera;
+            camera.targetTexture = Services.TrickyElements.cameraRenderTexture;
             return camera;
         }
 

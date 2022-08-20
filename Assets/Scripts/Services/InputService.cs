@@ -42,11 +42,7 @@ public class InputService : MonoBehaviour
             MoveHorizontal(Vector2.right);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (gameplayManager.currentShape != null)
-            {
-                isActive = false;
-                InstantFall();
-            }
+            InstantFall();
         }
     }
     #endregion

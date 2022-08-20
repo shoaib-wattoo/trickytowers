@@ -9,6 +9,7 @@ public class GamePlayState : _StatesBase {
 	public override void OnActivate ()
 	{
 		Debug.Log("Game Play State OnActive");
+		Services.GameService.isGameActive = true;
 
 		Services.UIService.ActivateUIScreen(Screens.PLAY);
 		gamePlayDuration = Time.time;

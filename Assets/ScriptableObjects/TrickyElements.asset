@@ -40,3 +40,4 @@ MonoBehaviour:
   - {fileID: 6712900286533471608, guid: 1d0835b0e7d2e4b3eba95613ef86e0be, type: 3}
   gameplayManager: {fileID: 2905702408404196289, guid: e7475c57e95674743aeca0529b720667, type: 3}
   gamePlayCamera: {fileID: 8313123471502414683, guid: df8d8fcef66db42d78681f4495456885, type: 3}
+  cameraRenderTexture: {fileID: 8400000, guid: 7f67cbf539c714304b54e269ab8e61a0, type: 2}

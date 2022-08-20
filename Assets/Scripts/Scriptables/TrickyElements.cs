@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "TrickyElements", menuName = "ScriptableObjects/TrickyElements", order = 1)]
@@ -21,4 +22,6 @@ public class TrickyElements : ScriptableObject
     public GameplayManager gameplayManager;
     public Camera gamePlayCamera;
 
+    [Header("Render Textures")]
+    public RenderTexture cameraRenderTexture;
 }
