@@ -3,11 +3,11 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour {
 
-    public void Spawn(Transform parent, GameplayOwner owner, GameplayManager gameplayManager)
+    public void Spawn(GameplayOwner owner, Transform parent)
 	{
         Services.AudioService.PlayBlockSpawnSound();
-        Vector3 spawnPos = Services.CameraService.GetCameraTopPosition(gameplayManager.gameplayCamera);
-        spawnPos.y -= 5f;
+        Vector3 spawnPos = Services.CameraService.GetCameraTopPosition(owner);
+        spawnPos.y -= 5f; //Just adding offset to spawn position
 
         Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, spawnPos, ()=> {
 
@@ -17,13 +17,12 @@ public class SpawnManager : MonoBehaviour {
             // Spawn shape at current Position
             GameObject temp = Instantiate(Services.TrickyElements.shapeTypes[i]);
             temp.transform.position = spawnPos;
-            gameplayManager.currentShape = temp.GetComponent<TrickyShape>();
+            Services.GameService.SetCurrentCurrentShape(owner, temp.GetComponent<TrickyShape>());
             temp.transform.parent = parent;
-            temp.GetComponent<TrickyShape>().gameplayManager = gameplayManager;
-            Services.InputService.gameplayManager = gameplayManager;
+            Services.InputService.gameplayManager = Services.GameService.GetPlayerManager(owner);
             Services.InputService.isActive = true;
-            gameplayManager.SetShadowScale(temp.GetComponent<TrickyShape>());
-            gameplayManager.SetShadowPosition(temp.transform.position);
+            Services.GameService.SetShadowScale(owner, temp.GetComponent<TrickyShape>());
+            Services.GameService.SetShadowPosition(owner, temp.transform.position);
 
         });
     }

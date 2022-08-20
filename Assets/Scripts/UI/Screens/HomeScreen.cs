@@ -20,17 +20,17 @@ public class HomeScreen : TrickyMonoBehaviour
 
     public void OnClickZoomIn()
     {
-        Services.CameraService.ZoomIn();
+        Services.CameraService.ZoomIn(Services.GameService.player1_Manager);
     }
 
     public void OnClickZoomOut()
     {
-        Services.CameraService.ZoomOut();
+        Services.CameraService.ZoomOut(Services.GameService.player1_Manager);
     }
 
     public void OnClickShakeCam()
     {
-        Services.CameraService.ShakeCamera();
+        Services.CameraService.ShakeCamera(Services.GameService.player1_Manager);
     }
 
     public void OnClickIncrementScore()

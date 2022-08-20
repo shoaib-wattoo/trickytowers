@@ -17,8 +17,9 @@ public class CameraShake : MonoBehaviour{
 		_initShakeIntensity = shakeIntensity;
 	}
 
-	public void ShakeCamera()
+	public void ShakeCamera(float shakeIntensity)
     {
+		this.shakeIntensity = shakeIntensity;
 		StopAllCoroutines();
 		StartCoroutine(Shake());
     }

@@ -34,8 +34,8 @@ public enum Screens
 
 public enum GameplayOwner
 {
-    Player,
-    Opponent
+    Player1,
+    Player2
 }
 
 public enum Effects

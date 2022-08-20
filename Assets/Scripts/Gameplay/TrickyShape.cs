@@ -5,8 +5,6 @@ using System.Linq;
 
 public class TrickyShape : MonoBehaviour
 {
-    public GameplayManager gameplayManager;
-
     public Transform rotationPivot;
     public float fallingSpeed = 2f;
     public float normalFallingSpeed = 2f;
@@ -41,17 +39,17 @@ public class TrickyShape : MonoBehaviour
 
         transform.RotateAround(rotationPivot.position, Vector3.forward, rotationDegree);
 
-        gameplayManager.SetShadowScale(this);
+        Services.GameService.SetShadowScale(owner, this);
     }
 
     public void MoveHorizontal(Vector2 direction)
     {
         float deltaMovement = (direction.Equals(Vector2.right)) ? 1.0f : -1.0f;
 
-        if (Services.CameraService.IsInCamView(gameplayManager.gameplayCamera, new Vector3(transform.position.x + deltaMovement, 0, 0)))
+        if (Services.CameraService.IsInCamView(owner, new Vector3(transform.position.x + deltaMovement, 0, 0)))
         {
             transform.position += new Vector3(deltaMovement, 0, 0);
-            gameplayManager.SetShadowPosition(transform.position);
+            Services.GameService.SetShadowPosition(owner, transform.position);
         }
     }
 
@@ -75,7 +73,7 @@ public class TrickyShape : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        gameplayManager.DisableShadowShape(this);
+        Services.GameService.DisableShadowShape(owner, this);
 
         if (col.gameObject.tag.Equals("Ground"))
         {
@@ -85,7 +83,7 @@ public class TrickyShape : MonoBehaviour
 
         OnCollisionWithOtherShapes();
 
-        gameplayManager.UpdateCameraFollowTarget();
+        Services.CameraService.UpdateCameraFollowTarget(owner);
     }
 
     void OnCollisionWithOtherShapes()
@@ -97,11 +95,11 @@ public class TrickyShape : MonoBehaviour
 
     void OnCollisionWithGround(Collision2D col)
     {
-        Services.CameraService.ShakeCamera();
+        Services.CameraService.ShakeCamera(owner);
         Services.AudioService.PlayExplosionSound();
         Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, shapeColor);
         SpawnNextShape(1.5f);
-        gameplayManager.RemoveShapeFromList(this);
+        Services.GameService.RemoveShapePlacedFromList(owner, this);
         Destroy(gameObject);
     }
 
@@ -111,8 +109,8 @@ public class TrickyShape : MonoBehaviour
         {
             isPlaced = true;
             Services.AudioService.PlayShapePlaceSound();
-            Services.CameraService.ShakeCamera();
-            gameplayManager.AddShapeInList(this);
+            Services.CameraService.ShakeCamera(owner);
+            Services.GameService.AddShapePlacedInList(owner, this);
         }
     }
 
@@ -122,11 +120,7 @@ public class TrickyShape : MonoBehaviour
             return;
 
         isSpawnedNextBlock = true;
-        gameplayManager.currentShape = null;
-
-        if (owner == GameplayOwner.Player)
-            gameplayManager.SpawnShape(delay);
-        else
-            gameplayManager.SpawnShape(delay);
+        Services.GameService.RemoveCurrentShape(owner);
+        Services.GameService.SpawnShape(owner, delay);
     }
 }

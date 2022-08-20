@@ -66,7 +66,6 @@ public class InputService : MonoBehaviour
             //save began touch 2d point
             _firstPressPosition = _startPressPosition = gameplayManager.gameplayCamera.ScreenToWorldPoint(Input.mousePosition);
             _buttonDownPhaseStart = Time.time;
-
         }
 
         if (Input.GetMouseButton(0))

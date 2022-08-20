@@ -4,60 +4,29 @@ using System.Collections;
 
 public class CameraService : MonoBehaviour
 {
-    public Camera main;
-
     public float _zoomOutLimit = 30f;
     public float _zoomInLimit = 25f;
     public float zoomSpeed = 1f;
     public iTween.EaseType easeType;
-    Action zoomCallback;
 
-    [HideInInspector]
-    public CameraShake shaker;
-    public SmoothFollow smoothFollow;
-
-    void Awake()
+    public void ShakeCamera(GameplayManager gameplay)
     {
-        shaker = main.gameObject.GetComponent<CameraShake>();
-        smoothFollow = main.gameObject.GetComponent<SmoothFollow>();
-        main.orthographicSize = _zoomOutLimit;
+        gameplay.ShakeCamera();
     }
 
-    public void ShakeCamera()
+    public void ShakeCamera(GameplayOwner gameplayOwner)
     {
-        shaker.shakeIntensity = 0.03f;
-        shaker.ShakeCamera();
+        Services.GameService.GetPlayerManager(gameplayOwner).ShakeCamera();
     }
 
-    public void ZoomIn(Action zoomListener = null)
+    public void ZoomIn(GameplayManager gameplay, Action zoomListener = null)
     {
-        zoomCallback = zoomListener;
-
-        if(main.orthographicSize > _zoomInLimit)
-            StartTween(_zoomOutLimit, _zoomInLimit);
+        gameplay.ZoomIn(zoomListener);
     }
 
-    public void ZoomOut(Action zoomListener = null)
+    public void ZoomOut(GameplayManager gameplay, Action zoomListener = null)
     {
-        zoomCallback = zoomListener;
-
-        if (main.orthographicSize < _zoomOutLimit)
-            StartTween(_zoomInLimit,_zoomOutLimit);
-    }
-
-    void StartTween(float initialValue, float finalValue)
-    {
-        iTween.ValueTo(gameObject, iTween.Hash("from", initialValue, "to", finalValue, "time", zoomSpeed, "easetype", easeType, "onupdatetarget", gameObject, "onupdate", "OnUpdateValue", "oncomplete", "OnTweenComplete"));
-    }
-
-    void OnUpdateValue(float newValue)
-    {
-        main.orthographicSize = newValue;
-    }
-
-    void OnTweenComplete()
-    {
-        zoomCallback?.Invoke();
+        gameplay.ZoomOut(zoomListener);
     }
 
     public Vector3 GetCameraTopPosition(Camera cam)
@@ -67,13 +36,27 @@ public class CameraService : MonoBehaviour
         return new Vector3(0, screenUtility.Top, 0);
     }
 
-    public bool IsInCamView(Camera cam, Vector3 pos)
+    public Vector3 GetCameraTopPosition(GameplayOwner gameplayOwner)
     {
-        ScreenUtility screenUtility = cam.GetComponent<ScreenUtility>();
+        ScreenUtility screenUtility = Services.GameService.GetPlayerManager(gameplayOwner).gameplayCamera.GetComponent<ScreenUtility>();
+
+        return new Vector3(0, screenUtility.Top, 0);
+    }
+
+    public bool IsInCamView(GameplayOwner gameplayOwner, Vector3 pos)
+    {
+        ScreenUtility screenUtility = Services.GameService.GetPlayerManager(gameplayOwner).gameplayCamera.GetComponent<ScreenUtility>();
+
         if (screenUtility.Right > pos.x && screenUtility.Left < pos.x && screenUtility.Top > pos.y && screenUtility.Bottom < pos.y)
             return true;
 
         return false;
 
     }
+
+    public void UpdateCameraFollowTarget(GameplayOwner owner)
+    {
+        Services.GameService.GetPlayerManager(owner).UpdateCameraFollowTarget();
+    }
+
 }
