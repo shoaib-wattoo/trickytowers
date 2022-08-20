@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour {
 	{
         Services.AudioService.PlayBlockSpawnSound();
         Vector3 spawnPos = Services.CameraService.GetCameraTopPosition(owner);
-        spawnPos.y -= 5f; //Just adding offset to spawn position
+        spawnPos = new Vector3(transform.position.x, spawnPos.y -5f, 0);
 
         Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, spawnPos, ()=> {
 
@@ -15,15 +15,24 @@ public class SpawnManager : MonoBehaviour {
             int i = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
 
             // Spawn shape at current Position
-            GameObject temp = Instantiate(Services.TrickyElements.shapeTypes[i]);
-            temp.transform.position = spawnPos;
-            Services.GameService.SetCurrentCurrentShape(owner, temp.GetComponent<TrickyShape>());
-            temp.transform.parent = parent;
-            Services.InputService.gameplayManager = Services.GameService.GetPlayerManager(owner);
-            Services.InputService.isActive = true;
-            Services.GameService.SetShadowScale(owner, temp.GetComponent<TrickyShape>());
-            Services.GameService.SetShadowPosition(owner, temp.transform.position);
+            TrickyShape shape = Instantiate(Services.TrickyElements.shapeTypes[i]);
+            shape.owner = owner;
+            shape.transform.position = new Vector3(transform.position.x, spawnPos.y, 0);
+            Services.GameService.SetCurrentCurrentShape(owner, shape);
+            shape.transform.parent = parent;
+            Services.GameService.SetShadowScale(owner, shape);
+            Services.GameService.SetShadowPosition(owner, shape.transform.position);
 
+            if(owner == GameplayOwner.Player1)
+            {
+                Services.InputService.gameplayManager = Services.GameService.GetPlayerManager(owner);
+                Services.InputService.isActive = true;
+            }
+
+            if (owner == GameplayOwner.Player2)
+            {
+                //TODO/Need to assign AI controller
+            }
         });
     }
 }

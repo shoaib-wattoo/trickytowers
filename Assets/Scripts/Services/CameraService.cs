@@ -9,6 +9,21 @@ public class CameraService : MonoBehaviour
     public float zoomSpeed = 1f;
     public iTween.EaseType easeType;
 
+    public Camera AssignPlayerCamera(GameplayOwner owner)
+    {
+        if(owner == GameplayOwner.Player2)
+        {
+            Camera camera = Instantiate(Services.TrickyElements.gamePlayCamera, Services.GameService.GetPlayerManager(owner).transform);
+            Services.GameService.GetPlayerManager(owner).gameplayCamera = camera;
+            return camera;
+        }
+
+        Services.GameService.GetPlayerManager(owner).gameplayCamera = Camera.main;
+        Vector3 camPosition = Services.GameService.GetPlayerManager(owner).transform.position;
+        Camera.main.transform.position = new Vector3(camPosition.x , camPosition.y, -10);
+        return Camera.main;
+    }
+
     public void ShakeCamera(GameplayManager gameplay)
     {
         gameplay.ShakeCamera();
@@ -21,6 +36,7 @@ public class CameraService : MonoBehaviour
 
     public void ZoomIn(GameplayManager gameplay, Action zoomListener = null)
     {
+        print("Zoom In : " + gameplay.gameplayCamera.name);
         gameplay.ZoomIn(zoomListener);
     }
 

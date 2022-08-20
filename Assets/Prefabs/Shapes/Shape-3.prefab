@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a508d1e1d0606471595d9163ceabab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameplayManager: {fileID: 0}
   rotationPivot: {fileID: 4000011435886762}
   fallingSpeed: 2
   normalFallingSpeed: 4

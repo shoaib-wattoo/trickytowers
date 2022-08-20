@@ -41,6 +41,9 @@ public class HomeScreen : TrickyMonoBehaviour
 
     public void OnClickPlayButton()
     {
+        Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
+        Services.GameService.SpawnGamePlay(GameplayOwner.Player2);
+
         Services.GameService.SetState(typeof(GamePlayState));
     }
 }

@@ -6,7 +6,6 @@ using System;
 public class GameplayManager : MonoBehaviour
 {
     public Transform blockHolder;
-    public GameObject cloud;
     SpawnManager spawnManager;
     public GameplayOwner owner;
     public Camera gameplayCamera;
@@ -18,17 +17,23 @@ public class GameplayManager : MonoBehaviour
 
     void Start()
     {
-        if (owner == GameplayOwner.Player1)
-            Services.GameService.player1_Manager = this;
-        else
-            Services.GameService.player2_Manager = this;
+    }
 
-        if (cloud != null)
+    public void Init()
+    {
+        if (owner == GameplayOwner.Player1)
         {
-            cloud.GetComponent<Rigidbody2D>().velocity = new Vector2(0.1f, 0.0f);
+            Services.GameService.player1_Manager = this;
+            transform.position = Vector3.zero;
+        }
+        else
+        {
+            Services.GameService.player2_Manager = this;
+            transform.position = new Vector3(200, 0, 0);
         }
 
         spawnManager = GetComponent<SpawnManager>();
+        Services.CameraService.AssignPlayerCamera(owner);
         screenUtility = gameplayCamera.GetComponent<ScreenUtility>();
     }
 

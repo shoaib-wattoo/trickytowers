@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TrickyElements : ScriptableObject
 {
     [Header("Shapes")]
-    public List<GameObject> shapeTypes;
+    public List<TrickyShape> shapeTypes;
 
     [Header("UI Screens")]
     public SplashScreen splashScreen;
@@ -17,5 +17,8 @@ public class TrickyElements : ScriptableObject
     [Header("Particle Effects")]
     public List<GameObject> effects;
 
+    [Header("Game Play Prefabs")]
+    public GameplayManager gameplayManager;
+    public Camera gamePlayCamera;
 
 }

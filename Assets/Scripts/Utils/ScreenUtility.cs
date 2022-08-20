@@ -6,6 +6,7 @@ public class ScreenUtility : MonoBehaviour
 
     [SerializeField] protected float widthToMaintain = 5f;
 
+
     /// <summary>
     /// Left side of the screen in world coordinates
     /// </summary>
