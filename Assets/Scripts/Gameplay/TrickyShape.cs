@@ -5,28 +5,31 @@ using System.Linq;
 
 public class TrickyShape : MonoBehaviour
 {
+    public GameplayOwner owner;
+    public Color shapeColor;
     public Transform rotationPivot;
+    public SpriteRenderer spriteRenderer;
+
+    //Shape speed varialbles
     public float fallingSpeed = 2f;
     public float normalFallingSpeed = 2f;
     public float fastFallingSpeed = 5f;
-    private Rigidbody2D rigidbody2D;
-    public bool isSpawnedNextBlock, isPlaced = false;
-    public GameplayOwner owner;
-    public Color shapeColor;
-    public SpriteRenderer spriteRenderer;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
         AssignRandomColor();
     }
 
+    //Shape Color Assigner
     void AssignRandomColor()
     {
         shapeColor = Services.GameService.colorService.TurnRandomColorFromTheme();
         GetComponent<SpriteRenderer>().color = shapeColor;
     }
+
+
+    #region Shape Movement Funtions
 
     public void ShapeUpdate()
     {
@@ -71,56 +74,6 @@ public class TrickyShape : MonoBehaviour
         fallingSpeed = normalFallingSpeed;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        Services.GameService.DisableShadowShape(owner, this);
+    #endregion
 
-        if (col.gameObject.tag.Equals("Ground"))
-        {
-            OnCollisionWithGround(col);
-            return;
-        }
-
-        OnCollisionWithOtherShapes();
-
-        Services.CameraService.UpdateCameraFollowTarget(owner);
-    }
-
-    void OnCollisionWithOtherShapes()
-    {
-        rigidbody2D.gravityScale = 1f;
-        SpawnNextShape(1f);
-        PlayEffectOnFirstTimePlaced();
-    }
-
-    void OnCollisionWithGround(Collision2D col)
-    {
-        Services.CameraService.ShakeCamera(owner);
-        Services.AudioService.PlayExplosionSound();
-        Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, shapeColor);
-        SpawnNextShape(1.5f);
-        Services.GameService.RemoveShapePlacedFromList(owner, this);
-        Destroy(gameObject);
-    }
-
-    void PlayEffectOnFirstTimePlaced()
-    {
-        if (!isPlaced)
-        {
-            isPlaced = true;
-            Services.AudioService.PlayShapePlaceSound();
-            Services.CameraService.ShakeCamera(owner);
-            Services.GameService.AddShapePlacedInList(owner, this);
-        }
-    }
-
-    void SpawnNextShape(float delay = 0)
-    {
-        if (isSpawnedNextBlock)
-            return;
-
-        isSpawnedNextBlock = true;
-        Services.GameService.RemoveCurrentShape(owner);
-        Services.GameService.SpawnShape(owner, delay);
-    }
 }

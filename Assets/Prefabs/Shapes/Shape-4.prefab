@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011686202718}
   - component: {fileID: 114000011038009042}
+  - component: {fileID: 1281534373904330669}
   - component: {fileID: 5000169841156358912}
   - component: {fileID: -7227661732585714346}
   - component: {fileID: 7754350731520172769}
@@ -47,15 +48,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a508d1e1d0606471595d9163ceabab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: 0
+  shapeColor: {r: 0, g: 0, b: 0, a: 0}
   rotationPivot: {fileID: 4000010536050500}
+  spriteRenderer: {fileID: 0}
   fallingSpeed: 2
   normalFallingSpeed: 4
   fastFallingSpeed: 10
-  isSpawnedNextBlock: 0
-  isPlaced: 0
-  owner: 0
-  shapeColor: {r: 0, g: 0, b: 0, a: 0}
-  spriteRenderer: {fileID: 0}
+--- !u!114 &1281534373904330669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010735536160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71011db538f2e43759061f6c95b483bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trickyShape: {fileID: 0}
 --- !u!212 &5000169841156358912
 SpriteRenderer:
   m_ObjectHideFlags: 0
