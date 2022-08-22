@@ -70,6 +70,7 @@ public class ShapeCollisionController : MonoBehaviour
             Services.AudioService.PlayShapePlaceSound();
             Services.CameraService.ShakeCamera(TrickyShape.owner);
             Services.GameService.AddShapePlacedInList(TrickyShape.owner, TrickyShape);
+            Services.ScoreService.OnScore(1);
         }
     }
 
