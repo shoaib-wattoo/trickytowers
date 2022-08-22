@@ -21,7 +21,7 @@ public class PlayerService : MonoBehaviour
         }
         else
         {
-            _player = new Player("Guest", 0, 0, 0f, 0);
+            _player = new Player("Guest", 0, 0, 0f, 0, 1);
             SaveUser();
         }
     }
@@ -92,6 +92,23 @@ public class PlayerService : MonoBehaviour
     public float GetTimeSpent()
     {
         return _player.timeSpent;
+    }
+
+    public void SetPlayerLevel(int level)
+    {
+        _player.level = level;
+        SaveUser();
+    }
+
+    public void IncrementPlayerLevel(int level)
+    {
+        _player.level += level;
+        SaveUser();
+    }
+
+    public float SetPlayerLevel()
+    {
+        return _player.level;
     }
 
     #endregion

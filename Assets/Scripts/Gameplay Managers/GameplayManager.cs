@@ -10,10 +10,11 @@ public class GameplayManager : MonoBehaviour
     public Transform blockHolder;
     SpawnManager spawnManager;
     public GameplayOwner owner;
-    public Camera gameplayCamera;
     public SpriteRenderer vertileShadow;
-    public List<TrickyShape> shapesList;
+    public GameFinishController finishController;
+    public Camera gameplayCamera;
     public TrickyShape currentShape;
+    public List<TrickyShape> shapesList;
     Action zoomCallback;
 
     #endregion
@@ -21,6 +22,10 @@ public class GameplayManager : MonoBehaviour
     public void Init()
     {
         spawnManager = GetComponent<SpawnManager>();
+        finishController.owner = owner;
+
+        //Set Finish Line Height
+        finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0); ;
     }
 
 
@@ -32,8 +37,6 @@ public class GameplayManager : MonoBehaviour
     {
         vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
         //vertileShadow.transform.localScale = shape.spriteRenderer.sprite.bounds.size;
-
-        print("Shadow Size :: " + vertileShadow.size);
     }
 
     public void DisableShadowShape(TrickyShape trickyShape)

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShapeCollisionController : MonoBehaviour
 {
     Rigidbody2D rigidbody2D;
-    bool isPlaced = false;
     bool isSpawnedNextBlock = false;
 
     private TrickyShape _trickyShape;
@@ -64,9 +63,9 @@ public class ShapeCollisionController : MonoBehaviour
 
     void PlayEffectOnFirstTimePlaced()
     {
-        if (!isPlaced)
+        if (!TrickyShape.isPlaced)
         {
-            isPlaced = true;
+            TrickyShape.isPlaced = true;
             Services.AudioService.PlayShapePlaceSound();
             Services.CameraService.ShakeCamera(TrickyShape.owner);
             Services.GameService.AddShapePlacedInList(TrickyShape.owner, TrickyShape);

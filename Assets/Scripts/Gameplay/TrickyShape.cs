@@ -8,6 +8,7 @@ public class TrickyShape : MonoBehaviour
     public GameplayOwner owner;
     public Color shapeColor;
     public Transform rotationPivot;
+    public bool isPlaced = false;
     [HideInInspector] public SpriteRenderer spriteRenderer;
 
     //Shape speed varialbles

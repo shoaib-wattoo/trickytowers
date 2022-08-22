@@ -44,8 +44,20 @@ public class GamePlayState : _StatesBase {
 	}
 	public override void OnDeactivate ()
 	{
-        Services.PlayerService.SetTimeSpent(Time.time - gamePlayDuration);
-		Debug.Log ("Game Play State OnDeactivate");
+		Debug.Log("Game Play State OnDeactivate");
+
+		Services.PlayerService.SetTimeSpent(Time.time - gamePlayDuration);
+
+		if (Services.GameService.gameMode == GameMode.SinglePlayer)
+		{
+			Destroy(Services.GameService.player1_Manager.gameObject);
+		}
+		else if (Services.GameService.gameMode == GameMode.MultiPlayer)
+		{
+			Destroy(Services.GameService.player1_Manager.gameObject);
+			Destroy(Services.GameService.player2_Manager.gameObject);
+		}
+
 	}
 
 	public override void OnUpdate ()

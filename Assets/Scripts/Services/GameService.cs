@@ -117,6 +117,31 @@ public class GameService : MonoBehaviour
 
 	}
 
+    #endregion
+
+
+
+    #region Game Finisher
+
+    public void OnGameFinish(GameplayOwner winner)
+    {
+		if(gameMode == GameMode.SinglePlayer)
+        {
+			Services.PlayerService.IncrementPlayerLevel(1);
+			SetState(typeof(GameOverState));
+        }
+
+		if(gameMode == GameMode.MultiPlayer)
+        {
+			SetState(typeof(GameOverState));
+		}
+    }
+
+	public int GetGameFinisherHeight()
+	{
+		return Services.TrickyElements.winHeight + (Services.TrickyElements.incrementHeightFactor * Services.PlayerService._player.level);
+	}
+
 	#endregion
 
 }
