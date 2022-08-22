@@ -128,12 +128,18 @@ public class GameService : MonoBehaviour
 		if(gameMode == GameMode.SinglePlayer)
         {
 			Services.PlayerService.IncrementPlayerLevel(1);
-			SetState(typeof(GameOverState));
+
+			if(winner == GameplayOwner.Player1)
+				SetState(typeof(GameWinState));
         }
 
 		if(gameMode == GameMode.MultiPlayer)
         {
-			SetState(typeof(GameOverState));
+			if (winner == GameplayOwner.Player1)
+				SetState(typeof(GameWinState));
+
+			if (winner == GameplayOwner.Player2)
+				SetState(typeof(GameLoseState));
 		}
     }
 
