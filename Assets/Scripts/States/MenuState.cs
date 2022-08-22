@@ -11,6 +11,8 @@ public class MenuState : _StatesBase {
 
 		Services.UIService.ActivateUIScreen (Screens.HOME);
 		Services.GameService.gameStatus = GameStatus.TOSTART;
+		Services.GameService.DestryoGameplayManager();
+		Services.CameraService.ResetCameraSize();
 
 	}
 

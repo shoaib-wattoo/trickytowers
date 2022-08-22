@@ -99,4 +99,13 @@ public class CameraService : MonoBehaviour
         Services.GameService.GetPlayerManager(owner).UpdateCameraFollowTarget();
     }
 
+    public void ResetCameraSize()
+    {
+        if (Services.GameService.player1_Manager)
+            Services.GameService.player1_Manager.gameplayCamera.orthographicSize = _zoomOutLimit;
+
+        if (Services.GameService.player2_Manager)
+            Services.GameService.player2_Manager.gameplayCamera.orthographicSize = _zoomOutLimit;
+    }
+
 }

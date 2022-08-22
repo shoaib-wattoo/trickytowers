@@ -19,11 +19,11 @@ public class GamePauseState : _StatesBase
 	public override void OnDeactivate()
 	{
 		Debug.Log("Game Pause State OnDeactivate");
+		Services.GameService.gameStatus = GameStatus.ONGOING;
 	}
 
 	public override void OnUpdate()
 	{
-		Services.GameService.gameStatus = GameStatus.ONGOING;
 	}
 
 	#endregion

@@ -60,7 +60,7 @@ public class GameService : MonoBehaviour
 		if (gameplayOwner == GameplayOwner.Player1)
 			gameplayManager.transform.position = Vector3.zero;
 		else
-			gameplayManager.transform.position = new Vector3(200, 0, 0);
+			gameplayManager.transform.position = new Vector3(300, 0, 0);
 
 		return gameplayManager;
 	}
@@ -77,12 +77,15 @@ public class GameService : MonoBehaviour
 	{
 		if (Services.GameService.gameMode == GameMode.SinglePlayer)
 		{
-			Destroy(Services.GameService.player1_Manager.gameObject);
+			if(Services.GameService.player1_Manager)
+				Destroy(Services.GameService.player1_Manager.gameObject);
 		}
 		else if (Services.GameService.gameMode == GameMode.MultiPlayer)
 		{
-			Destroy(Services.GameService.player1_Manager.gameObject);
-			Destroy(Services.GameService.player2_Manager.gameObject);
+			if (Services.GameService.player1_Manager)
+				Destroy(Services.GameService.player1_Manager.gameObject);
+			if (Services.GameService.player2_Manager)
+				Destroy(Services.GameService.player2_Manager.gameObject);
 		}
 	}
 

@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameWinScreen : TrickyMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Button mainmenuButton;
+
+    void Awake()
     {
-        
+        mainmenuButton.onClick.AddListener(OnClickMainMenu);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnClickMainMenu()
     {
-        
+        Services.GameService.SetState(typeof(MenuState));
     }
 }
