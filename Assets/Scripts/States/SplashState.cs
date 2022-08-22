@@ -11,6 +11,8 @@ public class SplashState : _StatesBase
 		Debug.Log("Splash State OnActive");
 
 		Services.UIService.ActivateUIScreen (Screens.SPLASH);
+		Services.GameService.gameStatus = GameStatus.TOSTART;
+
 	}
 
 	public override void OnDeactivate()

@@ -10,7 +10,9 @@ public class GameLoseState : _StatesBase
 		Debug.Log("Game Lose State OnActive");
 
 		Services.GameService.isGameActive = false;
+		Services.GameService.DestryoGameplayManager();
 		Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
+		Services.GameService.gameStatus = GameStatus.LOST;
 		Services.PlayerService.SetNumberOfGames(1);
 		Services.UIService.ActivateUIScreen(Screens.LOSE);
 		Services.AudioService.PlayLoseSound();

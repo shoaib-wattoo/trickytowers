@@ -13,6 +13,11 @@ public class GamePlayState : _StatesBase {
 		Services.UIService.ActivateUIScreen(Screens.PLAY);
 		gamePlayDuration = Time.time;
 
+		if (Services.GameService.gameStatus == GameStatus.ONGOING)
+			return;
+
+		Services.GameService.gameStatus = GameStatus.ONGOING;
+
 		if (Services.GameService.gameMode == GameMode.SinglePlayer)
 		{
 			Services.GameService.player1_Manager = Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
@@ -47,17 +52,6 @@ public class GamePlayState : _StatesBase {
 		Debug.Log("Game Play State OnDeactivate");
 
 		Services.PlayerService.SetTimeSpent(Time.time - gamePlayDuration);
-
-		if (Services.GameService.gameMode == GameMode.SinglePlayer)
-		{
-			Destroy(Services.GameService.player1_Manager.gameObject);
-		}
-		else if (Services.GameService.gameMode == GameMode.MultiPlayer)
-		{
-			Destroy(Services.GameService.player1_Manager.gameObject);
-			Destroy(Services.GameService.player2_Manager.gameObject);
-		}
-
 	}
 
 	public override void OnUpdate ()

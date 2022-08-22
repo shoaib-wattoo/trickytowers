@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameService : MonoBehaviour
 {
 	public GameMode gameMode;
+	public GameStatus gameStatus;
 	public bool isGameActive;
 	public ColorService colorService;
 	public GameplayManager player1_Manager;
@@ -19,30 +20,6 @@ public class GameService : MonoBehaviour
 	public _StatesBase State
 	{
 		get { return currentState; }
-	}
-
-	public GameplayManager SpawnGamePlay(GameplayOwner gameplayOwner)
-    {
-		GameplayManager gameplayManager =  Instantiate(Services.TrickyElements.gameplayManager);
-		gameplayManager.owner = gameplayOwner;
-		gameplayManager.gameObject.name = "GamePlay-"+gameplayOwner;
-		Services.CameraService.AssignPlayerCamera(gameplayManager);
-		gameplayManager.Init();
-
-		if (gameplayOwner == GameplayOwner.Player1)
-			gameplayManager.transform.position = Vector3.zero;
-		else
-			gameplayManager.transform.position = new Vector3(200, 0, 0);
-
-		return gameplayManager;
-	}
-
-	public GameplayManager GetPlayerManager(GameplayOwner gameplayOwner)
-    {
-		if (gameplayOwner == GameplayOwner.Player1)
-			return player1_Manager;
-
-		return player2_Manager;
 	}
 
 	//Changes the current game state
@@ -67,6 +44,51 @@ public class GameService : MonoBehaviour
 			currentState.OnUpdate();
 		}
 	}
+
+
+
+	#region GamePlay Managers
+
+	public GameplayManager SpawnGamePlay(GameplayOwner gameplayOwner)
+	{
+		GameplayManager gameplayManager = Instantiate(Services.TrickyElements.gameplayManager);
+		gameplayManager.owner = gameplayOwner;
+		gameplayManager.gameObject.name = "GamePlay-" + gameplayOwner;
+		Services.CameraService.AssignPlayerCamera(gameplayManager);
+		gameplayManager.Init();
+
+		if (gameplayOwner == GameplayOwner.Player1)
+			gameplayManager.transform.position = Vector3.zero;
+		else
+			gameplayManager.transform.position = new Vector3(200, 0, 0);
+
+		return gameplayManager;
+	}
+
+	public GameplayManager GetPlayerManager(GameplayOwner gameplayOwner)
+	{
+		if (gameplayOwner == GameplayOwner.Player1)
+			return player1_Manager;
+
+		return player2_Manager;
+	}
+
+	public void DestryoGameplayManager()
+	{
+		if (Services.GameService.gameMode == GameMode.SinglePlayer)
+		{
+			Destroy(Services.GameService.player1_Manager.gameObject);
+		}
+		else if (Services.GameService.gameMode == GameMode.MultiPlayer)
+		{
+			Destroy(Services.GameService.player1_Manager.gameObject);
+			Destroy(Services.GameService.player2_Manager.gameObject);
+		}
+	}
+
+	#endregion
+
+
 
 	#region Shape Shadow
 

@@ -10,7 +10,9 @@ public class MenuState : _StatesBase {
 		Debug.Log ("Menu State OnActive");	
 
 		Services.UIService.ActivateUIScreen (Screens.HOME);
-    }
+		Services.GameService.gameStatus = GameStatus.TOSTART;
+
+	}
 
 	public override void OnDeactivate ()
 	{

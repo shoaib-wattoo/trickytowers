@@ -9,8 +9,10 @@ public class GameWinState : _StatesBase {
 		Debug.Log("Game Win State OnActive");
 
 		Services.GameService.isGameActive = false;
+		Services.GameService.DestryoGameplayManager();
         Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
-        Services.PlayerService.SetNumberOfGames(1);
+		Services.GameService.gameStatus = GameStatus.WON;
+		Services.PlayerService.SetNumberOfGames(1);
         Services.UIService.ActivateUIScreen(Screens.WIN);
         Services.AudioService.PlayWinSound();       
 	}

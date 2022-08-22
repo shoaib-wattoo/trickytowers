@@ -11,6 +11,8 @@ public class GamePauseState : _StatesBase
 		Debug.Log("Game Pause State OnActive");
 
 		Services.UIService.ActivateUIScreen (Screens.PAUSE);
+		Services.GameService.gameStatus = GameStatus.PAUSED;
+
 		//Services.CameraService.ZoomOut();
 	}
 
@@ -21,7 +23,7 @@ public class GamePauseState : _StatesBase
 
 	public override void OnUpdate()
 	{
-
+		Services.GameService.gameStatus = GameStatus.ONGOING;
 	}
 
 	#endregion

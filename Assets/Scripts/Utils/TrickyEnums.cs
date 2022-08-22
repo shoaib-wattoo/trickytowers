@@ -60,3 +60,12 @@ public enum GameMode
     SinglePlayer,
     MultiPlayer
 }
+
+public enum GameStatus
+{
+    TOSTART,
+    ONGOING,
+    PAUSED,
+    WON,
+    LOST
+}
