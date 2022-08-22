@@ -25,6 +25,22 @@ public class CameraService : MonoBehaviour
         return Camera.main;
     }
 
+    public Camera AssignPlayerCamera(GameplayManager gameplayManager)
+    {
+        if (gameplayManager.owner == GameplayOwner.Player2)
+        {
+            Camera camera = Instantiate(Services.TrickyElements.gamePlayCamera, gameplayManager.transform);
+            gameplayManager.gameplayCamera = camera;
+            camera.targetTexture = Services.TrickyElements.cameraRenderTexture;
+            return camera;
+        }
+
+        gameplayManager.gameplayCamera = Camera.main;
+        Vector3 camPosition = gameplayManager.transform.position;
+        Camera.main.transform.position = new Vector3(camPosition.x, camPosition.y, -10);
+        return Camera.main;
+    }
+
     public void ShakeCamera(GameplayManager gameplay)
     {
         gameplay.ShakeCamera();

@@ -21,12 +21,20 @@ public class GameService : MonoBehaviour
 		get { return currentState; }
 	}
 
-	public void SpawnGamePlay(GameplayOwner gameplayOwner)
+	public GameplayManager SpawnGamePlay(GameplayOwner gameplayOwner)
     {
 		GameplayManager gameplayManager =  Instantiate(Services.TrickyElements.gameplayManager);
 		gameplayManager.owner = gameplayOwner;
 		gameplayManager.gameObject.name = "GamePlay-"+gameplayOwner;
+		Services.CameraService.AssignPlayerCamera(gameplayManager);
 		gameplayManager.Init();
+
+		if (gameplayOwner == GameplayOwner.Player1)
+			gameplayManager.transform.position = Vector3.zero;
+		else
+			gameplayManager.transform.position = new Vector3(200, 0, 0);
+
+		return gameplayManager;
 	}
 
 	public GameplayManager GetPlayerManager(GameplayOwner gameplayOwner)

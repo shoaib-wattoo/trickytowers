@@ -11,6 +11,16 @@ public class GamePlayState : _StatesBase {
 		Debug.Log("Game Play State OnActive");
 		Services.GameService.isGameActive = true;
 
+		if (Services.GameService.gameMode == GameMode.SinglePlayer)
+		{
+			Services.GameService.player1_Manager = Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
+		}
+		else if (Services.GameService.gameMode == GameMode.MultiPlayer)
+		{
+			Services.GameService.player1_Manager = Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
+			Services.GameService.player2_Manager = Services.GameService.SpawnGamePlay(GameplayOwner.Player2);
+		}
+
 		Services.UIService.ActivateUIScreen(Screens.PLAY);
 		gamePlayDuration = Time.time;
 

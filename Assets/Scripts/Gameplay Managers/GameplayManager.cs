@@ -21,19 +21,7 @@ public class GameplayManager : MonoBehaviour
 
     public void Init()
     {
-        if (owner == GameplayOwner.Player1)
-        {
-            Services.GameService.player1_Manager = this;
-            transform.position = Vector3.zero;
-        }
-        else
-        {
-            Services.GameService.player2_Manager = this;
-            transform.position = new Vector3(200, 0, 0);
-        }
-
         spawnManager = GetComponent<SpawnManager>();
-        Services.CameraService.AssignPlayerCamera(owner);
         screenUtility = gameplayCamera.GetComponent<ScreenUtility>();
     }
 

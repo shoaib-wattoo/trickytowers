@@ -53,16 +53,6 @@ public class HomeScreen : TrickyMonoBehaviour
 
     public void StartGame()
     {
-        if (Services.GameService.gameMode == GameMode.SinglePlayer)
-        {
-            Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
-        }
-        else if (Services.GameService.gameMode == GameMode.MultiPlayer)
-        {
-            Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
-            Services.GameService.SpawnGamePlay(GameplayOwner.Player2);
-        }
-
         Services.GameService.SetState(typeof(GamePlayState));
     }
 }
