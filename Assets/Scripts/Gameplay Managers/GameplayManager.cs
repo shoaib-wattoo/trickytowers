@@ -5,6 +5,8 @@ using System;
 
 public class GameplayManager : MonoBehaviour
 {
+    #region Variables
+
     public Transform blockHolder;
     SpawnManager spawnManager;
     public GameplayOwner owner;
@@ -15,9 +17,7 @@ public class GameplayManager : MonoBehaviour
     public TrickyShape currentShape;
     Action zoomCallback;
 
-    void Start()
-    {
-    }
+    #endregion
 
     public void Init()
     {
@@ -36,6 +36,11 @@ public class GameplayManager : MonoBehaviour
         Services.CameraService.AssignPlayerCamera(owner);
         screenUtility = gameplayCamera.GetComponent<ScreenUtility>();
     }
+
+
+
+
+    #region Shape Shadow
 
     public void SetShadowScale(TrickyShape shape)
     {
@@ -58,6 +63,13 @@ public class GameplayManager : MonoBehaviour
         vertileShadow.transform.position = new Vector3(position.x, gameplayCamera.transform.position.y, 0);
     }
 
+    #endregion
+
+
+
+
+    #region Shape Spawn
+
     public void SpawnShape()
     {
         spawnManager.Spawn(owner, blockHolder);
@@ -78,6 +90,13 @@ public class GameplayManager : MonoBehaviour
         shapesList.Remove(shape);
     }
 
+    #endregion
+
+
+
+
+    #region Shape Position
+
     public TrickyShape GetHighestShapePosition()
     {
         if (shapesList.Count == 0)
@@ -93,6 +112,13 @@ public class GameplayManager : MonoBehaviour
 
         return highestShape;
     }
+
+    #endregion
+
+
+
+
+    #region Shape Camera
 
     public void UpdateCameraFollowTarget()
     {
@@ -137,4 +163,6 @@ public class GameplayManager : MonoBehaviour
     {
         zoomCallback?.Invoke();
     }
+
+    #endregion
 }
