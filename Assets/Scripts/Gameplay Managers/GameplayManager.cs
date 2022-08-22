@@ -44,6 +44,9 @@ public class GameplayManager : MonoBehaviour
 
     public void SetShadowScale(TrickyShape shape)
     {
+        if (owner == GameplayOwner.Player2) // Because we do not need shape to show shadow helper on opponent's screen
+            return;
+
         vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
         //vertileShadow.transform.localScale = shape.spriteRenderer.sprite.bounds.size;
     }

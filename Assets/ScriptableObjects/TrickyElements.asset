@@ -17,7 +17,7 @@ MonoBehaviour:
   incrementHeightFactor: 2
   totalLifes: 5
   normalFallingSpeed: 5
-  fastFallingSpeed: 20
+  fastFallingSpeed: 15
   shapeTypes:
   - {fileID: 114000014216068550, guid: f454e904e20af4070b0c264b29b3464e, type: 3}
   - {fileID: 114000013910957010, guid: eac3660922dce467b92da2c4b0971829, type: 3}
