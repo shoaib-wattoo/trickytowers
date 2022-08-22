@@ -76,6 +76,13 @@ public class CameraService : MonoBehaviour
         return new Vector3(0, screenUtility.Top, 0);
     }
 
+    public float GetCameraHeight(Camera cam)
+    {
+        ScreenUtility screenUtility = cam.GetComponent<ScreenUtility>();
+
+        return screenUtility.Height;
+    }
+
     public bool IsInCamView(GameplayOwner gameplayOwner, Vector3 pos)
     {
         ScreenUtility screenUtility = Services.GameService.GetPlayerManager(gameplayOwner).gameplayCamera.GetComponent<ScreenUtility>();

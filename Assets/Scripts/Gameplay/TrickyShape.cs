@@ -8,12 +8,10 @@ public class TrickyShape : MonoBehaviour
     public GameplayOwner owner;
     public Color shapeColor;
     public Transform rotationPivot;
-    public SpriteRenderer spriteRenderer;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
 
     //Shape speed varialbles
     public float fallingSpeed = 2f;
-    public float normalFallingSpeed = 2f;
-    public float fastFallingSpeed = 5f;
 
     void Awake()
     {
@@ -66,12 +64,12 @@ public class TrickyShape : MonoBehaviour
 
     public void InstantFall()
     {
-        fallingSpeed = fastFallingSpeed;
+        fallingSpeed = Services.TrickyElements.fastFallingSpeed;
     }
 
     public void NormalFall()
     {
-        fallingSpeed = normalFallingSpeed;
+        fallingSpeed = Services.TrickyElements.normalFallingSpeed;
     }
 
     #endregion

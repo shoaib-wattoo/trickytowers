@@ -11,7 +11,6 @@ public class GameplayManager : MonoBehaviour
     SpawnManager spawnManager;
     public GameplayOwner owner;
     public Camera gameplayCamera;
-    ScreenUtility screenUtility;
     public SpriteRenderer vertileShadow;
     public List<TrickyShape> shapesList;
     public TrickyShape currentShape;
@@ -22,7 +21,6 @@ public class GameplayManager : MonoBehaviour
     public void Init()
     {
         spawnManager = GetComponent<SpawnManager>();
-        screenUtility = gameplayCamera.GetComponent<ScreenUtility>();
     }
 
 
@@ -32,7 +30,7 @@ public class GameplayManager : MonoBehaviour
 
     public void SetShadowScale(TrickyShape shape)
     {
-        vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, screenUtility.Height, 0);
+        vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
         //vertileShadow.transform.localScale = shape.spriteRenderer.sprite.bounds.size;
 
         print("Shadow Size :: " + vertileShadow.size);

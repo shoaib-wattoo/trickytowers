@@ -5,6 +5,14 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "TrickyElements", menuName = "ScriptableObjects/TrickyElements", order = 1)]
 public class TrickyElements : ScriptableObject
 {
+    [Header("Game Variables")]
+    public float shapeSpawnDelay;
+    public int winHeight = 40;
+    public int incrementHeightFactor = 2;
+    public int totalLifes = 5;
+    public float normalFallingSpeed = 2f;
+    public float fastFallingSpeed = 5f;
+
     [Header("Shapes")]
     public List<TrickyShape> shapeTypes;
 
