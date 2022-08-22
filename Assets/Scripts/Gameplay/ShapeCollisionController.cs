@@ -46,8 +46,8 @@ public class ShapeCollisionController : MonoBehaviour
 
     void OnCollisionWithOtherShapes()
     {
-        rigidbody2D.gravityScale = 1f;
         SpawnNextShape(1f);
+        rigidbody2D.gravityScale = 1f;
         PlayEffectOnFirstTimePlaced();
     }
 

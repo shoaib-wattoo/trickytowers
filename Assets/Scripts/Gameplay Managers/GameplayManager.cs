@@ -27,7 +27,14 @@ public class GameplayManager : MonoBehaviour
         totalLifes = Services.TrickyElements.totalLifes;
 
         //Set Finish Line Height
-        finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0); ;
+        finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0);
+
+        /*
+        // To fit the finish point and tower base with in the camera view
+        float cameraOrthoSize = (finishController.transform.position.y * 2) + 5f; 
+        gameplayCamera.orthographicSize = cameraOrthoSize;
+        Services.CameraService._zoomOutLimit = cameraOrthoSize;
+        */
     }
 
 

@@ -10,6 +10,8 @@ public class GamePlayState : _StatesBase {
 	{
 		Debug.Log("Game Play State OnActive");
 		Services.GameService.isGameActive = true;
+		Services.UIService.ActivateUIScreen(Screens.PLAY);
+		gamePlayDuration = Time.time;
 
 		if (Services.GameService.gameMode == GameMode.SinglePlayer)
 		{
@@ -20,9 +22,6 @@ public class GamePlayState : _StatesBase {
 			Services.GameService.player1_Manager = Services.GameService.SpawnGamePlay(GameplayOwner.Player1);
 			Services.GameService.player2_Manager = Services.GameService.SpawnGamePlay(GameplayOwner.Player2);
 		}
-
-		Services.UIService.ActivateUIScreen(Screens.PLAY);
-		gamePlayDuration = Time.time;
 
 		if (Services.GameService.GetPlayerManager(GameplayOwner.Player1) != null)
 		{
