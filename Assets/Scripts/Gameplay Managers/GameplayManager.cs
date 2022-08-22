@@ -14,6 +14,7 @@ public class GameplayManager : MonoBehaviour
     public GameFinishController finishController;
     public Camera gameplayCamera;
     public TrickyShape currentShape;
+    private int totalLifes;
     public List<TrickyShape> shapesList;
     Action zoomCallback;
 
@@ -23,6 +24,7 @@ public class GameplayManager : MonoBehaviour
     {
         spawnManager = GetComponent<SpawnManager>();
         finishController.owner = owner;
+        totalLifes = Services.TrickyElements.totalLifes;
 
         //Set Finish Line Height
         finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0); ;
@@ -151,6 +153,27 @@ public class GameplayManager : MonoBehaviour
     void OnTweenComplete()
     {
         zoomCallback?.Invoke();
+    }
+
+    #endregion
+
+
+
+    #region Game Over Mecnim
+
+    public int GetRemainingLifes()
+    {
+        return totalLifes;
+    }
+
+    public void OnShapeDestroy()
+    {
+        totalLifes--;
+
+        if(totalLifes == 0)
+        {
+            Services.GameService.OnGameFinish(owner, false);
+        }
     }
 
     #endregion

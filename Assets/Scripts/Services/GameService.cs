@@ -123,23 +123,31 @@ public class GameService : MonoBehaviour
 
     #region Game Finisher
 
-    public void OnGameFinish(GameplayOwner winner)
+    public void OnGameFinish(GameplayOwner owner, bool isWin)
     {
 		if(gameMode == GameMode.SinglePlayer)
         {
 			Services.PlayerService.IncrementPlayerLevel(1);
 
-			if(winner == GameplayOwner.Player1)
+			if(isWin)
 				SetState(typeof(GameWinState));
-        }
-
-		if(gameMode == GameMode.MultiPlayer)
-        {
-			if (winner == GameplayOwner.Player1)
-				SetState(typeof(GameWinState));
-
-			if (winner == GameplayOwner.Player2)
+			else
 				SetState(typeof(GameLoseState));
+		}
+
+		if (gameMode == GameMode.MultiPlayer)
+        {
+			if (owner == GameplayOwner.Player1 && isWin)
+				SetState(typeof(GameWinState));
+
+			if (owner == GameplayOwner.Player1 && !isWin)
+				SetState(typeof(GameLoseState));
+
+			if (owner == GameplayOwner.Player2 && isWin)
+				SetState(typeof(GameLoseState));
+
+			if (owner == GameplayOwner.Player2 && !isWin)
+				SetState(typeof(GameWinState));
 		}
     }
 

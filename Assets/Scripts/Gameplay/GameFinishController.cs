@@ -36,7 +36,7 @@ public class GameFinishController : MonoBehaviour
                 if(countDown == 0){
                     countDown = 0;
 
-                    Services.GameService.OnGameFinish(owner);
+                    Services.GameService.OnGameFinish(owner, true);
                 }
             }
             else

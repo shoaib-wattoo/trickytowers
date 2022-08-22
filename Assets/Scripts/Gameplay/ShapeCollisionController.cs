@@ -58,6 +58,7 @@ public class ShapeCollisionController : MonoBehaviour
         Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, TrickyShape.shapeColor);
         SpawnNextShape(1.5f);
         Services.GameService.RemoveShapePlacedFromList(TrickyShape.owner, TrickyShape);
+        Services.GameService.GetPlayerManager(TrickyShape.owner).OnShapeDestroy();
         Destroy(gameObject);
     }
 

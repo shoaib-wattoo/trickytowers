@@ -16,6 +16,7 @@ public class TrickyShape : MonoBehaviour
 
     void Awake()
     {
+        fallingSpeed = Services.TrickyElements.normalFallingSpeed;
         spriteRenderer = GetComponent<SpriteRenderer>();
         AssignRandomColor();
     }
