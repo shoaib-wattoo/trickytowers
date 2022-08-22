@@ -29,9 +29,13 @@ public class UIService : MonoBehaviour
         {
             GamePauseScreen.Show();
         }
-        else if (screenType.Equals(Screens.OVER))
+        else if (screenType.Equals(Screens.WIN))
         {
-            GameOverScreen.Show();
+            GameWinScreen.Show();
+        }
+        else if (screenType.Equals(Screens.LOSE))
+        {
+            GameLoseScreen.Show();
         }
     }
 
@@ -83,15 +87,27 @@ public class UIService : MonoBehaviour
         }
     }
 
-    private GameOverScreen _gameOverScreen;
-    public GameOverScreen GameOverScreen
+    private GameWinScreen _gameWinScreen;
+    public GameWinScreen GameWinScreen
     {
         get
         {
-            if (_gameOverScreen == null)
-                _gameOverScreen = Instantiate(Services.TrickyElements.gameOverScreen, Services.Canvas.gameObject.transform);
+            if (_gameWinScreen == null)
+                _gameWinScreen = Instantiate(Services.TrickyElements.gameWinScreen, Services.Canvas.gameObject.transform);
 
-            return _gameOverScreen;
+            return _gameWinScreen;
+        }
+    }
+
+    private GameLoseScreen _gameLoseScreen;
+    public GameLoseScreen GameLoseScreen
+    {
+        get
+        {
+            if (_gameLoseScreen == null)
+                _gameLoseScreen = Instantiate(Services.TrickyElements.gameLoseScreen, Services.Canvas.gameObject.transform);
+
+            return _gameLoseScreen;
         }
     }
 

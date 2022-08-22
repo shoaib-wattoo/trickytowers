@@ -42,6 +42,7 @@ public class GamePlayState : _StatesBase {
 			});
 		}
 	}
+
 	public override void OnDeactivate ()
 	{
 		Debug.Log("Game Play State OnDeactivate");

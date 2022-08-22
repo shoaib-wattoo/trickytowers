@@ -12,7 +12,7 @@ public class GameLoseState : _StatesBase
 		Services.GameService.isGameActive = false;
 		Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
 		Services.PlayerService.SetNumberOfGames(1);
-		Services.UIService.ActivateUIScreen(Screens.OVER);
+		Services.UIService.ActivateUIScreen(Screens.LOSE);
 		Services.AudioService.PlayLoseSound();
 	}
 

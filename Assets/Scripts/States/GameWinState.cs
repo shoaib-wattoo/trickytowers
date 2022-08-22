@@ -11,7 +11,7 @@ public class GameWinState : _StatesBase {
 		Services.GameService.isGameActive = false;
         Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
         Services.PlayerService.SetNumberOfGames(1);
-        Services.UIService.ActivateUIScreen(Screens.OVER);
+        Services.UIService.ActivateUIScreen(Screens.WIN);
         Services.AudioService.PlayWinSound();       
 	}
 

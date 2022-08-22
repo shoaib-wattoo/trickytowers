@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8190513833329637247}
   - component: {fileID: 8190513833329637245}
   - component: {fileID: 8190513833329637246}
-  - component: {fileID: 3391967675758541344}
+  - component: {fileID: 1640340638147614444}
   m_Layer: 5
-  m_Name: GameOverScreen
+  m_Name: GameWinScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3391967675758541344
+--- !u!114 &1640340638147614444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8190513833329637184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592a17742c31542afb147ba5065662ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 43726ad90e4424655bd72bbc32d678ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8190513833795906220
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Over Screen
+  m_text: Game Win Screen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -29,7 +29,8 @@ public enum Screens
     HOME,
     PLAY,
     PAUSE,
-    OVER
+    WIN,
+    LOSE
 }
 
 public enum GameplayOwner
