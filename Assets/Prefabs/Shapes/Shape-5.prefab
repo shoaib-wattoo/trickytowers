@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71011db538f2e43759061f6c95b483bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trickyShape: {fileID: 0}
 --- !u!212 &4523428197565089752
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -108,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 13aa93bda516a43bc9bdafa5e11eb02d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6bd23bede0484d61adf7df30c8b43fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

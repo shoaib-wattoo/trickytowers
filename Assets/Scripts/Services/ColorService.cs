@@ -15,10 +15,10 @@ public class ColorService : MonoBehaviour
 		Color temp;
 		switch (activeTheme)
 		{
-			case ColorTheme.PASTEL:
+			case ColorTheme.LIGHT:
 				temp = themePack_Pastel[rand];
 				break;
-			case ColorTheme.GRAM:
+			case ColorTheme.DARK:
 				temp = themePack_Gram[rand];
 				break;
 			default:

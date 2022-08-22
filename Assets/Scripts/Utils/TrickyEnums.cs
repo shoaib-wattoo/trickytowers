@@ -13,8 +13,8 @@ public enum BacklogType
 
 public enum ColorTheme
 {
-    PASTEL,
-    GRAM
+    LIGHT,
+    DARK
 }
 
 public enum InputMethod
