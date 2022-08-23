@@ -26,6 +26,10 @@ public class TrickyElements : ScriptableObject
     public GameWinScreen gameWinScreen;
     public GameLoseScreen gameLoseScreen;
 
+    [Header("UI Popups")]
+    public ProfilePopup profilePopup;
+    public SettingsPopup settingsPopup;
+
     [Header("Particle Effects")]
     public List<GameObject> effects;
 

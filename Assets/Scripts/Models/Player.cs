@@ -6,8 +6,9 @@ public class Player
     public float timeSpent;
     public int numberOfGames;
     public int level;
+    public int coins;
 
-    public Player(string playerName, int highScore, int totalScore, float timeSpent, int numberOfGames, int level)
+    public Player(string playerName, int highScore, int totalScore, float timeSpent, int numberOfGames, int level, int coins)
     {
         this.playerName = playerName;
         this.highScore = highScore;
@@ -15,5 +16,6 @@ public class Player
         this.timeSpent = timeSpent;
         this.numberOfGames = numberOfGames;
         this.level = level;
+        this.coins = coins;
     }
 }

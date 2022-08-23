@@ -5,6 +5,8 @@ namespace MiniClip.Challenge.Service
 {
 	public class AudioService : MonoBehaviour
 	{
+		public bool isSoundEnable = true;
+		public bool isMusicEnable = true;
 
 		#region Gameplay Spesific
 		public AudioClip shapePlaceSound;
@@ -26,11 +28,12 @@ namespace MiniClip.Challenge.Service
 		#endregion
 
 
-
-
 		#region Sound FX Methods
 		public void PlayLoseSound()
 		{
+			if (!isSoundEnable)
+				return;
+
 			StopGameMusic();
 			soundSource.clip = loseSound;
 			soundSource.Play();
@@ -38,12 +41,18 @@ namespace MiniClip.Challenge.Service
 
 		public void PlayUIClick()
 		{
+			if (!isSoundEnable)
+				return;
+
 			soundSource.clip = uiClick;
 			soundSource.Play();
 		}
 
 		public void PlayWinSound()
 		{
+			if (!isSoundEnable)
+				return;
+
 			StopGameMusic();
 			soundSource.clip = winSound;
 			soundSource.Play();
@@ -51,6 +60,8 @@ namespace MiniClip.Challenge.Service
 
 		public void PlaySplashScreenSound()
 		{
+			if (!isSoundEnable)
+				return;
 
 		}
 
@@ -61,21 +72,32 @@ namespace MiniClip.Challenge.Service
 
 		public void PlayPopUpCloseSound()
 		{
+			if (!isSoundEnable)
+				return;
 
 		}
 
 		public void PlayShapePlaceSound()
 		{
+			if (!isSoundEnable)
+				return;
+
 			soundSource.PlayOneShot(shapePlaceSound);
 		}
 
 		public void PlayExplosionSound()
 		{
+			if (!isSoundEnable)
+				return;
+
 			soundSource.PlayOneShot(explosionSound);
 		}
 
 		public void PlayBlockSpawnSound()
 		{
+			if (!isSoundEnable)
+				return;
+
 			soundSource.clip = blockSpawnSound;
 			soundSource.Play();
 		}
@@ -91,6 +113,18 @@ namespace MiniClip.Challenge.Service
 		#endregion
 
 		#region Music Methods
+
+		public void EnableGameMusic(bool enable)
+        {
+			isMusicEnable = enable;
+
+			if (isMusicEnable)
+				PlayGameMusic();
+			else
+				StopGameMusic();
+
+		}
+
 		public void PlayGameMusic()
 		{
 			musicSource.clip = gameMusic;

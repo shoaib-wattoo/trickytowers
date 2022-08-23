@@ -33,6 +33,12 @@ public enum Screens
     LOSE
 }
 
+public enum Popups
+{
+    PROFILE,
+    SETTINGS
+}
+
 public enum GameplayOwner
 {
     Player1,

@@ -43,13 +43,25 @@ namespace MiniClip.Challenge.Service
             }
         }
 
+        public void ActivateUIPopups(Popups popupType)
+        {
+            if (popupType.Equals(Popups.PROFILE))
+            {
+                ProfilePopup.Show(BacklogType.KeepPreviousScreen);
+            }
+            else if (popupType.Equals(Popups.SETTINGS))
+            {
+                SettingsPopup.Show(BacklogType.KeepPreviousScreen);
+            }
+        }
+
         private SplashScreen _splashScreen;
         public SplashScreen SplashScreen
         {
             get
             {
                 if (_splashScreen == null)
-                    _splashScreen = Instantiate(Services.TrickyElements.splashScreen, Services.Canvas.gameObject.transform);
+                    _splashScreen = Instantiate(Services.TrickyElements.splashScreen, Services.Canvas.transform.GetChild(0));
 
                 return _splashScreen;
             }
@@ -61,7 +73,7 @@ namespace MiniClip.Challenge.Service
             get
             {
                 if (_homeScreen == null)
-                    _homeScreen = Instantiate(Services.TrickyElements.homeScreen, Services.Canvas.gameObject.transform);
+                    _homeScreen = Instantiate(Services.TrickyElements.homeScreen, Services.Canvas.transform.GetChild(0));
 
                 return _homeScreen;
             }
@@ -73,7 +85,7 @@ namespace MiniClip.Challenge.Service
             get
             {
                 if (_gamePlayScreen == null)
-                    _gamePlayScreen = Instantiate(Services.TrickyElements.gamePlayScreen, Services.Canvas.gameObject.transform);
+                    _gamePlayScreen = Instantiate(Services.TrickyElements.gamePlayScreen, Services.Canvas.transform.GetChild(0));
 
                 return _gamePlayScreen;
             }
@@ -85,7 +97,7 @@ namespace MiniClip.Challenge.Service
             get
             {
                 if (_gamePauseScreen == null)
-                    _gamePauseScreen = Instantiate(Services.TrickyElements.gamePauseScreen, Services.Canvas.gameObject.transform);
+                    _gamePauseScreen = Instantiate(Services.TrickyElements.gamePauseScreen, Services.Canvas.transform.GetChild(0));
 
                 return _gamePauseScreen;
             }
@@ -97,7 +109,7 @@ namespace MiniClip.Challenge.Service
             get
             {
                 if (_gameWinScreen == null)
-                    _gameWinScreen = Instantiate(Services.TrickyElements.gameWinScreen, Services.Canvas.gameObject.transform);
+                    _gameWinScreen = Instantiate(Services.TrickyElements.gameWinScreen, Services.Canvas.transform.GetChild(0));
 
                 return _gameWinScreen;
             }
@@ -109,9 +121,38 @@ namespace MiniClip.Challenge.Service
             get
             {
                 if (_gameLoseScreen == null)
-                    _gameLoseScreen = Instantiate(Services.TrickyElements.gameLoseScreen, Services.Canvas.gameObject.transform);
+                    _gameLoseScreen = Instantiate(Services.TrickyElements.gameLoseScreen, Services.Canvas.transform.GetChild(0));
 
                 return _gameLoseScreen;
+            }
+        }
+
+        #endregion
+
+        #region UI Popups
+
+        private ProfilePopup _profilePopup;
+        public ProfilePopup ProfilePopup
+        {
+            get
+            {
+                if (_profilePopup == null)
+                    _profilePopup = Instantiate(Services.TrickyElements.profilePopup, Services.Canvas.transform.GetChild(1));
+
+                return _profilePopup;
+            }
+        }
+
+
+        private SettingsPopup _settingsPopup;
+        public SettingsPopup SettingsPopup
+        {
+            get
+            {
+                if (_settingsPopup == null)
+                    _settingsPopup = Instantiate(Services.TrickyElements.settingsPopup, Services.Canvas.transform.GetChild(1));
+
+                return _settingsPopup;
             }
         }
 

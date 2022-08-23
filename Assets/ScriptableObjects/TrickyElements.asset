@@ -32,6 +32,8 @@ MonoBehaviour:
   gamePauseScreen: {fileID: 8038155812128359598, guid: f93decf9ce38a4e4080ebf9284578698, type: 3}
   gameWinScreen: {fileID: 1640340638147614444, guid: f1f4d16193c994afe8a105c7c23d303d, type: 3}
   gameLoseScreen: {fileID: 8718970170589689505, guid: dbcad632343764ed3b430db8ac06e8d0, type: 3}
+  profilePopup: {fileID: -6597539612717108014, guid: ebeb02b00c13a49a68c2c3cf0eceee22, type: 3}
+  settingsPopup: {fileID: -4460710447617718622, guid: 5791ea291b7744cd18624f912510e0a5, type: 3}
   effects:
   - {fileID: 904930838023874053, guid: 95e714e1f50f64ebd9cbcb0ca0293876, type: 3}
   - {fileID: 7054221390351005321, guid: 6307cb6f4e7804a5986784a815d38314, type: 3}

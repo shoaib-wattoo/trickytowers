@@ -11,37 +11,39 @@ namespace MiniClip.Challenge.UI
 {
     public class HomeScreen : TrickyMonoBehaviour
     {
-        public TextMeshProUGUI scoreText;
+        public Button playButton;
+        public Button profileButton;
+        public Button settingsButton;
+        public Button coinPlusButton;
+        public TextMeshProUGUI coinText, usernameText, levelText;
 
-        private void Start()
+        private void Awake()
         {
-            UpdateScore();
+            playButton.onClick.AddListener(OnClickSinglePlayerButton);
+            profileButton.onClick.AddListener(OnClickProfileButton);
+            settingsButton.onClick.AddListener(OnClickSettingsButton);
+            coinPlusButton.onClick.AddListener(OnClickCoinPlusButton);
+
+            coinText.SetText(Services.PlayerService.GetPlayerCoins().ToString());
+            usernameText.SetText(Services.PlayerService.GetUserName().ToString());
+            levelText.SetText(Services.PlayerService._player.level.ToString());
         }
 
-        void UpdateScore()
+        public void OnClickProfileButton()
         {
-            scoreText.SetText("Score : " + Services.ScoreService.totalScore);
+            Services.UIService.ActivateUIPopups(Popups.PROFILE);
         }
 
-        public void OnClickZoomIn()
+        public void OnClickSettingsButton()
         {
-            Services.CameraService.ZoomIn(Services.GameService.player1_Manager);
+            Services.UIService.ActivateUIPopups(Popups.SETTINGS);
         }
 
-        public void OnClickZoomOut()
+        public void OnClickCoinPlusButton()
         {
-            Services.CameraService.ZoomOut(Services.GameService.player1_Manager);
-        }
-
-        public void OnClickShakeCam()
-        {
-            Services.CameraService.ShakeCamera(Services.GameService.player1_Manager);
-        }
-
-        public void OnClickIncrementScore()
-        {
-            Services.ScoreService.OnScore(GameplayOwner.Player1, 1);
-            UpdateScore();
+            int randomCoins = Random.Range(500, 1000);
+            Services.PlayerService.SetCoins(randomCoins);
+            coinText.SetText(Services.PlayerService.GetPlayerCoins().ToString());
         }
 
         public void OnClickSinglePlayerButton()
@@ -54,6 +56,7 @@ namespace MiniClip.Challenge.UI
         {
             Services.GameService.gameMode = GameMode.MultiPlayer;
             StartGame();
+            this.Hide();
         }
 
         public void StartGame()

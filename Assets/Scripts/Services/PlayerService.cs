@@ -23,7 +23,7 @@ namespace MiniClip.Challenge.Service
             }
             else
             {
-                _player = new Player("Guest", 0, 0, 0f, 0, 1);
+                _player = new Player("Guest" + Random.Range(10000,99999), 0, 0, 0f, 0, 1, 5000);
                 SaveUser();
             }
         }
@@ -111,6 +111,17 @@ namespace MiniClip.Challenge.Service
         public float SetPlayerLevel()
         {
             return _player.level;
+        }
+
+        public void SetCoins(int coins)
+        {
+            _player.coins += coins;
+            SaveUser();
+        }
+
+        public float GetPlayerCoins()
+        {
+            return _player.coins;
         }
 
         #endregion
