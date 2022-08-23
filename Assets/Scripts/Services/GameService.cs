@@ -61,6 +61,7 @@ namespace MiniClip.Challenge.ProjectServices
 			gameplayManager.gameObject.name = "GamePlay-" + gameplayOwner;
 			Services.CameraService.AssignPlayerCamera(gameplayManager);
 			gameplayManager.Init();
+			Services.UIService.GamePlayScreen.ResetLifesColor();
 
 			if (gameplayOwner == GameplayOwner.Player1)
 				gameplayManager.transform.position = Vector3.zero;
@@ -157,10 +158,9 @@ namespace MiniClip.Challenge.ProjectServices
 		{
 			if (gameMode == GameMode.SinglePlayer)
 			{
-				Services.PlayerService.IncrementPlayerLevel(1);
-
 				if (isWin)
 				{
+					Services.PlayerService.IncrementPlayerLevel(1);
 					gameOverStatus = GameOverStatus.WON;
 					SetState(typeof(GameOverState));
 				}

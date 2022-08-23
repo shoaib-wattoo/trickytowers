@@ -23,7 +23,10 @@ namespace MiniClip.Challenge.UI
             profileButton.onClick.AddListener(OnClickProfileButton);
             settingsButton.onClick.AddListener(OnClickSettingsButton);
             coinPlusButton.onClick.AddListener(OnClickCoinPlusButton);
+        }
 
+        private void OnEnable()
+        {
             coinText.SetText(Services.PlayerService.GetPlayerCoins().ToString());
             usernameText.SetText(Services.PlayerService.GetUserName().ToString());
             levelText.SetText(Services.PlayerService._player.level.ToString());
@@ -48,8 +51,8 @@ namespace MiniClip.Challenge.UI
 
         public void OnClickPlayButton()
         {
-            Services.UIService.CommonPopup.OpenPopup("Choose Game Mode", "Please select game mode to start game.",
-                GameMode.SinglePlayer.ToString(), GameMode.MultiPlayer.ToString(), OnClickSinglePlayerButton, OnClickMultiplePlayerButton);
+            Services.UIService.CommonPopup.OpenPopup("Game Mode", "Please select game mode to start game.",
+                "Singleplayer", "Multiplayer", OnClickSinglePlayerButton, OnClickMultiplePlayerButton);
         }
 
         public void OnClickSinglePlayerButton()

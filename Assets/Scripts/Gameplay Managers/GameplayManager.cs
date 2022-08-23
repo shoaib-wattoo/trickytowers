@@ -186,6 +186,7 @@ namespace MiniClip.Challenge.Gameplay
         public void OnShapeDestroy()
         {
             totalLifes--;
+            Services.UIService.GamePlayScreen.UpdateLifesOnUI();
 
             if (totalLifes == 0)
             {
