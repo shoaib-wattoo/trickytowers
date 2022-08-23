@@ -28,8 +28,11 @@ namespace MiniClip.Challenge.Gameplay
             spawnManager = GetComponent<SpawnManager>();
             finishController.owner = owner;
             totalLifes = Services.TrickyElements.totalLifes;
+            gameplayCamera.orthographicSize = Services.CameraService._zoomOutLimit;
+            if(owner == GameplayOwner.Player1) Services.UIService.GamePlayScreen.ResetLifesColor();
+            vertileShadow.transform.localScale = Vector3.zero;
 
-            //Set Finish Line Height
+            //Setting Finish Line Height
             finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0);
 
             /*
@@ -142,9 +145,13 @@ namespace MiniClip.Challenge.Gameplay
             zoomCallback = zoomListener;
 
             if (gameplayCamera.orthographicSize > Services.CameraService._zoomInLimit)
+            {
                 StartTween(Services.CameraService._zoomOutLimit, Services.CameraService._zoomInLimit);
+            }
             else
+            {
                 zoomListener?.Invoke();
+            }
         }
 
         public void ZoomOut(Action zoomListener = null)

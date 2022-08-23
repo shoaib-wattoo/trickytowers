@@ -13,7 +13,7 @@ namespace MiniClip.Challenge.States
 		{
 			Debug.Log("Game Pause State OnActive");
 
-			Services.UIService.ActivateUIScreen(Screens.PAUSE);
+			Services.UIService.ActivateUIPopups(Popups.PAUSE);
 			Services.GameService.gameStatus = GameStatus.PAUSED;
 
 			//Services.CameraService.ZoomOut();
@@ -22,7 +22,6 @@ namespace MiniClip.Challenge.States
 		public override void OnDeactivate()
 		{
 			Debug.Log("Game Pause State OnDeactivate");
-			Services.GameService.gameStatus = GameStatus.ONGOING;
 		}
 
 		public override void OnUpdate()

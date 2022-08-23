@@ -22,7 +22,6 @@ public class TrickyElements : ScriptableObject
     public SplashScreen splashScreen;
     public HomeScreen homeScreen;
     public GamePlayScreen gamePlayScreen;
-    public GamePauseScreen gamePauseScreen;
     public GameWinScreen gameWinScreen;
     public GameLoseScreen gameLoseScreen;
 
@@ -30,6 +29,7 @@ public class TrickyElements : ScriptableObject
     public ProfilePopup profilePopup;
     public SettingsPopup settingsPopup;
     public CommonPopup commonPopup;
+    public PausePopup pausePopup;
 
     [Header("Particle Effects")]
     public List<GameObject> effects;

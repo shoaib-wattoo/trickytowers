@@ -18,7 +18,7 @@ namespace MiniClip.Challenge.States
 			Services.UIService.ActivateUIScreen(Screens.PLAY);
 			gamePlayDuration = Time.time;
 
-			if (Services.GameService.gameStatus == GameStatus.ONGOING)
+			if (Services.GameService.gameStatus == GameStatus.ONGOING || Services.GameService.gameStatus == GameStatus.PAUSED)
 				return;
 
 			Services.GameService.gameStatus = GameStatus.ONGOING;
@@ -35,6 +35,7 @@ namespace MiniClip.Challenge.States
 
 			if (Services.GameService.GetPlayerManager(GameplayOwner.Player1) != null)
 			{
+				print("sfsdfsdfsdfsdfsdf");
 				Services.CameraService.ZoomIn(Services.GameService.player1_Manager, () =>
 				{
 					Services.GameService.player1_Manager.SpawnShape(1f);

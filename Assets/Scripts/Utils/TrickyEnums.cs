@@ -28,7 +28,6 @@ public enum Screens
     SPLASH,
     HOME,
     PLAY,
-    PAUSE,
     WIN,
     LOSE
 }
@@ -36,7 +35,8 @@ public enum Screens
 public enum Popups
 {
     PROFILE,
-    SETTINGS
+    SETTINGS,
+    PAUSE
 }
 
 public enum GameplayOwner

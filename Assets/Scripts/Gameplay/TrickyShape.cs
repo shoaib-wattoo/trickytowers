@@ -41,6 +41,10 @@ namespace MiniClip.Challenge.Gameplay
 
         public void RotateClockWise(bool isCw)
         {
+            //To stop rotation of shape in pause mode
+            if (Services.GameService.gameStatus != GameStatus.ONGOING)
+                return;
+
             float rotationDegree = (isCw) ? 90.0f : -90.0f;
 
             transform.RotateAround(rotationPivot.position, Vector3.forward, rotationDegree);

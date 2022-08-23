@@ -56,7 +56,6 @@ namespace MiniClip.Challenge.ProjectServices
 
         public void ZoomIn(GameplayManager gameplay, Action zoomListener = null)
         {
-            print("Zoom In : " + gameplay.gameplayCamera.name);
             gameplay.ZoomIn(zoomListener);
         }
 
