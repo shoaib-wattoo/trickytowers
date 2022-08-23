@@ -439,9 +439,8 @@ GameObject:
   - component: {fileID: 398505605}
   - component: {fileID: 398505608}
   - component: {fileID: 398505607}
-  - component: {fileID: 398505609}
-  - component: {fileID: 398505606}
   - component: {fileID: 398505610}
+  - component: {fileID: 398505606}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -496,7 +495,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 398505602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18cdf4aad64124ba0abd6e44147ba5e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d47ada6cffcb437b909a40c3afe6a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &398505607
@@ -521,18 +520,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43dbfbd204182493dae4c2867517ff73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &398505609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398505602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797432878c0e0874893d5671cde6d2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &398505610
@@ -1789,6 +1776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMode: 1
   gameStatus: 0
+  gameOverStatus: 0
   isGameActive: 0
   colorService: {fileID: 886387904}
   player1_Manager: {fileID: 0}

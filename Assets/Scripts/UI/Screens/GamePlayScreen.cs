@@ -16,7 +16,10 @@ namespace MiniClip.Challenge.UI
         private void Awake()
         {
             pauseButton.onClick.AddListener(OnClickPauseButton);
+        }
 
+        private void OnEnable()
+        {
             if (Services.GameService.gameMode == GameMode.MultiPlayer)
             {
                 mainCameraRendererObj.SetActive(true);

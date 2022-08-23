@@ -75,3 +75,10 @@ public enum GameStatus
     WON,
     LOST
 }
+
+public enum GameOverStatus
+{
+    NONE,
+    WON,
+    LOST
+}
