@@ -51,10 +51,10 @@ namespace MiniClip.Challenge.ProjectServices
         #endregion
 
         #region MOUSE
-        public Vector2 _firstPressPosition;
-        public Vector2 _startPressPosition;
-        public Vector2 _endPressPosition;
-        public Vector2 _currentSwipe;
+        Vector2 _firstPressPosition;
+        Vector2 _startPressPosition;
+        Vector2 _endPressPosition;
+        Vector2 _currentSwipe;
         float _buttonDownPhaseStart;
         public float tapInterval;
 
@@ -124,24 +124,36 @@ namespace MiniClip.Challenge.ProjectServices
 
         private void MoveHorizontal(Vector2 vector2)
         {
+            if (Services.GameService.gameStatus != GameStatus.ONGOING)
+                return;
+
             if (gameplayManager.currentShape != null)
                 gameplayManager.currentShape.MoveHorizontal(vector2);
         }
 
         private void InstantFall()
         {
+            if (Services.GameService.gameStatus != GameStatus.ONGOING)
+                return;
+
             if (gameplayManager.currentShape != null)
                 gameplayManager.currentShape.InstantFall();
         }
 
         private void NormalFall()
         {
+            if (Services.GameService.gameStatus != GameStatus.ONGOING)
+                return;
+
             if (gameplayManager.currentShape != null)
                 gameplayManager.currentShape.NormalFall();
         }
 
         private void RotateClockWise(bool rotateClockwise)
         {
+            if (Services.GameService.gameStatus != GameStatus.ONGOING)
+                return;
+
             if (gameplayManager.currentShape != null)
                 gameplayManager.currentShape.RotateClockWise(rotateClockwise);
         }

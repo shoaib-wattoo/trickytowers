@@ -29,14 +29,6 @@ namespace MiniClip.Challenge.ProjectServices
             {
                 GamePlayScreen.Show();
             }
-            else if (screenType.Equals(Screens.WIN))
-            {
-                GameWinScreen.Show();
-            }
-            else if (screenType.Equals(Screens.LOSE))
-            {
-                GameLoseScreen.Show();
-            }
         }
 
         public void ActivateUIPopups(Popups popupType)
@@ -52,6 +44,18 @@ namespace MiniClip.Challenge.ProjectServices
             else if (popupType.Equals(Popups.PAUSE))
             {
                 PausePopup.Show(BacklogType.KeepPreviousScreen);
+            }
+            else if (popupType.Equals(Popups.WIN))
+            {
+                GameWinPopup.Show(BacklogType.KeepPreviousScreen);
+            }
+            else if (popupType.Equals(Popups.LOSE))
+            {
+                GameLosePopup.Show(BacklogType.KeepPreviousScreen);
+            }
+            else if (popupType.Equals(Popups.FAIL))
+            {
+                GameFailPopup.Show(BacklogType.KeepPreviousScreen);
             }
         }
 
@@ -88,30 +92,6 @@ namespace MiniClip.Challenge.ProjectServices
                     _gamePlayScreen = Instantiate(Services.TrickyElements.gamePlayScreen, Services.Canvas.transform.GetChild(0));
 
                 return _gamePlayScreen;
-            }
-        }
-
-        private GameWinScreen _gameWinScreen;
-        public GameWinScreen GameWinScreen
-        {
-            get
-            {
-                if (_gameWinScreen == null)
-                    _gameWinScreen = Instantiate(Services.TrickyElements.gameWinScreen, Services.Canvas.transform.GetChild(0));
-
-                return _gameWinScreen;
-            }
-        }
-
-        private GameLoseScreen _gameLoseScreen;
-        public GameLoseScreen GameLoseScreen
-        {
-            get
-            {
-                if (_gameLoseScreen == null)
-                    _gameLoseScreen = Instantiate(Services.TrickyElements.gameLoseScreen, Services.Canvas.transform.GetChild(0));
-
-                return _gameLoseScreen;
             }
         }
 
@@ -168,6 +148,41 @@ namespace MiniClip.Challenge.ProjectServices
             }
         }
 
+        private GameWinPopup _gameWinPopup;
+        public GameWinPopup GameWinPopup
+        {
+            get
+            {
+                if (_gameWinPopup == null)
+                    _gameWinPopup = Instantiate(Services.TrickyElements.gameWinPopup, Services.Canvas.transform.GetChild(1));
+
+                return _gameWinPopup;
+            }
+        }
+
+        private GameFailPopup _gameFailPopup;
+        public GameFailPopup GameFailPopup
+        {
+            get
+            {
+                if (_gameFailPopup == null)
+                    _gameFailPopup = Instantiate(Services.TrickyElements.gameFailPopup, Services.Canvas.transform.GetChild(1));
+
+                return _gameFailPopup;
+            }
+        }
+
+        private GameLosePopup _gameLosePopup;
+        public GameLosePopup GameLosePopup
+        {
+            get
+            {
+                if (_gameLosePopup == null)
+                    _gameLosePopup = Instantiate(Services.TrickyElements.gameLosePopup, Services.Canvas.transform.GetChild(1));
+
+                return _gameLosePopup;
+            }
+        }
         #endregion
     }
 }

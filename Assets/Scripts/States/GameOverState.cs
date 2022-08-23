@@ -14,16 +14,25 @@ namespace MiniClip.Challenge.States
 
 			Services.GameService.isGameActive = false;
 
-			Services.BackLogService.DisableAndremoveAllScreens();
+			Services.BackLogService.RemoveLastScreens(1);
 
-			if (Services.GameService.gameOverStatus == GameOverStatus.WON)
-				Services.UIService.ActivateUIScreen(Screens.WIN);
-			else if (Services.GameService.gameOverStatus == GameOverStatus.LOST)
-				Services.UIService.ActivateUIScreen(Screens.LOSE);
+			if (Services.GameService.gameStatus == GameStatus.WON)
+			{
+				Services.UIService.ActivateUIPopups(Popups.WIN);
+			}
+			else if (Services.GameService.gameStatus == GameStatus.LOST)
+			{
+				if (Services.GameService.gameMode == GameMode.SinglePlayer)
+				{
+					Services.UIService.ActivateUIPopups(Popups.FAIL);
+				}
+				else
+				{
+					Services.UIService.ActivateUIPopups(Popups.LOSE);
+				}
+			}
 
-			Services.GameService.DestryoGameplayManager();
 			Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
-			Services.GameService.gameStatus = GameStatus.WON;
 			Services.PlayerService.SetNumberOfGames(1);
 			Services.AudioService.PlayWinSound();
 		}
@@ -31,7 +40,8 @@ namespace MiniClip.Challenge.States
 		public override void OnDeactivate()
 		{
 			Debug.Log("Game Over State OnDeactivate");
-			Services.GameService.gameOverStatus = GameOverStatus.NONE;
+			Services.GameService.gameStatus = GameStatus.TOSTART;
+			Services.GameService.DestryoGameplayManager();
 		}
 
 		public override void OnUpdate()

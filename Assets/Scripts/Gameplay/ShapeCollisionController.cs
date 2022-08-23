@@ -50,7 +50,7 @@ namespace MiniClip.Challenge.Gameplay
 
         void OnCollisionWithOtherShapes()
         {
-            SpawnNextShape(1f);
+            SpawnNextShape(Services.TrickyElements.shapeSpawnDelay);
             rigidbody2D.gravityScale = 1f;
             PlayEffectOnFirstTimePlaced();
         }
@@ -60,7 +60,7 @@ namespace MiniClip.Challenge.Gameplay
             Services.CameraService.ShakeCamera(TrickyShape.owner);
             Services.AudioService.PlayExplosionSound();
             Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, TrickyShape.shapeColor);
-            SpawnNextShape(1.5f);
+            SpawnNextShape(Services.TrickyElements.shapeSpawnDelay + 0.5f);
             Services.GameService.RemoveShapePlacedFromList(TrickyShape.owner, TrickyShape);
             Services.GameService.GetPlayerManager(TrickyShape.owner).OnShapeDestroy();
             Services.vibrationService.VibratePhone(HapticPatterns.PresetType.MediumImpact);

@@ -10,7 +10,6 @@ namespace MiniClip.Challenge.ProjectServices
 	{
 		public GameMode gameMode;
 		public GameStatus gameStatus;
-		public GameOverStatus gameOverStatus;
 		public bool isGameActive;
 		public ColorService colorService;
 		public GameplayManager player1_Manager;
@@ -160,12 +159,12 @@ namespace MiniClip.Challenge.ProjectServices
 				if (isWin)
 				{
 					Services.PlayerService.IncrementPlayerLevel(1);
-					gameOverStatus = GameOverStatus.WON;
+					gameStatus = GameStatus.WON;
 					SetState(typeof(GameOverState));
 				}
 				else
 				{
-					gameOverStatus = GameOverStatus.LOST;
+					gameStatus = GameStatus.LOST;
 					SetState(typeof(GameOverState));
 				}
 			}
@@ -174,25 +173,25 @@ namespace MiniClip.Challenge.ProjectServices
 			{
 				if (owner == GameplayOwner.Player1 && isWin)
 				{
-					gameOverStatus = GameOverStatus.WON;
+					gameStatus = GameStatus.WON;
 					SetState(typeof(GameOverState));
 				}
 
 				if (owner == GameplayOwner.Player1 && !isWin)
 				{
-					gameOverStatus = GameOverStatus.LOST;
+					gameStatus = GameStatus.LOST;
 					SetState(typeof(GameOverState));
 				}
 
 				if (owner == GameplayOwner.Player2 && isWin)
 				{
-					gameOverStatus = GameOverStatus.LOST;
+					gameStatus = GameStatus.LOST;
 					SetState(typeof(GameOverState));
 				}
 
 				if (owner == GameplayOwner.Player2 && !isWin)
 				{
-					gameOverStatus = GameOverStatus.WON;
+					gameStatus = GameStatus.WON;
 					SetState(typeof(GameOverState));
 				}
 			}

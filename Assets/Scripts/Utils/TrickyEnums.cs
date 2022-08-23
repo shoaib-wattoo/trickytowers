@@ -27,16 +27,17 @@ public enum Screens
 {
     SPLASH,
     HOME,
-    PLAY,
-    WIN,
-    LOSE
+    PLAY
 }
 
 public enum Popups
 {
     PROFILE,
     SETTINGS,
-    PAUSE
+    PAUSE,
+    WIN,
+    LOSE,
+    FAIL
 }
 
 public enum GameplayOwner
@@ -72,13 +73,6 @@ public enum GameStatus
     TOSTART,
     ONGOING,
     PAUSED,
-    WON,
-    LOST
-}
-
-public enum GameOverStatus
-{
-    NONE,
     WON,
     LOST
 }

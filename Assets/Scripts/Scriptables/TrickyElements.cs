@@ -22,14 +22,15 @@ public class TrickyElements : ScriptableObject
     public SplashScreen splashScreen;
     public HomeScreen homeScreen;
     public GamePlayScreen gamePlayScreen;
-    public GameWinScreen gameWinScreen;
-    public GameLoseScreen gameLoseScreen;
 
     [Header("UI Popups")]
     public ProfilePopup profilePopup;
     public SettingsPopup settingsPopup;
     public CommonPopup commonPopup;
     public PausePopup pausePopup;
+    public GameWinPopup gameWinPopup;
+    public GameLosePopup gameLosePopup;
+    public GameFailPopup gameFailPopup;
 
     [Header("Particle Effects")]
     public List<GameObject> effects;

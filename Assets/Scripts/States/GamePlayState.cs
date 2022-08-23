@@ -38,7 +38,7 @@ namespace MiniClip.Challenge.States
 				print("sfsdfsdfsdfsdfsdf");
 				Services.CameraService.ZoomIn(Services.GameService.player1_Manager, () =>
 				{
-					Services.GameService.player1_Manager.SpawnShape(1f);
+					Services.GameService.player1_Manager.SpawnShape(Services.TrickyElements.shapeSpawnDelay);
 
 				});
 			}
@@ -47,7 +47,7 @@ namespace MiniClip.Challenge.States
 			{
 				Services.CameraService.ZoomIn(Services.GameService.player2_Manager, () =>
 				{
-					Services.GameService.player2_Manager.SpawnShape(1f);
+					Services.GameService.player2_Manager.SpawnShape(Services.TrickyElements.shapeSpawnDelay);
 
 				});
 			}
