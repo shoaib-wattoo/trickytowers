@@ -51,9 +51,8 @@ namespace MiniClip.Challenge.Service
 
         #endregion
 
-        private void Awake()
+        private void Start()
         {
-            base.Awake();
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
 
