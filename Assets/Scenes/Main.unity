@@ -382,6 +382,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &314210453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 314210455}
+  - component: {fileID: 314210454}
+  m_Layer: 0
+  m_Name: VibrationService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &314210454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314210453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d769ea0f176a4d908984e4a8bf5f479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &314210455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314210453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1322798738}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398505602
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +706,7 @@ Transform:
   - {fileID: 308786746}
   - {fileID: 191836629}
   m_Father: {fileID: 1322798738}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &661003872
 MonoBehaviour:
@@ -915,6 +958,7 @@ MonoBehaviour:
   _cameraService: {fileID: 1675378002}
   _gameService: {fileID: 1946077485}
   _scoreService: {fileID: 1708692099}
+  _vibrationService: {fileID: 314210454}
   _effectService: {fileID: 1248580407}
   _trickyElements: {fileID: 11400000, guid: 9092d6b40eb8b4053abb75a153729b5a, type: 2}
   _canvas: {fileID: 1526704032}
@@ -937,6 +981,7 @@ Transform:
   - {fileID: 1675378001}
   - {fileID: 1708692100}
   - {fileID: 1248580408}
+  - {fileID: 314210455}
   - {fileID: 1946077484}
   - {fileID: 661003871}
   m_Father: {fileID: 0}
@@ -1565,7 +1610,7 @@ Transform:
   - {fileID: 398505603}
   - {fileID: 886387905}
   m_Father: {fileID: 1322798738}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1946077485
 MonoBehaviour:
@@ -1580,6 +1625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMode: 1
+  gameStatus: 0
   isGameActive: 0
   colorService: {fileID: 886387904}
   player1_Manager: {fileID: 0}

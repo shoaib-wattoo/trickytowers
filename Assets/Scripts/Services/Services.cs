@@ -33,6 +33,9 @@ public class Services : SingletonMonobehaviour<Services>
     private ScoreService _scoreService;
 
     [SerializeField]
+    private VibrationService _vibrationService;
+
+    [SerializeField]
     private EffectService _effectService;
 
     [SerializeField]
@@ -116,6 +119,11 @@ public class Services : SingletonMonobehaviour<Services>
     public static EffectService EffectService
     {
         get { return instance._effectService; }
+    }
+
+    public static VibrationService vibrationService
+    {
+        get { return instance._vibrationService; }
     }
 
     #endregion
