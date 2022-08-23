@@ -97,6 +97,16 @@ namespace MiniClip.Challenge.Service
             }
         }
 
+        public void DisableAndremoveAllScreens()
+        {
+            foreach(GameObject screen in pileOfScreen)
+            {
+                screen.SetActive(false);
+            }
+
+            ClearTop();
+        }
+
         public void RemoveLastScreens(int count)
         {
             pileOfScreen.RemoveRange(pileOfScreen.Count - count, count);

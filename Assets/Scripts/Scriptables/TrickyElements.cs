@@ -29,6 +29,7 @@ public class TrickyElements : ScriptableObject
     [Header("UI Popups")]
     public ProfilePopup profilePopup;
     public SettingsPopup settingsPopup;
+    public CommonPopup commonPopup;
 
     [Header("Particle Effects")]
     public List<GameObject> effects;

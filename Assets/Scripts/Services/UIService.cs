@@ -156,6 +156,18 @@ namespace MiniClip.Challenge.Service
             }
         }
 
+        private CommonPopup _commonPopup;
+        public CommonPopup CommonPopup
+        {
+            get
+            {
+                if (_commonPopup == null)
+                    _commonPopup = Instantiate(Services.TrickyElements.commonPopup, Services.Canvas.transform.GetChild(1));
+
+                return _commonPopup;
+            }
+        }
+
         #endregion
     }
 }

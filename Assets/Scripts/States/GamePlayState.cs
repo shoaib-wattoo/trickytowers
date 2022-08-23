@@ -14,6 +14,7 @@ namespace MiniClip.Challenge.States
 		{
 			Debug.Log("Game Play State OnActive");
 			Services.GameService.isGameActive = true;
+			Services.BackLogService.DisableAndremoveAllScreens();
 			Services.UIService.ActivateUIScreen(Screens.PLAY);
 			gamePlayDuration = Time.time;
 

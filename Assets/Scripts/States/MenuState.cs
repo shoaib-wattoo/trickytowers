@@ -12,7 +12,7 @@ namespace MiniClip.Challenge.States
 		public override void OnActivate()
 		{
 			Debug.Log("Menu State OnActive");
-
+			Services.BackLogService.DisableAndremoveAllScreens();
 			Services.UIService.ActivateUIScreen(Screens.HOME);
 			Services.GameService.gameStatus = GameStatus.TOSTART;
 			Services.GameService.DestryoGameplayManager();
