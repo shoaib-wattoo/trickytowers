@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using MiniClip.Challenge.ProjectServices;
 using MiniClip.Challenge.States;
 using TMPro;
+using MiniClip.Challenge.Gameplay;
 
 namespace MiniClip.Challenge.UI
 {
@@ -36,13 +37,23 @@ namespace MiniClip.Challenge.UI
             }
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
+            UpdateLifesOnUI();
         }
 
         public void UpdateLifesOnUI()
         {
-            int remainingLifes = Services.GameService.GetPlayerManager(GameplayOwner.Player1).GetRemainingLifes();
+            GameplayManager gameplayManager = Services.GameService.GetPlayerManager(GameplayOwner.Player1);
 
-            for (int i = remainingLifes;i < hearts.Count; i++)
+            if(gameplayManager == null)
+            {
+                print("Gameplay manager was null");
+                return;
+            }
+
+            if (gameplayManager.GetRemainingLifes() >= hearts.Count)
+                return;
+
+            for (int i = gameplayManager.GetRemainingLifes(); i < hearts.Count; i++)
             {
                 hearts[i].GetComponent<Image>().color = heartDisabledColor;
             }

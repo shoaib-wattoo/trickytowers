@@ -190,14 +190,19 @@ namespace MiniClip.Challenge.Gameplay
             return totalLifes;
         }
 
-        public void OnShapeDestroy()
+        public void OnShapeDestroy(Action<bool> isGameFinish)
         {
             totalLifes--;
             Services.UIService.GamePlayScreen.UpdateLifesOnUI();
 
             if (totalLifes == 0)
             {
+                isGameFinish?.Invoke(true);
                 Services.GameService.OnGameFinish(owner, false);
+            }
+            else
+            {
+                isGameFinish?.Invoke(false);
             }
         }
 

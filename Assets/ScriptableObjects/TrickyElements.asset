@@ -15,7 +15,7 @@ MonoBehaviour:
   shapeSpawnDelay: 1
   winHeight: 15
   incrementHeightFactor: 2
-  totalLifes: 3
+  totalLifes: 7
   normalFallingSpeed: 5
   fastFallingSpeed: 15
   shapeTypes:

@@ -15,7 +15,6 @@ namespace MiniClip.Challenge.States
 			Debug.Log("Game Play State OnActive");
 			Services.GameService.isGameActive = true;
 			Services.BackLogService.DisableAndremoveAllScreens();
-			Services.UIService.ActivateUIScreen(Screens.PLAY);
 			gamePlayDuration = Time.time;
 
 			if (Services.GameService.gameStatus == GameStatus.ONGOING || Services.GameService.gameStatus == GameStatus.PAUSED)
@@ -35,7 +34,6 @@ namespace MiniClip.Challenge.States
 
 			if (Services.GameService.GetPlayerManager(GameplayOwner.Player1) != null)
 			{
-				print("sfsdfsdfsdfsdfsdf");
 				Services.CameraService.ZoomIn(Services.GameService.player1_Manager, () =>
 				{
 					Services.GameService.player1_Manager.SpawnShape(Services.TrickyElements.shapeSpawnDelay);
@@ -51,6 +49,8 @@ namespace MiniClip.Challenge.States
 
 				});
 			}
+
+			Services.UIService.ActivateUIScreen(Screens.PLAY);
 		}
 
 		public override void OnDeactivate()
