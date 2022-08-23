@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using MiniClip.Challenge.Gameplay;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 using MiniClip.Challenge.States;
 
 namespace MiniClip.Challenge.UI

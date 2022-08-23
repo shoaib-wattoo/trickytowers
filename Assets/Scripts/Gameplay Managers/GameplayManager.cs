@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 
 namespace MiniClip.Challenge.Gameplay
 {

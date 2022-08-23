@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 using System.Linq;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 
 namespace MiniClip.Challenge.Gameplay
 {

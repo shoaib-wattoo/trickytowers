@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lofelt.NiceVibrations;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
     public class VibrationService : MonoBehaviour
     {

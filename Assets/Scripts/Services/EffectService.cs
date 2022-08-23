@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
     public class EffectService : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 
 public class ProfilePopup : TrickyMonoBehaviour
 {

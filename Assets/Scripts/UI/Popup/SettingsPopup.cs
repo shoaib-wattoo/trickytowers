@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 
 public class SettingsPopup : TrickyMonoBehaviour
 {

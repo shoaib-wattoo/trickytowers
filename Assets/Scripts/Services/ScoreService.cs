@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
     public class ScoreService : MonoBehaviour
     {

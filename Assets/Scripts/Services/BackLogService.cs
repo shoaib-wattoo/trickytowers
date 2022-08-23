@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
     public class BackLogService : MonoBehaviour
     {

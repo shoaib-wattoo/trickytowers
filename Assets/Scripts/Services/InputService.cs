@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using MiniClip.Challenge.Gameplay;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
     public class InputService : MonoBehaviour
     {

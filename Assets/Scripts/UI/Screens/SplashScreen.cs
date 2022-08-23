@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 using MiniClip.Challenge.States;
 
 namespace MiniClip.Challenge.UI

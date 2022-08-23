@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 
 namespace MiniClip.Challenge.States
 {

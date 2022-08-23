@@ -4,7 +4,7 @@ using UnityEngine;
 using MiniClip.Challenge.UI;
 using MiniClip.Challenge.States;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
     public class UIService : MonoBehaviour
     {

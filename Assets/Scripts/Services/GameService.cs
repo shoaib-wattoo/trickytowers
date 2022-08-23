@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using MiniClip.Challenge.Gameplay;
 using MiniClip.Challenge.States;
 
-namespace MiniClip.Challenge.Service
+namespace MiniClip.Challenge.ProjectServices
 {
 	public class GameService : MonoBehaviour
 	{

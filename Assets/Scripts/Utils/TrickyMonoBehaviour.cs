@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MiniClip.Challenge.Service;
+using MiniClip.Challenge.ProjectServices;
 
 public interface ITrickyMonoBehaviour
 {
