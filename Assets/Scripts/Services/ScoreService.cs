@@ -23,13 +23,20 @@ public class ScoreService : MonoBehaviour
         //TODO//Update Score on UI here
     }
 
-    public void OnScore(int scoreIncreaseAmount)
+    public void OnScore(GameplayOwner owner ,int scoreIncreaseAmount)
     {
-        currentScore += scoreIncreaseAmount;
-        CheckHighScore();
-        totalScore += scoreIncreaseAmount;
-        Services.PlayerService.SetTotalScore(totalScore);
-        //TODO//Update score on UI here
+        if (owner == GameplayOwner.Player1)
+        {
+            currentScore += scoreIncreaseAmount;
+            CheckHighScore();
+            totalScore += scoreIncreaseAmount;
+            Services.PlayerService.SetTotalScore(totalScore);
+            //TODO//Update score on UI here
+        }
+        else if(owner == GameplayOwner.Player2)
+        {
+            // Player-2 score can be handle here
+        }
     }
 
     public void CheckHighScore()

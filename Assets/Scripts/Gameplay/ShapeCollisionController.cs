@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lofelt.NiceVibrations;
 
 public class ShapeCollisionController : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class ShapeCollisionController : MonoBehaviour
         SpawnNextShape(1.5f);
         Services.GameService.RemoveShapePlacedFromList(TrickyShape.owner, TrickyShape);
         Services.GameService.GetPlayerManager(TrickyShape.owner).OnShapeDestroy();
+        Services.vibrationService.VibratePhone(HapticPatterns.PresetType.MediumImpact);
         Destroy(gameObject);
     }
 
@@ -70,7 +72,7 @@ public class ShapeCollisionController : MonoBehaviour
             Services.AudioService.PlayShapePlaceSound();
             Services.CameraService.ShakeCamera(TrickyShape.owner);
             Services.GameService.AddShapePlacedInList(TrickyShape.owner, TrickyShape);
-            Services.ScoreService.OnScore(1);
+            Services.ScoreService.OnScore(TrickyShape.owner, 1);
         }
     }
 
