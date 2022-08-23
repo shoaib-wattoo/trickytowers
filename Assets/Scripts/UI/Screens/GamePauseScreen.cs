@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MiniClip.Challenge.Service;
+using MiniClip.Challenge.States;
 
-public class GamePauseScreen : TrickyMonoBehaviour
+namespace MiniClip.Challenge.UI
 {
-    public Button playButton;
-    public Button menuButton;
-
-    private void Awake()
+    public class GamePauseScreen : TrickyMonoBehaviour
     {
-        playButton.onClick.AddListener(OnClickPlayButton);
-        menuButton.onClick.AddListener(OnClickMenuButton);
-    }
+        public Button playButton;
+        public Button menuButton;
 
-    public void OnClickPlayButton()
-    {
-        Services.GameService.SetState(typeof(GamePlayState));
-    }
+        private void Awake()
+        {
+            playButton.onClick.AddListener(OnClickPlayButton);
+            menuButton.onClick.AddListener(OnClickMenuButton);
+        }
 
-    public void OnClickMenuButton()
-    {
-        Services.GameService.SetState(typeof(MenuState));
+        public void OnClickPlayButton()
+        {
+            Services.GameService.SetState(typeof(GamePlayState));
+        }
+
+        public void OnClickMenuButton()
+        {
+            Services.GameService.SetState(typeof(MenuState));
+        }
     }
 }

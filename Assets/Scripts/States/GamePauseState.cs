@@ -1,30 +1,34 @@
 using UnityEngine;
 using System.Collections;
+using MiniClip.Challenge.Service;
 
-public class GamePauseState : _StatesBase
+namespace MiniClip.Challenge.States
 {
-
-	#region implemented abstract members of GameState
-
-	public override void OnActivate()
+	public class GamePauseState : _StatesBase
 	{
-		Debug.Log("Game Pause State OnActive");
 
-		Services.UIService.ActivateUIScreen (Screens.PAUSE);
-		Services.GameService.gameStatus = GameStatus.PAUSED;
+		#region implemented abstract members of GameState
 
-		//Services.CameraService.ZoomOut();
+		public override void OnActivate()
+		{
+			Debug.Log("Game Pause State OnActive");
+
+			Services.UIService.ActivateUIScreen(Screens.PAUSE);
+			Services.GameService.gameStatus = GameStatus.PAUSED;
+
+			//Services.CameraService.ZoomOut();
+		}
+
+		public override void OnDeactivate()
+		{
+			Debug.Log("Game Pause State OnDeactivate");
+			Services.GameService.gameStatus = GameStatus.ONGOING;
+		}
+
+		public override void OnUpdate()
+		{
+		}
+
+		#endregion
 	}
-
-	public override void OnDeactivate()
-	{
-		Debug.Log("Game Pause State OnDeactivate");
-		Services.GameService.gameStatus = GameStatus.ONGOING;
-	}
-
-	public override void OnUpdate()
-	{
-	}
-
-	#endregion
 }

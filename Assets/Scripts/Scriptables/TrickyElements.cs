@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using MiniClip.Challenge.Gameplay;
+using MiniClip.Challenge.UI;
 
 [CreateAssetMenu(fileName = "TrickyElements", menuName = "ScriptableObjects/TrickyElements", order = 1)]
 public class TrickyElements : ScriptableObject

@@ -3,56 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using MiniClip.Challenge.Gameplay;
+using MiniClip.Challenge.Service;
+using MiniClip.Challenge.States;
 
-public class HomeScreen : TrickyMonoBehaviour
+namespace MiniClip.Challenge.UI
 {
-    public TextMeshProUGUI scoreText;
-
-    private void Start()
+    public class HomeScreen : TrickyMonoBehaviour
     {
-        UpdateScore();
-    }
+        public TextMeshProUGUI scoreText;
 
-    void UpdateScore()
-    {
-        scoreText.SetText("Score : " + Services.ScoreService.totalScore);
-    }
+        private void Start()
+        {
+            UpdateScore();
+        }
 
-    public void OnClickZoomIn()
-    {
-        Services.CameraService.ZoomIn(Services.GameService.player1_Manager);
-    }
+        void UpdateScore()
+        {
+            scoreText.SetText("Score : " + Services.ScoreService.totalScore);
+        }
 
-    public void OnClickZoomOut()
-    {
-        Services.CameraService.ZoomOut(Services.GameService.player1_Manager);
-    }
+        public void OnClickZoomIn()
+        {
+            Services.CameraService.ZoomIn(Services.GameService.player1_Manager);
+        }
 
-    public void OnClickShakeCam()
-    {
-        Services.CameraService.ShakeCamera(Services.GameService.player1_Manager);
-    }
+        public void OnClickZoomOut()
+        {
+            Services.CameraService.ZoomOut(Services.GameService.player1_Manager);
+        }
 
-    public void OnClickIncrementScore()
-    {
-        Services.ScoreService.OnScore(1);
-        UpdateScore();
-    }
+        public void OnClickShakeCam()
+        {
+            Services.CameraService.ShakeCamera(Services.GameService.player1_Manager);
+        }
 
-    public void OnClickSinglePlayerButton()
-    {
-        Services.GameService.gameMode = GameMode.SinglePlayer;
-        StartGame();
-    }
+        public void OnClickIncrementScore()
+        {
+            Services.ScoreService.OnScore(GameplayOwner.Player1, 1);
+            UpdateScore();
+        }
 
-    public void OnClickMultiplePlayerButton()
-    {
-        Services.GameService.gameMode = GameMode.MultiPlayer;
-        StartGame();
-    }
+        public void OnClickSinglePlayerButton()
+        {
+            Services.GameService.gameMode = GameMode.SinglePlayer;
+            StartGame();
+        }
 
-    public void StartGame()
-    {
-        Services.GameService.SetState(typeof(GamePlayState));
+        public void OnClickMultiplePlayerButton()
+        {
+            Services.GameService.gameMode = GameMode.MultiPlayer;
+            StartGame();
+        }
+
+        public void StartGame()
+        {
+            Services.GameService.SetState(typeof(GamePlayState));
+        }
     }
 }

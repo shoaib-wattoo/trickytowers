@@ -1,65 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MiniClip.Challenge.Service;
 
-public class GameFinishController : MonoBehaviour
+namespace MiniClip.Challenge.Gameplay
 {
-    public GameplayOwner owner;
-    public float countDown = 5f;
-    public List<TrickyShape> shapesReachedFinish;
-
-    private float nextActionTime = 1f;
-    public float period = 1f;
-
-    void OnTriggerEnter2D(Collider2D other)
+    public class GameFinishController : MonoBehaviour
     {
-        Debug.Log("Triggr Enter : " + other.gameObject.name);
+        public GameplayOwner owner;
+        public float countDown = 5f;
+        public List<TrickyShape> shapesReachedFinish;
 
-        TrickyShape shape = other.GetComponent<TrickyShape>();
+        private float nextActionTime = 1f;
+        public float period = 1f;
 
-        if (shape != null)
+        void OnTriggerEnter2D(Collider2D other)
         {
-            shapesReachedFinish.Add(shape);
-        }
-    }
+            Debug.Log("Triggr Enter : " + other.gameObject.name);
 
-    private void Update()
-    {
-        if (Time.time > nextActionTime)
-        {
-            nextActionTime += period;
+            TrickyShape shape = other.GetComponent<TrickyShape>();
 
-            if (GetCountofShapesReachedFinish() > 0)
+            if (shape != null)
             {
-                countDown--;
+                shapesReachedFinish.Add(shape);
+            }
+        }
 
-                if(countDown == 0){
-                    countDown = 0;
+        private void Update()
+        {
+            if (Time.time > nextActionTime)
+            {
+                nextActionTime += period;
 
-                    Services.GameService.OnGameFinish(owner, true);
+                if (GetCountofShapesReachedFinish() > 0)
+                {
+                    countDown--;
+
+                    if (countDown == 0)
+                    {
+                        countDown = 0;
+
+                        Services.GameService.OnGameFinish(owner, true);
+                    }
+                }
+                else
+                {
+                    countDown = 5f;
                 }
             }
-            else
-            {
-                countDown = 5f;
-            }
         }
-    }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log("Triggr Exit : " + other.gameObject.name);
+        void OnTriggerExit2D(Collider2D other)
+        {
+            Debug.Log("Triggr Exit : " + other.gameObject.name);
 
-        shapesReachedFinish.Remove(other.GetComponent<TrickyShape>());
+            shapesReachedFinish.Remove(other.GetComponent<TrickyShape>());
 
-        int placedShapes = GetCountofShapesReachedFinish();
+            int placedShapes = GetCountofShapesReachedFinish();
 
-        if (placedShapes == 0)
-            countDown = 5;
-    }
+            if (placedShapes == 0)
+                countDown = 5;
+        }
 
-    int GetCountofShapesReachedFinish()
-    {
-        return shapesReachedFinish.FindAll(x => x.isPlaced).Count;
+        int GetCountofShapesReachedFinish()
+        {
+            return shapesReachedFinish.FindAll(x => x.isPlaced).Count;
+        }
     }
 }

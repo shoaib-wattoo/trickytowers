@@ -2,34 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackLogService : MonoBehaviour
+namespace MiniClip.Challenge.Service
 {
-    public List<GameObject> pileOfScreen = new List<GameObject>();
-
-    public void OnScreenOpen(GameObject screen, BacklogType backlogType = BacklogType.DisablePreviousScreen)
+    public class BackLogService : MonoBehaviour
     {
-        if(backlogType == BacklogType.Ignore)
-        {
-            return;
-        }
+        public List<GameObject> pileOfScreen = new List<GameObject>();
 
-        if (backlogType == BacklogType.DisablePreviousScreen)
-        {
-            DisableLastScreen();
-        }
-
-        if (backlogType == BacklogType.ClearTop)
-        {
-            ClearTop();
-        }
-
-        pileOfScreen.Add(screen);
-        RemoveRecentDuplication();
-    }
-
-    public void OnScreenOpen(GameObject screen, params BacklogType[] backlogTypes)
-    {
-        foreach (BacklogType backlogType in backlogTypes)
+        public void OnScreenOpen(GameObject screen, BacklogType backlogType = BacklogType.DisablePreviousScreen)
         {
             if (backlogType == BacklogType.Ignore)
             {
@@ -45,76 +24,100 @@ public class BackLogService : MonoBehaviour
             {
                 ClearTop();
             }
+
+            pileOfScreen.Add(screen);
+            RemoveRecentDuplication();
         }
 
-        pileOfScreen.Add(screen);
-        RemoveRecentDuplication();
-    }
-
-    public void RemoveRecentDuplication()
-    {
-        if (pileOfScreen.Count > 1)
+        public void OnScreenOpen(GameObject screen, params BacklogType[] backlogTypes)
         {
-            if(pileOfScreen[pileOfScreen.Count - 1] == pileOfScreen[pileOfScreen.Count - 2])
+            foreach (BacklogType backlogType in backlogTypes)
             {
-                RemoveLastScreens(1);
+                if (backlogType == BacklogType.Ignore)
+                {
+                    return;
+                }
+
+                if (backlogType == BacklogType.DisablePreviousScreen)
+                {
+                    DisableLastScreen();
+                }
+
+                if (backlogType == BacklogType.ClearTop)
+                {
+                    ClearTop();
+                }
+            }
+
+            pileOfScreen.Add(screen);
+            RemoveRecentDuplication();
+        }
+
+        public void RemoveRecentDuplication()
+        {
+            if (pileOfScreen.Count > 1)
+            {
+                if (pileOfScreen[pileOfScreen.Count - 1] == pileOfScreen[pileOfScreen.Count - 2])
+                {
+                    RemoveLastScreens(1);
+                }
             }
         }
-    }
 
-    public void OnClickBack()
-    {
-        if (pileOfScreen.Count > 1)
+        public void OnClickBack()
         {
-            pileOfScreen[pileOfScreen.Count - 1].SetActive(false);
-            pileOfScreen.RemoveAt(pileOfScreen.Count - 1);
-            pileOfScreen[pileOfScreen.Count - 1].SetActive(true);
+            if (pileOfScreen.Count > 1)
+            {
+                pileOfScreen[pileOfScreen.Count - 1].SetActive(false);
+                pileOfScreen.RemoveAt(pileOfScreen.Count - 1);
+                pileOfScreen[pileOfScreen.Count - 1].SetActive(true);
+            }
         }
-    }
 
-    public void ClearTop(GameObject current)
-    {
-        pileOfScreen = new List<GameObject>();
-        pileOfScreen.Add(current);
-    }
-
-    public void ClearTop()
-    {
-        pileOfScreen = new List<GameObject>();
-    }
-
-    public void DisableLastScreen()
-    {
-        if (pileOfScreen.Count > 0)
+        public void ClearTop(GameObject current)
         {
-            pileOfScreen[pileOfScreen.Count - 1].SetActive(false);
+            pileOfScreen = new List<GameObject>();
+            pileOfScreen.Add(current);
         }
-        else
+
+        public void ClearTop()
         {
-            //Debug.Log("No active screen found");
+            pileOfScreen = new List<GameObject>();
         }
-    }
 
-    public void RemoveLastScreens(int count)
-    {
-        pileOfScreen.RemoveRange(pileOfScreen.Count - count, count);
-    }
-
-    public void RemoveLastScreens(GameObject gameObject)
-    {
-        pileOfScreen.Remove(gameObject);
-    }
-
-    bool CheckForRepetition()
-    {
-        return false;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        public void DisableLastScreen()
         {
-            OnClickBack();
+            if (pileOfScreen.Count > 0)
+            {
+                pileOfScreen[pileOfScreen.Count - 1].SetActive(false);
+            }
+            else
+            {
+                //Debug.Log("No active screen found");
+            }
+        }
+
+        public void RemoveLastScreens(int count)
+        {
+            pileOfScreen.RemoveRange(pileOfScreen.Count - count, count);
+        }
+
+        public void RemoveLastScreens(GameObject gameObject)
+        {
+            pileOfScreen.Remove(gameObject);
+        }
+
+        bool CheckForRepetition()
+        {
+            return false;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnClickBack();
+            }
         }
     }
 }

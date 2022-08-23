@@ -1,31 +1,34 @@
 using UnityEngine;
 using System.Collections;
+using MiniClip.Challenge.Service;
 
-public class GameLoseState : _StatesBase
+namespace MiniClip.Challenge.States
 {
-
-	#region implemented abstract members of _StatesBase
-	public override void OnActivate()
+	public class GameLoseState : _StatesBase
 	{
-		Debug.Log("Game Lose State OnActive");
+		#region implemented abstract members of _StatesBase
+		public override void OnActivate()
+		{
+			Debug.Log("Game Lose State OnActive");
 
-		Services.GameService.isGameActive = false;
-		Services.GameService.DestryoGameplayManager();
-		Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
-		Services.GameService.gameStatus = GameStatus.LOST;
-		Services.PlayerService.SetNumberOfGames(1);
-		Services.UIService.ActivateUIScreen(Screens.LOSE);
-		Services.AudioService.PlayLoseSound();
+			Services.GameService.isGameActive = false;
+			Services.GameService.DestryoGameplayManager();
+			Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
+			Services.GameService.gameStatus = GameStatus.LOST;
+			Services.PlayerService.SetNumberOfGames(1);
+			Services.UIService.ActivateUIScreen(Screens.LOSE);
+			Services.AudioService.PlayLoseSound();
+		}
+
+		public override void OnDeactivate()
+		{
+			Debug.Log("Game Lose State OnDeactivate");
+		}
+
+		public override void OnUpdate()
+		{
+		}
+		#endregion
+
 	}
-
-	public override void OnDeactivate()
-	{
-		Debug.Log("Game Lose State OnDeactivate");
-	}
-
-	public override void OnUpdate()
-	{
-	}
-	#endregion
-
 }

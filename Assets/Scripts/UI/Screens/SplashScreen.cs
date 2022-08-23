@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MiniClip.Challenge.Service;
+using MiniClip.Challenge.States;
 
-public class SplashScreen : TrickyMonoBehaviour
+namespace MiniClip.Challenge.UI
 {
-    private void Start()
+    public class SplashScreen : TrickyMonoBehaviour
     {
-        Extensions.PerformActionWithDelay(this, 2f, ()=> {
-            Services.GameService.SetState(typeof(MenuState));
-            Hide(destroy:true);
-        });
+        private void Start()
+        {
+            Extensions.PerformActionWithDelay(this, 2f, () =>
+            {
+                Services.GameService.SetState(typeof(MenuState));
+                Hide(destroy: true);
+            });
+        }
     }
 }

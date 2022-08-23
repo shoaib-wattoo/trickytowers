@@ -2,30 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MiniClip.Challenge.Service;
+using MiniClip.Challenge.States;
 
-public class GamePlayScreen : TrickyMonoBehaviour
+namespace MiniClip.Challenge.UI
 {
-    public Button pauseButton;
-    public RawImage cameraRenderer;
-    public GameObject mainCameraRendererObj;
-
-    private void Awake()
+    public class GamePlayScreen : TrickyMonoBehaviour
     {
-        pauseButton.onClick.AddListener(OnClickPauseButton);
+        public Button pauseButton;
+        public RawImage cameraRenderer;
+        public GameObject mainCameraRendererObj;
 
-        if(Services.GameService.gameMode == GameMode.MultiPlayer)
+        private void Awake()
         {
-            mainCameraRendererObj.SetActive(true);
-            cameraRenderer.texture = Services.TrickyElements.cameraRenderTexture;
-        }
-        else if (Services.GameService.gameMode == GameMode.SinglePlayer)
-        {
-            mainCameraRendererObj.gameObject.SetActive(false);
-        }
-    }
+            pauseButton.onClick.AddListener(OnClickPauseButton);
 
-    public void OnClickPauseButton()
-    {
-        Services.GameService.SetState(typeof(GamePauseState));
+            if (Services.GameService.gameMode == GameMode.MultiPlayer)
+            {
+                mainCameraRendererObj.SetActive(true);
+                cameraRenderer.texture = Services.TrickyElements.cameraRenderTexture;
+            }
+            else if (Services.GameService.gameMode == GameMode.SinglePlayer)
+            {
+                mainCameraRendererObj.gameObject.SetActive(false);
+            }
+        }
+
+        public void OnClickPauseButton()
+        {
+            Services.GameService.SetState(typeof(GamePauseState));
+        }
     }
 }

@@ -1,30 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using MiniClip.Challenge.Service;
 
-public class MenuState : _StatesBase {
-	
-	#region implemented abstract members of GameState
-
-	public override void OnActivate ()
-	{		
-		Debug.Log ("Menu State OnActive");	
-
-		Services.UIService.ActivateUIScreen (Screens.HOME);
-		Services.GameService.gameStatus = GameStatus.TOSTART;
-		Services.GameService.DestryoGameplayManager();
-		Services.CameraService.ResetCameraSize();
-
-	}
-
-	public override void OnDeactivate ()
-	{
-		Debug.Log ("Menu State OnDeactivate");
-	}
-
-	public override void OnUpdate ()
+namespace MiniClip.Challenge.States
+{
+	public class MenuState : _StatesBase
 	{
 
-	}
+		#region implemented abstract members of GameState
 
-	#endregion
+		public override void OnActivate()
+		{
+			Debug.Log("Menu State OnActive");
+
+			Services.UIService.ActivateUIScreen(Screens.HOME);
+			Services.GameService.gameStatus = GameStatus.TOSTART;
+			Services.GameService.DestryoGameplayManager();
+			Services.CameraService.ResetCameraSize();
+
+		}
+
+		public override void OnDeactivate()
+		{
+			Debug.Log("Menu State OnDeactivate");
+		}
+
+		public override void OnUpdate()
+		{
+
+		}
+
+		#endregion
+	}
 }

@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MiniClip.Challenge.Service;
+using MiniClip.Challenge.States;
 
-public class GameWinScreen : TrickyMonoBehaviour
+namespace MiniClip.Challenge.UI
 {
-    public Button mainmenuButton;
-
-    void Awake()
+    public class GameWinScreen : TrickyMonoBehaviour
     {
-        mainmenuButton.onClick.AddListener(OnClickMainMenu);
-    }
+        public Button mainmenuButton;
 
-    void OnClickMainMenu()
-    {
-        Services.GameService.SetState(typeof(MenuState));
+        void Awake()
+        {
+            mainmenuButton.onClick.AddListener(OnClickMainMenu);
+        }
+
+        void OnClickMainMenu()
+        {
+            Services.GameService.SetState(typeof(MenuState));
+        }
     }
 }
