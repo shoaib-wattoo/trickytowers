@@ -43,8 +43,8 @@ namespace MiniClip.Challenge.UI
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
 
-            player1_NextShapeParent.SetActive(false);
-            player2_NextShapeParent.SetActive(false);
+            //player1_NextShapeParent.SetActive(false);
+            //player2_NextShapeParent.SetActive(false);
         }
 
         public void OnClickProfileButton()

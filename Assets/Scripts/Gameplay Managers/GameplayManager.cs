@@ -84,6 +84,11 @@ namespace MiniClip.Challenge.Gameplay
             spawnManager.Spawn(owner, blockHolder);
         }
 
+        public void AssignShape()
+        {
+            spawnManager.AssignShapeToSpawnNext(owner);
+        }
+
         public void SpawnShape(float delay)
         {
             Extensions.PerformActionWithDelay(this, delay, SpawnShape);
@@ -150,10 +155,6 @@ namespace MiniClip.Challenge.Gameplay
             {
                 StartTween(Services.CameraService._zoomOutLimit, Services.CameraService._zoomInLimit);
             }
-            else
-            {
-                zoomListener?.Invoke();
-            }
         }
 
         public void ZoomOut(Action zoomListener = null)
@@ -162,8 +163,6 @@ namespace MiniClip.Challenge.Gameplay
 
             if (gameplayCamera.orthographicSize < Services.CameraService._zoomOutLimit)
                 StartTween(Services.CameraService._zoomInLimit, Services.CameraService._zoomOutLimit);
-            else
-                zoomListener?.Invoke();
         }
 
         void StartTween(float initialValue, float finalValue)

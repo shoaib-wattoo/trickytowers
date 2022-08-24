@@ -23,8 +23,8 @@ public class PausePopup : TrickyMonoBehaviour
 
     void OnClickRestartButton()
     {
-        Services.GameService.gameStatus = GameStatus.TOSTART;
         Services.GameService.DestryoGameplayManager();
+        Services.GameService.gameStatus = GameStatus.TOSTART;
         Services.GameService.SetState(typeof(GamePlayState));
     }
 

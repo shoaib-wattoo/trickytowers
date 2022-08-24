@@ -15,8 +15,6 @@ namespace MiniClip.Challenge.States
 
 			Services.UIService.ActivateUIPopups(Popups.PAUSE);
 			Services.GameService.gameStatus = GameStatus.PAUSED;
-
-			//Services.CameraService.ZoomOut();
 		}
 
 		public override void OnDeactivate()

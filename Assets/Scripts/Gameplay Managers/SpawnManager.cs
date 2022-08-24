@@ -46,7 +46,7 @@ namespace MiniClip.Challenge.Gameplay
             });
         }
 
-        private TrickyShape GetShapeToSpawn()
+        public TrickyShape GetShapeToSpawn()
         {
             TrickyShape shapeToSpawn;
 
@@ -69,6 +69,21 @@ namespace MiniClip.Challenge.Gameplay
             Services.UIService.GamePlayScreen.ShowNextShape(owner, nextShape.spriteRenderer.sprite, nextShapeColor);
 
             return shapeToSpawn;
+        }
+
+        public void AssignShapeToSpawnNext(GameplayOwner _owner)
+        {
+            print("AssignShapeToSpawnNext");
+            if (nextShape == null)
+            {
+                print("AssignShapeToSpawnNext    ifff");
+
+                int random = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
+                nextShape = Services.TrickyElements.shapeTypes[random];
+                nextShapeColor = shapeToSpawnColor = Services.GameService.colorService.TurnRandomColorFromTheme();
+                Services.UIService.GamePlayScreen.ShowNextShape(_owner, nextShape.spriteRenderer.sprite, nextShapeColor);
+
+            }
         }
     }
 }

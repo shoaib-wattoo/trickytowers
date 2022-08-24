@@ -49,9 +49,43 @@ namespace MiniClip.Challenge.ProjectServices
 			}
 		}
 
-
-
 		#region GamePlay Managers
+
+		public void StartGame()
+        {
+			if (gameMode == GameMode.SinglePlayer)
+			{
+				if (player1_Manager == null)
+					player1_Manager = SpawnGamePlay(GameplayOwner.Player1);
+			}
+			else if (gameMode == GameMode.MultiPlayer)
+			{
+				if (player1_Manager == null)
+					player1_Manager = SpawnGamePlay(GameplayOwner.Player1);
+				if(player2_Manager == null)
+					player2_Manager = SpawnGamePlay(GameplayOwner.Player2);
+			}
+
+			if (player1_Manager != null)
+			{
+				player1_Manager.AssignShape();
+				Services.CameraService.ZoomIn(player1_Manager, () =>
+				{
+					player1_Manager.SpawnShape(Services.TrickyElements.shapeSpawnDelay);
+
+				});
+			}
+
+			if (player2_Manager != null)
+			{
+				player2_Manager.AssignShape();
+				Services.CameraService.ZoomIn(player2_Manager, () =>
+				{
+					player2_Manager.SpawnShape(Services.TrickyElements.shapeSpawnDelay);
+
+				});
+			}
+		}
 
 		public GameplayManager SpawnGamePlay(GameplayOwner gameplayOwner)
 		{
@@ -82,14 +116,14 @@ namespace MiniClip.Challenge.ProjectServices
 			if (Services.GameService.gameMode == GameMode.SinglePlayer)
 			{
 				if (Services.GameService.player1_Manager)
-					Destroy(Services.GameService.player1_Manager.gameObject);
+					DestroyImmediate(Services.GameService.player1_Manager.gameObject);
 			}
 			else if (Services.GameService.gameMode == GameMode.MultiPlayer)
 			{
 				if (Services.GameService.player1_Manager)
-					Destroy(Services.GameService.player1_Manager.gameObject);
+					DestroyImmediate(Services.GameService.player1_Manager.gameObject);
 				if (Services.GameService.player2_Manager)
-					Destroy(Services.GameService.player2_Manager.gameObject);
+					DestroyImmediate(Services.GameService.player2_Manager.gameObject);
 			}
 		}
 
