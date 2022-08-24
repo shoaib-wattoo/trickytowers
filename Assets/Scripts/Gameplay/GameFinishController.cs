@@ -39,7 +39,9 @@ namespace MiniClip.Challenge.Gameplay
 
                     if (countDown == 0)
                     {
-                        Services.GameService.OnGameFinish(owner, true);
+                        Services.GameService.GetPlayerManager(owner).MakeAllPlacedShapesStatic();
+                        Services.GameService.GetPlayerManager(owner).DestroyCurrentShape();
+                        Services.GameService.GetPlayerManager(owner).SpawnFinalShape();
                     }
                 }
                 else

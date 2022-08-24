@@ -26,6 +26,7 @@ MonoBehaviour:
   - {fileID: 114000011248546266, guid: 6b56587a2a38a4cb28cb3960a8ea45a2, type: 3}
   - {fileID: 114000013224174622, guid: 38fc6a1a95e314b549fa40f76b7cc310, type: 3}
   - {fileID: 114000014264909338, guid: 7e623096ac1b34c439f530631d099229, type: 3}
+  finalShape: {fileID: 114000014264909338, guid: e46f605d66bb74aceae805c1801c6391, type: 3}
   splashScreen: {fileID: 8190513833329637244, guid: 7f5b59e2c11574863941a52c2fdb6af0, type: 3}
   homeScreen: {fileID: 4623369086073574629, guid: dab11514f85834e9dad390d11b7a29d5, type: 3}
   gamePlayScreen: {fileID: 102680818079442727, guid: 6b571e87af9084ca1adb09a23e7b3cae, type: 3}

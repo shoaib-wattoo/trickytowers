@@ -50,6 +50,18 @@ namespace MiniClip.Challenge.Gameplay
 
         void OnCollisionWithOtherShapes()
         {
+            if (TrickyShape.isFinalShape)
+            {
+                Services.GameService.RemoveCurrentShape(TrickyShape.owner);
+                rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+                Services.AudioService.PlayShapePlaceSound();
+                Services.CameraService.ShakeCamera(TrickyShape.owner);
+                Services.ScoreService.OnScore(TrickyShape.owner, 1);
+
+                Services.GameService.OnGameFinish(TrickyShape.owner, true);
+                return;
+            }
+
             SpawnNextShape(Services.TrickyElements.shapeSpawnDelay);
             rigidbody2D.gravityScale = 1f;
             PlayEffectOnFirstTimePlaced();

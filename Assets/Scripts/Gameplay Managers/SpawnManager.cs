@@ -9,9 +9,9 @@ namespace MiniClip.Challenge.Gameplay
         private GameplayOwner owner;
         public TrickyShape nextShape;
         public Color shapeToSpawnColor;
-        public Color nextShapeColor;
+        public Color nextShapeColorOnUI;
 
-        public void Spawn(GameplayOwner owner, Transform parent)
+        public void Spawn(GameplayOwner owner, Transform parent, TrickyShape shapeToSpawn = null)
         {
             this.owner = owner;
             Services.AudioService.PlayBlockSpawnSound();
@@ -23,7 +23,13 @@ namespace MiniClip.Challenge.Gameplay
                 if (Services.GameService.gameStatus == GameStatus.ONGOING || Services.GameService.gameStatus == GameStatus.PAUSED)
                 {
                     // Spawn shape at current Position
-                    TrickyShape shape = Instantiate(GetShapeToSpawn());
+                    TrickyShape shape;
+
+                    if (shapeToSpawn == null)
+                        shape = Instantiate(GetShapeToSpawn());
+                    else
+                        shape = Instantiate(shapeToSpawn); ;
+
                     shape.AssignShapeColor(shapeToSpawnColor);
                     shape.owner = owner;
                     shape.transform.position = new Vector3(transform.position.x, spawnPos.y, 0);
@@ -59,31 +65,37 @@ namespace MiniClip.Challenge.Gameplay
             else
             {
                 shapeToSpawn = nextShape;
-                shapeToSpawnColor = nextShapeColor;
+                shapeToSpawnColor = nextShapeColorOnUI;
             }
 
             int i = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
             nextShape = Services.TrickyElements.shapeTypes[i];
-            nextShapeColor = Services.GameService.colorService.TurnRandomColorFromTheme();
+            nextShapeColorOnUI = Services.GameService.colorService.TurnRandomColorFromTheme();
 
-            Services.UIService.GamePlayScreen.ShowNextShape(owner, nextShape.spriteRenderer.sprite, nextShapeColor);
+            Services.UIService.GamePlayScreen.ShowNextShape(owner, nextShape.spriteRenderer.sprite, nextShapeColorOnUI);
 
             return shapeToSpawn;
         }
 
         public void AssignShapeToSpawnNext(GameplayOwner _owner)
         {
-            print("AssignShapeToSpawnNext");
             if (nextShape == null)
             {
-                print("AssignShapeToSpawnNext    ifff");
-
                 int random = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
                 nextShape = Services.TrickyElements.shapeTypes[random];
-                nextShapeColor = shapeToSpawnColor = Services.GameService.colorService.TurnRandomColorFromTheme();
-                Services.UIService.GamePlayScreen.ShowNextShape(_owner, nextShape.spriteRenderer.sprite, nextShapeColor);
+                nextShapeColorOnUI = shapeToSpawnColor = Services.GameService.colorService.TurnRandomColorFromTheme();
+                Services.UIService.GamePlayScreen.ShowNextShape(_owner, nextShape.spriteRenderer.sprite, nextShapeColorOnUI);
 
             }
+        }
+
+        public void SpawnFinalShape(GameplayOwner _owner)
+        {
+            nextShape = Services.TrickyElements.finalShape;
+            shapeToSpawnColor = nextShapeColorOnUI = Color.white;
+            Services.UIService.GamePlayScreen.ShowNextShape(_owner, nextShape.spriteRenderer.sprite, nextShapeColorOnUI);
+
+            Spawn(owner, Services.GameService.GetPlayerManager(owner).blockHolder, nextShape);
         }
     }
 }

@@ -17,6 +17,7 @@ public class TrickyElements : ScriptableObject
 
     [Header("Shapes")]
     public List<TrickyShape> shapeTypes;
+    public TrickyShape finalShape;
 
     [Header("UI Screens")]
     public SplashScreen splashScreen;

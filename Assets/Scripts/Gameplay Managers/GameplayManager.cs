@@ -52,8 +52,12 @@ namespace MiniClip.Challenge.Gameplay
 
         public void SetShadowScale(TrickyShape shape)
         {
-            if (owner == GameplayOwner.Player2) // Because we do not need shape to show shadow helper on opponent's screen
+            // Because we do not need shape to show shadow helper on opponent's screen
+            if (owner == GameplayOwner.Player2 || shape.isFinalShape)
+            {
+                vertileShadow.transform.localScale = Vector3.zero;
                 return;
+            }
 
             vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
             //vertileShadow.transform.localScale = shape.spriteRenderer.sprite.bounds.size;
@@ -84,6 +88,20 @@ namespace MiniClip.Challenge.Gameplay
             spawnManager.Spawn(owner, blockHolder);
         }
 
+        public void SpawnFinalShape()
+        {
+            spawnManager.SpawnFinalShape(owner);
+        }
+
+        public void DestroyCurrentShape()
+        {
+            if (currentShape != null)
+            {
+                Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, currentShape.transform.position, currentShape.shapeColor);
+                Destroy(currentShape.gameObject);
+            }
+        }
+
         public void AssignShape()
         {
             spawnManager.AssignShapeToSpawnNext(owner);
@@ -102,6 +120,22 @@ namespace MiniClip.Challenge.Gameplay
         public void RemoveShapePlacedFromList(TrickyShape shape)
         {
             shapesList.Remove(shape);
+        }
+
+        public void MakeAllPlacedShapesStatic()
+        {
+            foreach (TrickyShape shape in shapesList)
+            {
+                shape.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+        }
+
+        public void MakeAllPlacedShapesUnStatic()
+        {
+            foreach (TrickyShape shape in shapesList)
+            {
+                shape.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            }
         }
 
         #endregion

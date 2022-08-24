@@ -13,6 +13,7 @@ namespace MiniClip.Challenge.Gameplay
         public Color shapeColor;
         public Transform rotationPivot;
         public SpriteRenderer spriteRenderer;
+        public bool isFinalShape;
 
         //Shape speed varialbles
         public float fallingSpeed = 2f;
@@ -40,7 +41,7 @@ namespace MiniClip.Challenge.Gameplay
         public void RotateClockWise(bool isCw)
         {
             //To stop rotation of shape in pause mode
-            if (Services.GameService.gameStatus != GameStatus.ONGOING)
+            if (Services.GameService.gameStatus != GameStatus.ONGOING || isFinalShape)
                 return;
 
             float rotationDegree = (isCw) ? 90.0f : -90.0f;
@@ -52,6 +53,9 @@ namespace MiniClip.Challenge.Gameplay
 
         public void MoveHorizontal(Vector2 direction)
         {
+            if (isFinalShape)
+                return;
+
             float deltaMovement = (direction.Equals(Vector2.right)) ? 1.0f : -1.0f;
 
             if (Services.CameraService.IsInCamView(owner, new Vector3(transform.position.x + deltaMovement, 0, 0)))
