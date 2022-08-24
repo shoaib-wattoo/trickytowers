@@ -15,7 +15,7 @@ MonoBehaviour:
   shapeSpawnDelay: 1
   winHeight: 15
   incrementHeightFactor: 2
-  totalLifes: 3
+  totalLifes: 5
   normalFallingSpeed: 5
   fastFallingSpeed: 15
   shapeTypes:
@@ -53,3 +53,5 @@ MonoBehaviour:
   gameplayManager: {fileID: 2905702408404196289, guid: e7475c57e95674743aeca0529b720667, type: 3}
   gamePlayCamera: {fileID: 8313123471502414683, guid: df8d8fcef66db42d78681f4495456885, type: 3}
   cameraRenderTexture: {fileID: 8400000, guid: 7f67cbf539c714304b54e269ab8e61a0, type: 2}
+  starSprite: {fileID: 21300000, guid: 936b92855fc8241889c774051aecc71e, type: 3}
+  starPlaceHolderSprite: {fileID: 21300000, guid: d64c6e101f7f64d0e9feea9963536fb5, type: 3}

@@ -14,6 +14,7 @@ namespace MiniClip.Challenge.ProjectServices
 		public ColorService colorService;
 		public GameplayManager player1_Manager;
 		public GameplayManager player2_Manager;
+		public float gameTime;
 
 		void Awake()
 		{
@@ -85,6 +86,8 @@ namespace MiniClip.Challenge.ProjectServices
 
 				});
 			}
+
+			ResetGameTime();
 		}
 
 		public GameplayManager SpawnGamePlay(GameplayOwner gameplayOwner)
@@ -127,13 +130,26 @@ namespace MiniClip.Challenge.ProjectServices
 			}
 		}
 
-		#endregion
+		public void SetGameTime(float time)
+        {
+			gameTime += time;
+        }
+
+		public float GetGameTime() {
+			return gameTime;
+		}
+
+        private void ResetGameTime()
+        {
+			gameTime = 0;
+        }
+        #endregion
 
 
 
-		#region Shape Shadow
+        #region Shape Shadow
 
-		public void SetShadowScale(GameplayOwner gameplayOwner, TrickyShape shape)
+        public void SetShadowScale(GameplayOwner gameplayOwner, TrickyShape shape)
 		{
 			GetPlayerManager(gameplayOwner).SetShadowScale(shape);
 		}

@@ -42,4 +42,8 @@ public class TrickyElements : ScriptableObject
 
     [Header("Render Textures")]
     public RenderTexture cameraRenderTexture;
+
+    [Header("Sprites")]
+    public Sprite starSprite;
+    public Sprite starPlaceHolderSprite;
 }

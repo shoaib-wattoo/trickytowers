@@ -28,6 +28,7 @@ namespace MiniClip.Challenge.States
 			Debug.Log("Game Play State OnDeactivate");
 
 			Services.PlayerService.SetTimeSpent(Time.time - gamePlayDuration);
+			Services.GameService.SetGameTime(Time.time - gamePlayDuration);
 		}
 
 		public override void OnUpdate()
