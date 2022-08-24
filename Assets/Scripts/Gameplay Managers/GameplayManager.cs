@@ -29,7 +29,9 @@ namespace MiniClip.Challenge.Gameplay
             finishController.owner = owner;
             totalLifes = Services.TrickyElements.totalLifes;
             gameplayCamera.orthographicSize = Services.CameraService._zoomOutLimit;
-            if(owner == GameplayOwner.Player1) Services.UIService.GamePlayScreen.ResetLifesColor();
+            Services.UIService.GamePlayScreen.ResetLifesColor(owner);
+            Services.UIService.GamePlayScreen.UpdateLifesOnUI(this);
+
             vertileShadow.transform.localScale = Vector3.zero;
 
             //Setting Finish Line Height
@@ -193,7 +195,7 @@ namespace MiniClip.Challenge.Gameplay
         public void OnShapeDestroy(Action<bool> isGameFinish)
         {
             totalLifes--;
-            Services.UIService.GamePlayScreen.UpdateLifesOnUI();
+            Services.UIService.GamePlayScreen.UpdateLifesOnUI(owner);
 
             if (totalLifes == 0)
             {

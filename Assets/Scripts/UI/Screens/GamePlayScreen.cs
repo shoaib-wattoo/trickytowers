@@ -16,7 +16,9 @@ namespace MiniClip.Challenge.UI
         public GameObject mainCameraRendererObj;
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI player1_CountdownText, player2_countdownText;
-        public List<GameObject> hearts;
+        public List<GameObject> player1_hearts;
+        public List<GameObject> player2_hearts;
+        private int totalHeartsCount = 5;
         public Color heartDisabledColor;
 
         private void Awake()
@@ -38,34 +40,6 @@ namespace MiniClip.Challenge.UI
             }
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
-            UpdateLifesOnUI();
-        }
-
-        public void UpdateLifesOnUI()
-        {
-            GameplayManager gameplayManager = Services.GameService.GetPlayerManager(GameplayOwner.Player1);
-
-            if(gameplayManager == null)
-            {
-                print("Gameplay manager was null");
-                return;
-            }
-
-            if (gameplayManager.GetRemainingLifes() >= hearts.Count || gameplayManager.GetRemainingLifes() < 0)
-                return;
-
-            for (int i = gameplayManager.GetRemainingLifes(); i < hearts.Count; i++)
-            {
-                hearts[i].GetComponent<Image>().color = heartDisabledColor;
-            }
-        }
-
-        public void ResetLifesColor()
-        {
-            for (int i = 0; i < hearts.Count; i++)
-            {
-                hearts[i].GetComponent<Image>().color = Color.white;
-            }
         }
 
         public void OnClickProfileButton()
@@ -79,6 +53,50 @@ namespace MiniClip.Challenge.UI
         }
 
 
+        #region Game Play Lifes
+
+        public void UpdateLifesOnUI(GameplayOwner owner)
+        {
+            GameplayManager gameplayManager = Services.GameService.GetPlayerManager(owner);
+
+            UpdateLifesOnUI(gameplayManager);
+        }
+
+        public void UpdateLifesOnUI(GameplayManager gameplayManager)
+        {
+
+            if (gameplayManager == null)
+            {
+                print("Gameplay manager was null");
+                return;
+            }
+
+            if (gameplayManager.GetRemainingLifes() >= totalHeartsCount || gameplayManager.GetRemainingLifes() < 0)
+                return;
+
+            for (int i = gameplayManager.GetRemainingLifes(); i < totalHeartsCount; i++)
+            {
+                if (gameplayManager.owner == GameplayOwner.Player1)
+                    player1_hearts[i].GetComponent<Image>().color = heartDisabledColor;
+
+                if (gameplayManager.owner == GameplayOwner.Player2)
+                    player2_hearts[i].GetComponent<Image>().color = heartDisabledColor;
+            }
+        }
+
+        public void ResetLifesColor(GameplayOwner owner) 
+        {
+            for (int i = 0; i < totalHeartsCount; i++)
+            {
+                if (owner == GameplayOwner.Player1)
+                    player1_hearts[i].GetComponent<Image>().color = Color.white;
+
+                if (owner == GameplayOwner.Player2)
+                    player2_hearts[i].GetComponent<Image>().color = Color.white;
+            }
+        }
+
+        #endregion
 
         #region Game Count Text
 
