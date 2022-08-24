@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 876502800}
   - component: {fileID: 876502801}
   m_Layer: 0
-  m_Name: FinishLine
+  m_Name: TowerFinishLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,9 +323,6 @@ Transform:
   m_Children:
   - {fileID: 2905702409305633670}
   - {fileID: 2905702409822047722}
-  - {fileID: 2905702409471015439}
-  - {fileID: 2905702409899818020}
-  - {fileID: 2905702409930198790}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,7 +344,6 @@ MonoBehaviour:
   finishController: {fileID: 876502801}
   gameplayCamera: {fileID: 0}
   currentShape: {fileID: 0}
-  countdownText: {fileID: 0}
   shapesList: []
 --- !u!114 &2905702408404196290
 MonoBehaviour:
@@ -361,6 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36294eaeb4c714caf9c554d404a76ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextShape: {fileID: 0}
+  shapeToSpawnColor: {r: 0, g: 0, b: 0, a: 0}
+  nextShapeColorOnUI: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2905702409085322781
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +474,9 @@ Transform:
   - {fileID: 2905702409853042850}
   - {fileID: 2905702409085322779}
   - {fileID: 2905702409378293333}
+  - {fileID: 2905702409471015439}
+  - {fileID: 2905702409899818020}
+  - {fileID: 2905702409930198790}
   m_Father: {fileID: 2905702408404196291}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -572,7 +574,7 @@ GameObject:
   - component: {fileID: 2905702409471015438}
   - component: {fileID: 2905702409471015437}
   m_Layer: 0
-  m_Name: Base
+  m_Name: TowerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,8 +592,8 @@ Transform:
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 876502798}
-  m_Father: {fileID: 2905702408404196291}
-  m_RootOrder: 2
+  m_Father: {fileID: 2905702409305633670}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2905702409471015438
 SpriteRenderer:
@@ -680,7 +682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2905702409822047722}
   m_Layer: 0
-  m_Name: BlockHolder
+  m_Name: ShapeHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,12 +811,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2905702409899818021}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -29.1, z: 0}
   m_LocalScale: {x: 200, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2905702408404196291}
-  m_RootOrder: 3
+  m_Father: {fileID: 2905702409305633670}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2905702409899818018
 SpriteRenderer:
@@ -917,12 +919,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2905702409930198791}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 2905702408404196291}
-  m_RootOrder: 4
+  m_Father: {fileID: 2905702409305633670}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2905702409930198789
 SpriteRenderer:

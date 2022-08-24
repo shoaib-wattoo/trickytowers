@@ -31,6 +31,7 @@ namespace MiniClip.Challenge.Gameplay
             gameplayCamera.orthographicSize = Services.CameraService._zoomOutLimit;
             Services.UIService.GamePlayScreen.ResetLifesColor(owner);
             Services.UIService.GamePlayScreen.UpdateLifesOnUI(this);
+            StopShaking();
 
             vertileShadow.transform.localScale = Vector3.zero;
 

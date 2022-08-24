@@ -194,7 +194,11 @@ namespace MiniClip.Challenge.ProjectServices
 				{
 					Services.PlayerService.IncrementPlayerLevel(1);
 					gameStatus = GameStatus.WON;
-					SetState(typeof(GameOverState));
+
+					Services.CameraService.ZoomOut(player1_Manager, () =>
+					{
+					 	Extensions.PerformActionWithDelay(this, 2f, ()=> { SetState(typeof(GameOverState)); });
+					});
 				}
 				else
 				{
@@ -208,25 +212,41 @@ namespace MiniClip.Challenge.ProjectServices
 				if (owner == GameplayOwner.Player1 && isWin)
 				{
 					gameStatus = GameStatus.WON;
-					SetState(typeof(GameOverState));
+
+					Services.CameraService.ZoomOut(player1_Manager, () =>
+					{
+						Extensions.PerformActionWithDelay(this, 2f, () => { SetState(typeof(GameOverState)); });
+					});
 				}
 
 				if (owner == GameplayOwner.Player1 && !isWin)
 				{
 					gameStatus = GameStatus.LOST;
-					SetState(typeof(GameOverState));
+
+					Services.CameraService.ZoomOut(player2_Manager, () =>
+					{
+						Extensions.PerformActionWithDelay(this, 2f, () => { SetState(typeof(GameOverState)); });
+					});
 				}
 
 				if (owner == GameplayOwner.Player2 && isWin)
 				{
 					gameStatus = GameStatus.LOST;
-					SetState(typeof(GameOverState));
+
+					Services.CameraService.ZoomOut(player2_Manager, () =>
+					{
+						Extensions.PerformActionWithDelay(this, 2f, () => { SetState(typeof(GameOverState)); });
+					});
 				}
 
 				if (owner == GameplayOwner.Player2 && !isWin)
 				{
 					gameStatus = GameStatus.WON;
-					SetState(typeof(GameOverState));
+
+					Services.CameraService.ZoomOut(player1_Manager, () =>
+					{
+						Extensions.PerformActionWithDelay(this, 2f, () => { SetState(typeof(GameOverState)); });
+					});
 				}
 			}
 		}

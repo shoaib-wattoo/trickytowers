@@ -8,7 +8,7 @@ namespace MiniClip.Challenge.Gameplay
     public class GameFinishController : MonoBehaviour
     {
         public GameplayOwner owner;
-        public int countDown = 5;
+        int countDown = 4;
         public List<TrickyShape> shapesReachedFinish;
 
         private float nextActionTime = 1f;
