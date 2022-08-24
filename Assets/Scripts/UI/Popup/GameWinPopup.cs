@@ -14,7 +14,7 @@ public class GameWinPopup : TrickyMonoBehaviour
 
     void Awake()
     {
-        //restartButton.onClick.AddListener(OnClickRestartButton);
+        restartButton.onClick.AddListener(OnClickRestartButton);
         homeButton.onClick.AddListener(OnClickHomeButton);
     }
 
@@ -42,9 +42,9 @@ public class GameWinPopup : TrickyMonoBehaviour
 
     void GiftCoin()
     {
-        int coinsToDeduct = Random.Range(100, 500);
-        coinText.SetText(coinsToDeduct.ToString());
-        Services.PlayerService.SetCoins(coinsToDeduct);
+        int coins = Random.Range(100, 500);
+        coinText.SetText("+" + coins.ToString());
+        Services.PlayerService.SetCoins(coins);
     }
 
     void UpdateGameTime()
