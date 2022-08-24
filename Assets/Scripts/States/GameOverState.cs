@@ -17,8 +17,6 @@ namespace MiniClip.Challenge.States
 
 			Services.GameService.isGameActive = false;
 
-			Services.BackLogService.RemoveLastScreens(1);
-
 			if (Services.GameService.gameStatus == GameStatus.WON)
 			{
 				Services.UIService.ActivateUIPopups(Popups.WIN);
@@ -35,6 +33,7 @@ namespace MiniClip.Challenge.States
 				}
 			}
 
+			Services.BackLogService.RemoveLastScreens(1);
 			Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
 			Services.PlayerService.SetNumberOfGames(1);
 			Services.AudioService.PlayWinSound();

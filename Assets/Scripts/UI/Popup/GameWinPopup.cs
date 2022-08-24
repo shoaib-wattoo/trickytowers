@@ -27,11 +27,13 @@ public class GameWinPopup : TrickyMonoBehaviour
         Services.GameService.gameStatus = GameStatus.TOSTART;
         Services.GameService.DestryoGameplayManager();
         Services.GameService.SetState(typeof(GamePlayState));
+        this.Hide();
     }
 
     void OnClickHomeButton()
     {
         Services.GameService.SetState(typeof(MenuState));
+        this.Hide();
     }
 
     void GiftCoin()

@@ -2711,7 +2711,7 @@ MonoBehaviour:
   pauseButton: {fileID: 7595107286583332093}
   profileButton: {fileID: 8933695164457955816}
   cameraRenderer: {fileID: 5226745055972411142}
-  mainCameraRendererObj: {fileID: 481776345256681816}
+  opponentUI: {fileID: 481776345256681816}
   levelText: {fileID: 4827176397648128583}
   player1_CountdownText: {fileID: 7249948627105721889}
   player2_countdownText: {fileID: 4974372084259335888}

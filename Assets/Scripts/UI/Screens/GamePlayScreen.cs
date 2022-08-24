@@ -13,7 +13,7 @@ namespace MiniClip.Challenge.UI
     {
         public Button pauseButton, profileButton;
         public RawImage cameraRenderer;
-        public GameObject mainCameraRendererObj;
+        public GameObject opponentUI;
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI player1_CountdownText, player2_countdownText;
         public GameObject player1_NextShapeParent, player2_NextShapeParent;
@@ -33,12 +33,12 @@ namespace MiniClip.Challenge.UI
         {
             if (Services.GameService.gameMode == GameMode.MultiPlayer)
             {
-                mainCameraRendererObj.SetActive(true);
+                opponentUI.SetActive(true);
                 cameraRenderer.texture = Services.TrickyElements.cameraRenderTexture;
             }
             else if (Services.GameService.gameMode == GameMode.SinglePlayer)
             {
-                mainCameraRendererObj.gameObject.SetActive(false);
+                opponentUI.SetActive(false);
             }
 
             levelText.SetText(Services.PlayerService._player.level.ToString());

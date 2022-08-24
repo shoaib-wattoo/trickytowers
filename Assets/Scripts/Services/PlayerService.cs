@@ -76,7 +76,7 @@ namespace MiniClip.Challenge.ProjectServices
 
         public void SetNumberOfGames(int count)
         {
-            _player.numberOfGames = count;
+            _player.numberOfGames += count;
             SaveUser();
         }
 
@@ -87,7 +87,7 @@ namespace MiniClip.Challenge.ProjectServices
 
         public void SetTimeSpent(float time)
         {
-            _player.timeSpent = time;
+            _player.timeSpent += time;
             SaveUser();
         }
 
