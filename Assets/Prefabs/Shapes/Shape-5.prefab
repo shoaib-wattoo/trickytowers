@@ -48,13 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a508d1e1d0606471595d9163ceabab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaced: 0
   owner: 0
-  shapeColor: {r: 0, g: 0, b: 0, a: 0}
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
   rotationPivot: {fileID: 4000011406727730}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 4523428197565089752}
   fallingSpeed: 2
-  normalFallingSpeed: 4
-  fastFallingSpeed: 10
 --- !u!114 &-7816030799975742713
 MonoBehaviour:
   m_ObjectHideFlags: 0

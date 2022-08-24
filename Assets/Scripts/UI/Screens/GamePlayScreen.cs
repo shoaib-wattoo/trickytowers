@@ -16,6 +16,8 @@ namespace MiniClip.Challenge.UI
         public GameObject mainCameraRendererObj;
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI player1_CountdownText, player2_countdownText;
+        public GameObject player1_NextShapeParent, player2_NextShapeParent;
+        public Image player1_NextShapeImage, player2_NextShapeImage;
         public List<GameObject> player1_hearts;
         public List<GameObject> player2_hearts;
         private int totalHeartsCount = 5;
@@ -40,6 +42,9 @@ namespace MiniClip.Challenge.UI
             }
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
+
+            player1_NextShapeParent.SetActive(false);
+            player2_NextShapeParent.SetActive(false);
         }
 
         public void OnClickProfileButton()
@@ -98,7 +103,7 @@ namespace MiniClip.Challenge.UI
 
         #endregion
 
-        #region Game Count Text
+        #region Game Count Down Text
 
         public void SetCountdownText(GameplayOwner owner, int count)
         {
@@ -126,6 +131,28 @@ namespace MiniClip.Challenge.UI
                 return player1_CountdownText;
 
             return player2_countdownText;
+        }
+
+        #endregion
+
+
+        #region Game Next Shape
+
+        public void ShowNextShape(GameplayOwner owner, Sprite shapeSprite, Color shapeColor)
+        {
+            if(owner == GameplayOwner.Player1)
+            {
+                player1_NextShapeParent.SetActive(true);
+                player1_NextShapeImage.sprite = shapeSprite;
+                player1_NextShapeImage.color = shapeColor;
+            }
+
+            if (owner == GameplayOwner.Player2)
+            {
+                player2_NextShapeParent.SetActive(true);
+                player2_NextShapeImage.sprite = shapeSprite;
+                player2_NextShapeImage.color = shapeColor;
+            }
         }
 
         #endregion

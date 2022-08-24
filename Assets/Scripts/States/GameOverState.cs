@@ -12,6 +12,9 @@ namespace MiniClip.Challenge.States
 		{
 			Debug.Log("Game Over State OnActive");
 
+			if (!Services.GameService.isGameActive)
+				return;
+
 			Services.GameService.isGameActive = false;
 
 			Services.BackLogService.RemoveLastScreens(1);

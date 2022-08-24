@@ -8,11 +8,11 @@ namespace MiniClip.Challenge.Gameplay
 {
     public class TrickyShape : MonoBehaviour
     {
+        public bool isPlaced = false;
         public GameplayOwner owner;
         public Color shapeColor;
         public Transform rotationPivot;
-        public bool isPlaced = false;
-        [HideInInspector] public SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteRenderer;
 
         //Shape speed varialbles
         public float fallingSpeed = 2f;
@@ -20,14 +20,12 @@ namespace MiniClip.Challenge.Gameplay
         void Awake()
         {
             fallingSpeed = Services.TrickyElements.normalFallingSpeed;
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            AssignRandomColor();
         }
 
         //Shape Color Assigner
-        void AssignRandomColor()
+        public void AssignShapeColor(Color color)
         {
-            shapeColor = Services.GameService.colorService.TurnRandomColorFromTheme();
+            shapeColor = color;
             GetComponent<SpriteRenderer>().color = shapeColor;
         }
 

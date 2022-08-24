@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013836595148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 300, y: 10.425862, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4000010207149232}
@@ -78,13 +78,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a508d1e1d0606471595d9163ceabab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: 0
-  shapeColor: {r: 0, g: 0, b: 0, a: 0}
+  isPlaced: 0
+  owner: 1
+  shapeColor: {r: 1, g: 1, b: 1, a: 1}
   rotationPivot: {fileID: 4000010207149232}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 597399940688850041}
   fallingSpeed: 2
-  normalFallingSpeed: 4
-  fastFallingSpeed: 10
 --- !u!114 &607697621230990904
 MonoBehaviour:
   m_ObjectHideFlags: 0
