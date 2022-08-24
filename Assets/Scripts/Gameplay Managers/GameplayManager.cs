@@ -205,7 +205,6 @@ namespace MiniClip.Challenge.Gameplay
                 isGameFinish?.Invoke(false);
             }
         }
-
         #endregion
     }
 }

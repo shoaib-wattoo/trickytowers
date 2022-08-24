@@ -347,6 +347,7 @@ MonoBehaviour:
   finishController: {fileID: 876502801}
   gameplayCamera: {fileID: 0}
   currentShape: {fileID: 0}
+  countdownText: {fileID: 0}
   shapesList: []
 --- !u!114 &2905702408404196290
 MonoBehaviour:

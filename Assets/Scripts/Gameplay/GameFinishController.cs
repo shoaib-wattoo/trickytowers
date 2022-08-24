@@ -8,7 +8,7 @@ namespace MiniClip.Challenge.Gameplay
     public class GameFinishController : MonoBehaviour
     {
         public GameplayOwner owner;
-        public float countDown = 5f;
+        public int countDown = 5;
         public List<TrickyShape> shapesReachedFinish;
 
         private float nextActionTime = 1f;
@@ -35,17 +35,17 @@ namespace MiniClip.Challenge.Gameplay
                 if (GetCountofShapesReachedFinish() > 0)
                 {
                     countDown--;
+                    Services.UIService.GamePlayScreen.SetCountdownText(owner, countDown);
 
                     if (countDown == 0)
                     {
-                        countDown = 0;
-
                         Services.GameService.OnGameFinish(owner, true);
                     }
                 }
                 else
                 {
-                    countDown = 5f;
+                    countDown = 5;
+                    Services.UIService.GamePlayScreen.EnableCountdownText(owner, false);
                 }
             }
         }
@@ -59,7 +59,10 @@ namespace MiniClip.Challenge.Gameplay
             int placedShapes = GetCountofShapesReachedFinish();
 
             if (placedShapes == 0)
+            {
                 countDown = 5;
+                Services.UIService.GamePlayScreen.EnableCountdownText(owner, false);
+            }
         }
 
         int GetCountofShapesReachedFinish()

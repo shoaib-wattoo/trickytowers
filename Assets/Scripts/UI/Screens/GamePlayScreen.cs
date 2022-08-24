@@ -15,6 +15,7 @@ namespace MiniClip.Challenge.UI
         public RawImage cameraRenderer;
         public GameObject mainCameraRendererObj;
         public TextMeshProUGUI levelText;
+        public TextMeshProUGUI player1_CountdownText, player2_countdownText;
         public List<GameObject> hearts;
         public Color heartDisabledColor;
 
@@ -50,7 +51,7 @@ namespace MiniClip.Challenge.UI
                 return;
             }
 
-            if (gameplayManager.GetRemainingLifes() >= hearts.Count)
+            if (gameplayManager.GetRemainingLifes() >= hearts.Count || gameplayManager.GetRemainingLifes() < 0)
                 return;
 
             for (int i = gameplayManager.GetRemainingLifes(); i < hearts.Count; i++)
@@ -76,5 +77,39 @@ namespace MiniClip.Challenge.UI
         {
             Services.GameService.SetState(typeof(GamePauseState));
         }
+
+
+
+        #region Game Count Text
+
+        public void SetCountdownText(GameplayOwner owner, int count)
+        {
+            if (count <= 0)
+            {
+                EnableCountdownText(owner, false);
+                return;
+            }
+            else
+            {
+                EnableCountdownText(owner, true);
+            }
+
+            GetCountdownText(owner).SetText(count.ToString());
+        }
+
+        public void EnableCountdownText(GameplayOwner owner, bool enable)
+        {
+            GetCountdownText(owner).gameObject.SetActive(enable);
+        }
+
+        TextMeshProUGUI GetCountdownText(GameplayOwner owner)
+        {
+            if (owner == GameplayOwner.Player1)
+                return player1_CountdownText;
+
+            return player2_countdownText;
+        }
+
+        #endregion
     }
 }
