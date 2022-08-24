@@ -42,6 +42,7 @@ namespace MiniClip.Challenge.Gameplay
                         Services.GameService.GetPlayerManager(owner).MakeAllPlacedShapesStatic();
                         Services.GameService.GetPlayerManager(owner).DestroyCurrentShape();
                         Services.GameService.GetPlayerManager(owner).SpawnFinalShape();
+                        Services.GameService.GetPlayerManager(owner).ShakeCameraInfinite();
                     }
                 }
                 else

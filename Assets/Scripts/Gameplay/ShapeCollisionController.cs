@@ -57,6 +57,7 @@ namespace MiniClip.Challenge.Gameplay
                 Services.AudioService.PlayShapePlaceSound();
                 Services.CameraService.ShakeCamera(TrickyShape.owner);
                 Services.ScoreService.OnScore(TrickyShape.owner, 1);
+                Services.GameService.GetPlayerManager(TrickyShape.owner).StopShaking();
 
                 Services.GameService.OnGameFinish(TrickyShape.owner, true);
                 return;

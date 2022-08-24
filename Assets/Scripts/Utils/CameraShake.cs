@@ -19,10 +19,26 @@ public class CameraShake : MonoBehaviour{
 
 	public void ShakeCamera(float shakeIntensity)
     {
+		shakeDecay = 0.002f;
 		this.shakeIntensity = shakeIntensity;
 		StopAllCoroutines();
 		StartCoroutine(Shake());
     }
+
+	public void ShakeCameraInfinite(float shakeIntensity)
+    {
+		shakeDecay = 0f;
+		this.shakeIntensity = shakeIntensity;
+		StopAllCoroutines();
+		StartCoroutine(Shake());
+	}
+
+	public void StopShaking()
+	{
+		shakeDecay = 0.002f;
+		this.shakeIntensity = 0;
+		StopAllCoroutines();
+	}
 
 	public IEnumerator Shake(){
 		originPosition = transform.position;

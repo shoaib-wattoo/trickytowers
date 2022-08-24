@@ -181,6 +181,16 @@ namespace MiniClip.Challenge.Gameplay
             gameplayCamera.GetComponent<CameraShake>().ShakeCamera(0.03f);
         }
 
+        public void ShakeCameraInfinite()
+        {
+            gameplayCamera.GetComponent<CameraShake>().ShakeCameraInfinite(0.03f);
+        }
+
+        public void StopShaking()
+        {
+            gameplayCamera.GetComponent<CameraShake>().StopShaking();
+        }
+
         public void ZoomIn(Action zoomListener = null)
         {
             zoomCallback = zoomListener;
