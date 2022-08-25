@@ -12,6 +12,10 @@ namespace MiniClip.Challenge.ProjectServices
 		public GameStatus gameStatus;
 		public bool isGameActive;
 		public ColorService colorService;
+
+		public Transform objectsPool;
+		public List<TrickyShape> objectsPoolList;
+
 		public GameplayManager player1_Manager;
 		public GameplayManager player2_Manager;
 		public float gameTime;
@@ -272,7 +276,32 @@ namespace MiniClip.Challenge.ProjectServices
 			return Services.TrickyElements.winHeight + (Services.TrickyElements.incrementHeightFactor * Services.PlayerService._player.level);
 		}
 
-		#endregion
+        #endregion
 
+
+        #region Objects Pool
+
+		public void AddObjectsInPool(TrickyShape shape)
+        {
+			shape.transform.parent = objectsPool;
+			shape.gameObject.name = shape.gameObject.name.Replace("(Clone)", "");
+			shape.gameObject.SetActive(false);
+			objectsPoolList.Add(shape);
+		}
+
+		public TrickyShape GetObjectFromPool(string name)
+        {
+			TrickyShape shape = objectsPoolList.Find(x => x.gameObject.name == name);
+			shape.transform.eulerAngles = Vector3.zero;
+			objectsPoolList.Remove(shape);
+			return shape;
+		}
+
+		public bool CheckIfObjectExistInPool(string name)
+		{
+			return objectsPoolList.Exists(x => x.gameObject.name == name);
+		}
+
+		#endregion
 	}
 }

@@ -26,13 +26,14 @@ namespace MiniClip.Challenge.Gameplay
                     TrickyShape shape;
 
                     if (shapeToSpawn == null)
-                        shape = Instantiate(GetShapeToSpawn());
+                        shape = InstantiateShape(GetShapeToSpawn());
                     else
                         shape = Instantiate(shapeToSpawn); ;
 
                     shape.AssignShapeColor(shapeToSpawnColor);
                     shape.owner = owner;
                     shape.transform.position = new Vector3(transform.position.x, spawnPos.y, 0);
+                    shape.gameObject.SetActive(true);
                     Services.GameService.SetCurrentCurrentShape(owner, shape);
                     shape.transform.parent = parent;
                     Services.GameService.SetShadowScale(owner, shape);
@@ -58,8 +59,7 @@ namespace MiniClip.Challenge.Gameplay
 
             if (nextShape == null)
             {
-                int random = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
-                shapeToSpawn = Services.TrickyElements.shapeTypes[random];
+                shapeToSpawn = GetRandomShape();
                 shapeToSpawnColor = Services.GameService.colorService.TurnRandomColorFromTheme();
             }
             else
@@ -68,8 +68,7 @@ namespace MiniClip.Challenge.Gameplay
                 shapeToSpawnColor = nextShapeColorOnUI;
             }
 
-            int i = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
-            nextShape = Services.TrickyElements.shapeTypes[i];
+            nextShape = GetRandomShape();
             nextShapeColorOnUI = Services.GameService.colorService.TurnRandomColorFromTheme();
 
             Services.UIService.GamePlayScreen.ShowNextShape(owner, nextShape.spriteRenderer.sprite, nextShapeColorOnUI);
@@ -81,8 +80,7 @@ namespace MiniClip.Challenge.Gameplay
         {
             if (nextShape == null)
             {
-                int random = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
-                nextShape = Services.TrickyElements.shapeTypes[random];
+                nextShape = GetRandomShape();
                 nextShapeColorOnUI = shapeToSpawnColor = Services.GameService.colorService.TurnRandomColorFromTheme();
                 Services.UIService.GamePlayScreen.ShowNextShape(_owner, nextShape.spriteRenderer.sprite, nextShapeColorOnUI);
 
@@ -96,6 +94,29 @@ namespace MiniClip.Challenge.Gameplay
             Services.UIService.GamePlayScreen.ShowNextShape(_owner, nextShape.spriteRenderer.sprite, nextShapeColorOnUI);
 
             Spawn(owner, Services.GameService.GetPlayerManager(owner).blockHolder, nextShape);
+        }
+
+        TrickyShape GetRandomShape()
+        {
+            int random = Random.Range(0, Services.TrickyElements.shapeTypes.Count);
+            return Services.TrickyElements.shapeTypes[random];
+        }
+
+        TrickyShape InstantiateShape(TrickyShape _shape)
+        {
+            TrickyShape shape;
+
+            if (Services.GameService.CheckIfObjectExistInPool(_shape.name))
+            {
+                print("Shape Existed : " + _shape.name);
+                shape = Services.GameService.GetObjectFromPool(_shape.name);
+            }
+            else
+            {
+                shape = Instantiate(_shape);
+            }
+
+            return shape;
         }
     }
 }

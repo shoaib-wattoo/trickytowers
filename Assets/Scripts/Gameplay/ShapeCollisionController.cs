@@ -30,6 +30,10 @@ namespace MiniClip.Challenge.Gameplay
             rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
+        private void OnEnable()
+        {
+            isSpawnedNextBlock = false;
+        }
 
         #region Shape Collision Functions
 
@@ -75,13 +79,14 @@ namespace MiniClip.Challenge.Gameplay
             Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, TrickyShape.shapeColor);
             Services.GameService.RemoveShapePlacedFromList(TrickyShape.owner, TrickyShape);
             Services.vibrationService.VibratePhone(HapticPatterns.PresetType.MediumImpact);
+            Services.CameraService.UpdateCameraFollowTarget(TrickyShape.owner);
 
             Services.GameService.GetPlayerManager(TrickyShape.owner).OnShapeDestroy( isGameFinished => {
                 if(!isGameFinished)
                     SpawnNextShape(Services.TrickyElements.shapeSpawnDelay + 0.5f);
             });
 
-            Destroy(gameObject);
+            Services.GameService.AddObjectsInPool(TrickyShape);
         }
 
         void PlayEffectOnFirstTimePlaced()

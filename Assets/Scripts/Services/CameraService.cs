@@ -109,6 +109,5 @@ namespace MiniClip.Challenge.ProjectServices
             if (Services.GameService.player2_Manager)
                 Services.GameService.player2_Manager.gameplayCamera.orthographicSize = _zoomOutLimit;
         }
-
     }
 }

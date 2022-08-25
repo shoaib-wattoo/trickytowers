@@ -1052,6 +1052,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1341618067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1341618068}
+  m_Layer: 0
+  m_Name: ObjectsPools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1341618068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341618067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 297.95068, y: -41.10785, z: -2.9047587}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1385459377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22457152, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 22457152, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1776,11 +1806,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMode: 1
   gameStatus: 0
-  gameOverStatus: 0
   isGameActive: 0
   colorService: {fileID: 886387904}
+  objectsPool: {fileID: 1341618068}
+  objectsPoolList: []
   player1_Manager: {fileID: 0}
   player2_Manager: {fileID: 0}
+  gameTime: 0
 --- !u!1 &1971183253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,8 +1859,4 @@ MonoBehaviour:
   isActive: 0
   gameplayManager: {fileID: 0}
   inputType: 0
-  _firstPressPosition: {x: 0, y: 0}
-  _startPressPosition: {x: 0, y: 0}
-  _endPressPosition: {x: 0, y: 0}
-  _currentSwipe: {x: 0, y: 0}
   tapInterval: 0

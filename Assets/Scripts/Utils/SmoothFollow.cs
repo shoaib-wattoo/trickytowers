@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using MiniClip.Challenge.Gameplay;
 
 public class SmoothFollow : MonoBehaviour
 {
@@ -19,6 +20,18 @@ public class SmoothFollow : MonoBehaviour
 	{
 		if (target)
 		{
+			TrickyShape shape = target.GetComponent<TrickyShape>();
+
+			print("shape != null : " + shape != null);
+			print("!shape.isPlaced : " + !shape.isPlaced);
+			print("target.activeSelf : " + !target.activeSelf);
+
+			if ((shape != null && !target.activeSelf) || !shape.isPlaced)
+			{
+				target = null;
+				return;
+			}
+
 			Vector3 posNoZ = transform.position;
 			posNoZ.z = target.transform.position.z;
 

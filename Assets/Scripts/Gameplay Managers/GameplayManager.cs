@@ -174,7 +174,10 @@ namespace MiniClip.Challenge.Gameplay
             if (gameplayCamera == null)
                 return;
 
-            gameplayCamera.GetComponent<SmoothFollow>().target = GetHighestShapePosition().gameObject;
+            TrickyShape highestShape = GetHighestShapePosition();
+
+            if (highestShape)
+                gameplayCamera.GetComponent<SmoothFollow>().target = highestShape.gameObject;
         }
 
         public void ShakeCamera()

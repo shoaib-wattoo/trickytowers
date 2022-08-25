@@ -18,9 +18,11 @@ namespace MiniClip.Challenge.Gameplay
         //Shape speed varialbles
         public float fallingSpeed = 2f;
 
-        void Awake()
+        void OnEnable()
         {
             fallingSpeed = Services.TrickyElements.normalFallingSpeed;
+            GetComponent<Rigidbody2D>().gravityScale = 0f;
+            isPlaced = false;
         }
 
         //Shape Color Assigner
