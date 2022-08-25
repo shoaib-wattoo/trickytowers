@@ -21,6 +21,7 @@ namespace MiniClip.Challenge.UI
         public TextMeshProUGUI player1_CurrentHeight, player2_CurrentHeight;
         public TextMeshProUGUI player1_TargetHeight, player2_TrgetHeight;
         public TextMeshProUGUI highestTowerText;
+        public GameObject tutorialUI;
 
         public List<GameObject> player1_hearts;
         public List<GameObject> player2_hearts;
@@ -48,6 +49,7 @@ namespace MiniClip.Challenge.UI
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
             ResetGameplayUI();
+            CheckForTurorial();
             //player1_NextShapeParent.SetActive(false);
             //player2_NextShapeParent.SetActive(false);
         }
@@ -200,6 +202,27 @@ namespace MiniClip.Challenge.UI
 
             highestTowerText.transform.parent.gameObject.SetActive(true);
             highestTowerText.SetText(height);
+        }
+
+        #endregion
+
+
+        #region Tutorial
+
+        void CheckForTurorial()
+        {
+            if (!Services.PlayerService.IsTutorialSeen())
+            {
+                Time.timeScale = 0;
+                tutorialUI.SetActive(true);
+            }
+        }
+
+        public void OnTutorialEnd()
+        {
+            Time.timeScale = 1;
+            Services.PlayerService.SetTutorial(true);
+            tutorialUI.SetActive(false);
         }
 
         #endregion

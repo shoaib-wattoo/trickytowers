@@ -150,6 +150,15 @@ namespace MiniClip.Challenge.ProjectServices
             return _player.highestTower;
         }
 
+        public void SetTutorial(bool isSeen)
+        {
+            _player.isTutorialSeen = isSeen;
+        }
+
+        public bool IsTutorialSeen()
+        {
+            return _player.isTutorialSeen;
+        }
         #endregion
     }
 }
