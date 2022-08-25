@@ -2663,8 +2663,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#F79A3A>TAP</color> on the screen to <color=#F79A3A>ROTATE</color>the
-    shape.
+  m_text: <color=#F79A3A>TAP</color> on the screen to <color=#F79A3A>ROTATE</color>
+    the shape.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5094b715585444e90b7306721788dae5, type: 2}
   m_sharedMaterial: {fileID: -7410115863667296309, guid: 5094b715585444e90b7306721788dae5, type: 2}
