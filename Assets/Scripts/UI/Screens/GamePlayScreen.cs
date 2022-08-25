@@ -20,6 +20,7 @@ namespace MiniClip.Challenge.UI
         public Image player1_NextShapeImage, player2_NextShapeImage;
         public TextMeshProUGUI player1_CurrentHeight, player2_CurrentHeight;
         public TextMeshProUGUI player1_TargetHeight, player2_TrgetHeight;
+        public TextMeshProUGUI highestTowerText;
 
         public List<GameObject> player1_hearts;
         public List<GameObject> player2_hearts;
@@ -46,9 +47,18 @@ namespace MiniClip.Challenge.UI
 
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
-
+            ResetGameplayUI();
             //player1_NextShapeParent.SetActive(false);
             //player2_NextShapeParent.SetActive(false);
+        }
+
+        public void ResetGameplayUI()
+        {
+            player1_CurrentHeight.transform.parent.gameObject.SetActive(false);
+            player2_CurrentHeight.transform.parent.gameObject.SetActive(false);
+            player1_TargetHeight.transform.parent.gameObject.SetActive(false);
+            player2_TrgetHeight.transform.parent.gameObject.SetActive(false);
+            highestTowerText.transform.parent.gameObject.SetActive(false);
         }
 
         public void OnClickProfileButton()
@@ -177,18 +187,19 @@ namespace MiniClip.Challenge.UI
             }
         }
 
-        public void ShowTargetTowerHeight(GameplayOwner owner, string height)
+        public void ShowTargetTowerHeight(string height)
         {
-            if (owner == GameplayOwner.Player1)
-            {
                 player1_TargetHeight.transform.parent.gameObject.SetActive(true);
                 player1_TargetHeight.SetText(height);
-            }
-            else
-            {
                 player2_TrgetHeight.transform.parent.gameObject.SetActive(true);
                 player2_TrgetHeight.SetText(height);
-            }
+        }
+
+        public void SetHighestTower(string height)
+        {
+
+            highestTowerText.transform.parent.gameObject.SetActive(true);
+            highestTowerText.SetText(height);
         }
 
         #endregion

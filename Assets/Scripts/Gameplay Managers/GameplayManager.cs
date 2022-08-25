@@ -33,14 +33,14 @@ namespace MiniClip.Challenge.Gameplay
             gameplayCamera.orthographicSize = Services.CameraService._zoomOutLimit;
             Services.UIService.GamePlayScreen.ResetLifesColor(owner);
             Services.UIService.GamePlayScreen.UpdateLifesOnUI(this);
+            Services.UIService.GamePlayScreen.ResetGameplayUI();
             StopShaking();
 
             vertileShadow.transform.localScale = Vector3.zero;
 
             //Setting Finish Line Height
             finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0);
-            Services.UIService.GamePlayScreen.ShowTargetTowerHeight(owner, GetTowerTargetHeight());
-
+            Services.UIService.GamePlayScreen.ShowTargetTowerHeight(GetTowerTargetHeight() + "m");
             /*
             // To fit the finish point and tower base with in the camera view
             float cameraOrthoSize = (finishController.transform.position.y * 2) + 5f; 
@@ -63,7 +63,7 @@ namespace MiniClip.Challenge.Gameplay
                 return;
             }
 
-            vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.bounds.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
+            vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.bounds.size.x, Services.CameraService.GetCameraHeight(gameplayCamera) * 2, 0);
             //vertileShadow.transform.localScale = shape.spriteRenderer.sprite.bounds.size;
         }
 
@@ -170,7 +170,7 @@ namespace MiniClip.Challenge.Gameplay
 
 
 
-        #region Shape Camera
+        #region Shape Camera | Height For Tower
 
         public void UpdateCameraFollowTarget()
         {
@@ -182,7 +182,8 @@ namespace MiniClip.Challenge.Gameplay
             if (highestShape)
             {
                 gameplayCamera.GetComponent<SmoothFollow>().target = highestShape.gameObject;
-                Services.UIService.GamePlayScreen.ShowCurrentTowerHeight(owner, GetCurrentTowerHeight(highestShape));
+                Services.UIService.GamePlayScreen.ShowCurrentTowerHeight(owner, GetCurrentTowerHeight(highestShape) + " m");
+                Services.UIService.GamePlayScreen.SetHighestTower(Services.PlayerService.GetHighestTower(GetCurrentTowerHeight(highestShape)) + "m");
             }
         }
 
@@ -265,24 +266,18 @@ namespace MiniClip.Challenge.Gameplay
 
         #region Tower Height
 
-        public string GetCurrentTowerHeight(TrickyShape heighestShape)
+        public int GetCurrentTowerHeight(TrickyShape heighestShape)
         {
-            print("GetTowerHeight");
             int distance = Mathf.CeilToInt(Vector3.Distance(towerBase.transform.position, heighestShape.transform.position));
 
-            print("GetCurrentTowerHeight :: " + distance);
-
-            return distance + " m";
+            return distance;
         }
 
-        public string GetTowerTargetHeight()
+        public int GetTowerTargetHeight()
         {
-            print("Tower Target Name :: " + towerTarget.gameObject.name);
             int distance = Mathf.CeilToInt(Vector3.Distance(towerBase.transform.position, towerTarget.transform.localPosition));
 
-            print("GetTowerTargetHeight :: " + distance);
-
-            return distance + " m";
+            return distance;
         }
 
         #endregion

@@ -23,7 +23,7 @@ namespace MiniClip.Challenge.ProjectServices
             }
             else
             {
-                _player = new Player("Guest" + Random.Range(10000,99999), 0, 0, 0f, 0, 1, 5000);
+                _player = new Player("Guest" + Random.Range(10000,99999), 0, 0, 0f, 0, 1, 5000, 0);
                 SaveUser();
             }
         }
@@ -41,7 +41,7 @@ namespace MiniClip.Challenge.ProjectServices
 
         public void ResetPlayer()
         {
-            _player = new Player("Guest" + Random.Range(10000, 99999), 0, 0, 0f, 0, 1, 5000);
+            _player = new Player("Guest" + Random.Range(10000, 99999), 0, 0, 0f, 0, 1, 5000, 0);
             SaveUser();
         }
 
@@ -128,6 +128,26 @@ namespace MiniClip.Challenge.ProjectServices
         public float GetPlayerCoins()
         {
             return _player.coins;
+        }
+
+        public void SetHighestTower(int height)
+        {
+            if(height > _player.highestTower)
+            {
+                _player.highestTower = height;
+                SaveUser();
+            }
+        }
+
+        public float GetHighestTower()
+        {
+            return _player.highestTower;
+        }
+
+        public float GetHighestTower(int height)
+        {
+            SetHighestTower(height);
+            return _player.highestTower;
         }
 
         #endregion
