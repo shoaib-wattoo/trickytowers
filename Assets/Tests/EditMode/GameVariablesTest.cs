@@ -6,6 +6,7 @@ using UnityEngine.TestTools;
 
 public class GameVariablesTest
 {
+    /*
     TrickyElements elements = ScriptableObject.CreateInstance<TrickyElements>();
 
     [Test]
