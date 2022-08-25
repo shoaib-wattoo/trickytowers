@@ -11,13 +11,15 @@ namespace MiniClip.Challenge.Gameplay
         #region Variables
 
         public Transform blockHolder;
+        public Transform towerTarget;
+        public Transform towerBase;
         SpawnManager spawnManager;
         public GameplayOwner owner;
         public SpriteRenderer vertileShadow;
         public GameFinishController finishController;
         public Camera gameplayCamera;
         public TrickyShape currentShape;
-        private int totalLifes;
+        public int totalLifes;
         public List<TrickyShape> shapesList;
         Action zoomCallback;
 
@@ -37,6 +39,7 @@ namespace MiniClip.Challenge.Gameplay
 
             //Setting Finish Line Height
             finishController.transform.localPosition = new Vector3(0, Services.GameService.GetGameFinisherHeight(), 0);
+            Services.UIService.GamePlayScreen.ShowTargetTowerHeight(owner, GetTowerTargetHeight());
 
             /*
             // To fit the finish point and tower base with in the camera view
@@ -177,7 +180,10 @@ namespace MiniClip.Challenge.Gameplay
             TrickyShape highestShape = GetHighestShapePosition();
 
             if (highestShape)
+            {
                 gameplayCamera.GetComponent<SmoothFollow>().target = highestShape.gameObject;
+                Services.UIService.GamePlayScreen.ShowCurrentTowerHeight(owner, GetCurrentTowerHeight(highestShape));
+            }
         }
 
         public void ShakeCamera()
@@ -254,6 +260,31 @@ namespace MiniClip.Challenge.Gameplay
                 isGameFinish?.Invoke(false);
             }
         }
+        #endregion
+
+
+        #region Tower Height
+
+        public string GetCurrentTowerHeight(TrickyShape heighestShape)
+        {
+            print("GetTowerHeight");
+            int distance = Mathf.CeilToInt(Vector3.Distance(towerBase.transform.position, heighestShape.transform.position));
+
+            print("GetCurrentTowerHeight :: " + distance);
+
+            return distance + " m";
+        }
+
+        public string GetTowerTargetHeight()
+        {
+            print("Tower Target Name :: " + towerTarget.gameObject.name);
+            int distance = Mathf.CeilToInt(Vector3.Distance(towerBase.transform.position, towerTarget.transform.localPosition));
+
+            print("GetTowerTargetHeight :: " + distance);
+
+            return distance + " m";
+        }
+
         #endregion
     }
 }

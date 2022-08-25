@@ -39,6 +39,12 @@ namespace MiniClip.Challenge.ProjectServices
             }
         }
 
+        public void ResetPlayer()
+        {
+            _player = new Player("Guest" + Random.Range(10000, 99999), 0, 0, 0f, 0, 1, 5000);
+            SaveUser();
+        }
+
         #region Public_API
 
         public void SetUserName(string name)

@@ -339,6 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockHolder: {fileID: 2905702409822047722}
+  towerTarget: {fileID: 876502798}
+  towerBase: {fileID: 2905702409471015439}
   owner: 0
   vertileShadow: {fileID: 2905702409930198789}
   finishController: {fileID: 876502801}

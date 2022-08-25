@@ -22,10 +22,6 @@ public class SmoothFollow : MonoBehaviour
 		{
 			TrickyShape shape = target.GetComponent<TrickyShape>();
 
-			print("shape != null : " + shape != null);
-			print("!shape.isPlaced : " + !shape.isPlaced);
-			print("target.activeSelf : " + !target.activeSelf);
-
 			if ((shape != null && !target.activeSelf) || !shape.isPlaced)
 			{
 				target = null;

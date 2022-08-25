@@ -62,6 +62,7 @@ namespace MiniClip.Challenge.ProjectServices
             {
                 clearPrefs = false;
                 PlayerPrefs.DeleteAll();
+                PlayerService.ResetPlayer();
                 Debug.Log("Prefs Cleared");
             }
         }

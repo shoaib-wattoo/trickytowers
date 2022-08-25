@@ -8,12 +8,12 @@ using MiniClip.Challenge.UI;
 public class TrickyElements : ScriptableObject
 {
     [Header("Game Variables")]
-    [HideInInspector] public float shapeSpawnDelay = 1;
-    [HideInInspector] public int winHeight = 15;
-    [HideInInspector] public int incrementHeightFactor = 2;
-    [HideInInspector] public int totalLifes = 5;
-    [HideInInspector] public float normalFallingSpeed = 5f;
-    [HideInInspector] public float fastFallingSpeed = 15f;
+    public float shapeSpawnDelay = 1;
+    public int winHeight = 15;
+    public int incrementHeightFactor = 2;
+    public int totalLifes = 5;
+    public float normalFallingSpeed = 5f;
+    public float fastFallingSpeed = 15f;
 
     [Header("Shapes")]
     public List<TrickyShape> shapeTypes;

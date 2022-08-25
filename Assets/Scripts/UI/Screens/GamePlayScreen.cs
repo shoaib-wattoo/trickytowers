@@ -18,6 +18,9 @@ namespace MiniClip.Challenge.UI
         public TextMeshProUGUI player1_CountdownText, player2_countdownText;
         public GameObject player1_NextShapeParent, player2_NextShapeParent;
         public Image player1_NextShapeImage, player2_NextShapeImage;
+        public TextMeshProUGUI player1_CurrentHeight, player2_CurrentHeight;
+        public TextMeshProUGUI player1_TargetHeight, player2_TrgetHeight;
+
         public List<GameObject> player1_hearts;
         public List<GameObject> player2_hearts;
         private int totalHeartsCount = 5;
@@ -40,6 +43,7 @@ namespace MiniClip.Challenge.UI
             {
                 opponentUI.SetActive(false);
             }
+
 
             levelText.SetText(Services.PlayerService._player.level.ToString());
 
@@ -152,6 +156,38 @@ namespace MiniClip.Challenge.UI
                 player2_NextShapeParent.SetActive(true);
                 player2_NextShapeImage.sprite = shapeSprite;
                 player2_NextShapeImage.color = shapeColor;
+            }
+        }
+
+        #endregion
+
+        #region Tower Height
+
+        public void ShowCurrentTowerHeight(GameplayOwner owner, string height)
+        {
+            if(owner == GameplayOwner.Player1)
+            {
+                player1_CurrentHeight.transform.parent.gameObject.SetActive(true);
+                player1_CurrentHeight.SetText(height);
+            }
+            else
+            {
+                player2_CurrentHeight.transform.parent.gameObject.SetActive(true);
+                player2_CurrentHeight.SetText(height);
+            }
+        }
+
+        public void ShowTargetTowerHeight(GameplayOwner owner, string height)
+        {
+            if (owner == GameplayOwner.Player1)
+            {
+                player1_TargetHeight.transform.parent.gameObject.SetActive(true);
+                player1_TargetHeight.SetText(height);
+            }
+            else
+            {
+                player2_TrgetHeight.transform.parent.gameObject.SetActive(true);
+                player2_TrgetHeight.SetText(height);
             }
         }
 
