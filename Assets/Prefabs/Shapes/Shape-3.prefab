@@ -53,6 +53,7 @@ MonoBehaviour:
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
   rotationPivot: {fileID: 4000011435886762}
   spriteRenderer: {fileID: 6534450148312325091}
+  isFinalShape: 0
   fallingSpeed: 2
 --- !u!114 &6751310430534519713
 MonoBehaviour:
@@ -163,12 +164,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.5, y: 1}
-      - {x: -1.5, y: -1}
-      - {x: 1.5, y: -1}
-      - {x: 1.5, y: -0.00037128106}
-      - {x: -0.50057477, y: -0.0016379394}
-      - {x: -0.4978859, y: 1}
+    - - {x: -1.4717805, y: 0.97344065}
+      - {x: -1.4724013, y: -0.9741262}
+      - {x: 1.4717132, y: -0.9717131}
+      - {x: 1.4735539, y: -0.025558146}
+      - {x: -0.52782744, y: -0.02434851}
+      - {x: -0.52739227, y: 0.9744279}
 --- !u!1 &1000012289562842
 GameObject:
   m_ObjectHideFlags: 0

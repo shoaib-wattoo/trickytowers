@@ -58,12 +58,13 @@ namespace MiniClip.Challenge.Gameplay
             if (isFinalShape)
                 return;
 
-            float deltaMovement = (direction.Equals(Vector2.right)) ? 1.0f : -1.0f;
+            float deltaMovement = (direction.Equals(Vector2.right)) ? 0.5f : -0.5f;
 
             if (Services.CameraService.IsInCamView(owner, new Vector3(transform.position.x + deltaMovement, 0, 0)))
             {
                 transform.position += new Vector3(deltaMovement, 0, 0);
                 Services.GameService.SetShadowPosition(owner, transform.position);
+                Services.GameService.SetShadowScale(owner, this);
             }
         }
 

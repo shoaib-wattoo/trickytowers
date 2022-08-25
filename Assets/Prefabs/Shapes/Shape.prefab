@@ -83,6 +83,7 @@ MonoBehaviour:
   shapeColor: {r: 1, g: 1, b: 1, a: 1}
   rotationPivot: {fileID: 4000010207149232}
   spriteRenderer: {fileID: 597399940688850041}
+  isFinalShape: 0
   fallingSpeed: 2
 --- !u!114 &607697621230990904
 MonoBehaviour:
@@ -181,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0011461973, y: 0.0039708316}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -192,5 +193,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.01}
+  m_Size: {x: 3.9373982, y: 0.9360929}
   m_EdgeRadius: 0

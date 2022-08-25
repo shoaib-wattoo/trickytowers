@@ -60,7 +60,7 @@ namespace MiniClip.Challenge.Gameplay
                 return;
             }
 
-            vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
+            vertileShadow.transform.localScale = new Vector3(shape.spriteRenderer.bounds.size.x, Services.CameraService.GetCameraHeight(gameplayCamera), 0);
             //vertileShadow.transform.localScale = shape.spriteRenderer.sprite.bounds.size;
         }
 

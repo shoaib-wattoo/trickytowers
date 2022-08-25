@@ -1,0 +1,6 @@
+ 
+{
+    "name": "Tests",
+    "references": [ "Unity.TextMeshPro", "Lofelt.NiceVibrations" ],
+    "optionalUnityReferences": [ "TestAssemblies" ]
+}
