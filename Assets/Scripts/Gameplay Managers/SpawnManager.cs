@@ -14,7 +14,7 @@ namespace MiniClip.Challenge.Gameplay
         public void Spawn(GameplayOwner owner, Transform parent, TrickyShape shapeToSpawn = null)
         {
             this.owner = owner;
-            Services.AudioService.PlayBlockSpawnSound();
+            if (owner == GameplayOwner.Player1) Services.AudioService.PlayBlockSpawnSound();
             Vector3 spawnPos = Services.CameraService.GetCameraTopPosition(owner);
             spawnPos = new Vector3(transform.position.x, spawnPos.y - 5f, 0);
 

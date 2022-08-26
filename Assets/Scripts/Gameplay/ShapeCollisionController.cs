@@ -58,7 +58,7 @@ namespace MiniClip.Challenge.Gameplay
             {
                 Services.GameService.RemoveCurrentShape(TrickyShape.owner);
                 rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-                Services.AudioService.PlayShapePlaceSound();
+                if(TrickyShape.owner == GameplayOwner.Player1) Services.AudioService.PlayShapePlaceSound();
                 Services.CameraService.ShakeCamera(TrickyShape.owner);
                 Services.ScoreService.OnScore(TrickyShape.owner, 1);
                 Services.GameService.GetPlayerManager(TrickyShape.owner).StopShaking();
@@ -75,7 +75,7 @@ namespace MiniClip.Challenge.Gameplay
         void OnCollisionWithGround(Collision2D col)
         {
             Services.CameraService.ShakeCamera(TrickyShape.owner);
-            Services.AudioService.PlayExplosionSound();
+            if (TrickyShape.owner == GameplayOwner.Player1) Services.AudioService.PlayExplosionSound();
             Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, TrickyShape.shapeColor);
             Services.GameService.RemoveShapePlacedFromList(TrickyShape.owner, TrickyShape);
             Services.vibrationService.VibratePhone(HapticPatterns.PresetType.MediumImpact);
@@ -94,7 +94,7 @@ namespace MiniClip.Challenge.Gameplay
             if (!TrickyShape.isPlaced)
             {
                 TrickyShape.isPlaced = true;
-                Services.AudioService.PlayShapePlaceSound();
+                if (TrickyShape.owner == GameplayOwner.Player1) Services.AudioService.PlayShapePlaceSound();
                 Services.CameraService.ShakeCamera(TrickyShape.owner);
                 Services.GameService.AddShapePlacedInList(TrickyShape.owner, TrickyShape);
                 Services.ScoreService.OnScore(TrickyShape.owner, 1);
