@@ -19,7 +19,6 @@ public class GameLosePopup : TrickyMonoBehaviour
 
     private void OnEnable()
     {
-        Services.AudioService.PlayPopUpOpenSound();
         DeductCoin();
     }
 
