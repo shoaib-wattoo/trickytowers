@@ -361,7 +361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3505209052958960783
@@ -802,7 +802,6 @@ GameObject:
   - component: {fileID: 8190513833329637245}
   - component: {fileID: 8190513833329637246}
   - component: {fileID: 8190513833329637244}
-  - component: {fileID: 4266910054692950156}
   m_Layer: 5
   m_Name: SplashScreen
   m_TagString: Untagged
@@ -880,18 +879,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62487d91efece41a1aed7c98f68752bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4266910054692950156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8190513833329637184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConformX: 1
-  ConformY: 1
-  Logging: 0

@@ -32,7 +32,12 @@ namespace MiniClip.Challenge.Gameplay
 
                     shape.AssignShapeColor(shapeToSpawnColor);
                     shape.owner = owner;
-                    shape.transform.position = new Vector3(transform.position.x, spawnPos.y, 0);
+
+                    if (shape.isFinalShape) shape.transform.position = new Vector3(Services.GameService.GetPlayerManager(owner)
+                        .GetHighestShapePosition().transform.position.x, spawnPos.y, 0);
+                    else
+                        shape.transform.position = new Vector3(transform.position.x, spawnPos.y, 0);
+
                     shape.gameObject.SetActive(true);
                     Services.GameService.SetCurrentCurrentShape(owner, shape);
                     shape.transform.parent = parent;

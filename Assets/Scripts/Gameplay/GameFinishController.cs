@@ -36,7 +36,8 @@ namespace MiniClip.Challenge.Gameplay
                 {
                     countDown--;
                     Services.UIService.GamePlayScreen.SetCountdownText(owner, countDown);
-                    Services.AudioService.PlayTimeCountDownSound();
+                    PlayCountDownSound(countDown);
+
                     if (countDown == 0)
                     {
                         Services.GameService.GetPlayerManager(owner).MakeAllPlacedShapesStatic();
@@ -71,6 +72,12 @@ namespace MiniClip.Challenge.Gameplay
         int GetCountofShapesReachedFinish()
         {
             return shapesReachedFinish.FindAll(x => x.isPlaced).Count;
+        }
+
+        void PlayCountDownSound(int count)
+        {
+            if (count <= 3 && count > 0)
+                Services.AudioService.PlayTimeCountDownSound();
         }
     }
 }
