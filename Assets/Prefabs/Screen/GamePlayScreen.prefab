@@ -5697,6 +5697,7 @@ GameObject:
   - component: {fileID: 8190513833329637245}
   - component: {fileID: 8190513833329637246}
   - component: {fileID: 102680818079442727}
+  - component: {fileID: 8845379858269713767}
   m_Layer: 5
   m_Name: GamePlayScreen
   m_TagString: Untagged
@@ -5806,6 +5807,21 @@ MonoBehaviour:
   - {fileID: 4320545926857779479}
   - {fileID: 5633272603243476273}
   heartDisabledColor: {r: 0.3137255, g: 0.49411765, b: 0.3254902, a: 1}
+--- !u!114 &8845379858269713767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8190513833329637184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1 &8272933576971970897
 GameObject:
   m_ObjectHideFlags: 0

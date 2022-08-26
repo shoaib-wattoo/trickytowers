@@ -12,6 +12,7 @@ namespace MiniClip.Challenge.UI
         {
             Extensions.PerformActionWithDelay(this, 2f, () =>
             {
+                this.Hide(destroy: true);
                 Services.GameService.SetState(typeof(MenuState));
             });
         }

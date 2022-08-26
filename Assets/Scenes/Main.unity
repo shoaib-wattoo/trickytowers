@@ -1130,8 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   gameplayManager: {fileID: 0}
-  inputType: 0
-  tapInterval: 0
+  period: 2
 --- !u!1 &1385459377
 GameObject:
   m_ObjectHideFlags: 0
