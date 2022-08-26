@@ -36,7 +36,7 @@ namespace MiniClip.Challenge.Gameplay
                 {
                     countDown--;
                     Services.UIService.GamePlayScreen.SetCountdownText(owner, countDown);
-
+                    Services.AudioService.PlayTimeCountDownSound();
                     if (countDown == 0)
                     {
                         Services.GameService.GetPlayerManager(owner).MakeAllPlacedShapesStatic();

@@ -39,7 +39,6 @@ namespace MiniClip.Challenge.States
 			Services.BackLogService.RemoveLastScreens(1);
 			Services.PlayerService.SetHighScore(Services.ScoreService.currentScore);
 			Services.PlayerService.SetNumberOfGames(1);
-			Services.AudioService.PlayWinSound();
 		}
 
 		public override void OnDeactivate()
