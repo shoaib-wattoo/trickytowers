@@ -16,12 +16,14 @@ namespace MiniClip.Challenge.States
 			Services.UIService.ActivateUIPopups(Popups.PAUSE);
 			Services.GameService.gameStatus = GameStatus.PAUSED;
 			Services.InputService.isActive = false;
+			Services.AIInputService.isActive = false;
 		}
 
 		public override void OnDeactivate()
 		{
 			Debug.Log("Game Pause State OnDeactivate");
 			Services.InputService.isActive = true;
+			Services.AIInputService.isActive = true;
 		}
 
 		public override void OnUpdate()

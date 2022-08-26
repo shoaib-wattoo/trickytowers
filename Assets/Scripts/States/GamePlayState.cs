@@ -14,11 +14,13 @@ namespace MiniClip.Challenge.States
 		{
 			Debug.Log("Game Play State OnActive");
 			Services.GameService.isGameActive = true;
-			Services.BackLogService.DisableAndremoveAllScreens();
 			gamePlayDuration = Time.time;
-			Services.UIService.ActivateUIScreen(Screens.PLAY);
+
+			if(Services.GameService.gameStatus != GameStatus.PAUSED)
+				Services.BackLogService.DisableAndremoveAllScreens();
 
 			Services.GameService.gameStatus = GameStatus.ONGOING;
+			Services.UIService.ActivateUIScreen(Screens.PLAY);
 
 			Services.GameService.StartGame();
 		}

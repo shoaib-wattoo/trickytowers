@@ -47,8 +47,8 @@ namespace MiniClip.Challenge.Gameplay
 
                     if (owner == GameplayOwner.Player2)
                     {
-                        //TODO/Need to assign AI controller
-                    }
+                        Services.AIInputService.gameplayManager = Services.GameService.GetPlayerManager(owner);
+                        Services.AIInputService.isActive = true;                    }
                 }
             });
         }

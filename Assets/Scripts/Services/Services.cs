@@ -19,6 +19,11 @@ namespace MiniClip.Challenge.ProjectServices
         [SerializeField]
         private InputService _inputService;
 
+
+        [SerializeField]
+        private AIInputService _aiInputService;
+
+
         [SerializeField]
         private UIService _uiService;
 
@@ -87,6 +92,11 @@ namespace MiniClip.Challenge.ProjectServices
         public static InputService InputService
         {
             get { return instance._inputService; }
+        }
+
+        public static AIInputService AIInputService
+        {
+            get { return instance._aiInputService; }
         }
 
         public static GameObject DebugConsole
