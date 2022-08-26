@@ -184,6 +184,7 @@ namespace MiniClip.Challenge.Gameplay
                 gameplayCamera.GetComponent<SmoothFollow>().target = highestShape.gameObject;
                 Services.UIService.GamePlayScreen.ShowCurrentTowerHeight(owner, GetCurrentTowerHeight(highestShape) + " m");
                 Services.UIService.GamePlayScreen.SetHighestTower(Services.PlayerService.GetHighestTower(GetCurrentTowerHeight(highestShape)) + "m");
+                Services.UIService.GamePlayScreen.ShowTargetTowerHeight(GetTowerTargetHeight() + "m");
             }
         }
 
