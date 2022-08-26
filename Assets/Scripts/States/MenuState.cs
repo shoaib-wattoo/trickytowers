@@ -17,12 +17,14 @@ namespace MiniClip.Challenge.States
 			Services.GameService.gameStatus = GameStatus.TOSTART;
 			Services.GameService.DestryoGameplayManager();
 			Services.CameraService.ResetCameraSize();
+			Services.AudioService.PlayGameMusic();
 
 		}
 
 		public override void OnDeactivate()
 		{
 			Debug.Log("Menu State OnDeactivate");
+			//Services.AudioService.StopGameMusic();
 		}
 
 		public override void OnUpdate()

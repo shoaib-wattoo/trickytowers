@@ -29,5 +29,6 @@ public class ProfilePopup : TrickyMonoBehaviour
     void OnClickCloseButton()
     {
         this.Hide();
+        Services.AudioService.PlayUIClick();
     }
 }

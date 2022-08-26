@@ -21,32 +21,38 @@ public class SettingsPopup : TrickyMonoBehaviour
     void OnClickMusicButton()
     {
         Services.AudioService.EnableGameMusic(!musicButton.GetComponent<Switch>().isOn);
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickSoundButton()
     {
         Services.AudioService.isSoundEnable = !soundButton.GetComponent<Switch>().isOn;
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickVibrationButton()
     {
         Services.vibrationService.isVibrationEnable = !vibrationButton.GetComponent<Switch>().isOn;
         print("Vibrations : " + !vibrationButton.GetComponent<Switch>().isOn);
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickCloseButton()
     {
         this.Hide();
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickClearDataButton()
     {
         Services.instance.clearPrefs = true;
+        clearData.interactable = false;
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickShowDebugButton()
     {
         Services.DebugConsole.SetActive(true);
-
+        Services.AudioService.PlayUIClick();
     }
 }

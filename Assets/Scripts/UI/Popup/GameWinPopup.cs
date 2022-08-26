@@ -9,7 +9,7 @@ using MiniClip.Challenge.ProjectServices;
 public class GameWinPopup : TrickyMonoBehaviour
 {
     public Button restartButton, homeButton;
-    public TextMeshProUGUI coinText, scoreText, timeText, ShapesPlacedText;
+    public TextMeshProUGUI coinText, scoreText, timeText, ShapesPlacedText, titleText;
     public List<Image> stars;
 
     void Awake()
@@ -24,6 +24,7 @@ public class GameWinPopup : TrickyMonoBehaviour
         UpdateGameTime();
         UpdateGameScore();
         UpdateGameShapes();
+        SetTitleText();
     }
 
     void OnClickRestartButton()
@@ -31,12 +32,14 @@ public class GameWinPopup : TrickyMonoBehaviour
         Services.GameService.gameStatus = GameStatus.TOSTART;
         Services.GameService.DestryoGameplayManager();
         Services.GameService.SetState(typeof(GamePlayState));
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 
     void OnClickHomeButton()
     {
         Services.GameService.SetState(typeof(MenuState));
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 
@@ -106,6 +109,18 @@ public class GameWinPopup : TrickyMonoBehaviour
         for (int i = 0; i < stars.Count; i++)
         {
             stars[i].sprite = Services.TrickyElements.starPlaceHolderSprite;
+        }
+    }
+
+    void SetTitleText()
+    {
+        if(Services.GameService.gameMode == GameMode.SinglePlayer)
+        {
+            titleText.SetText("TOWER COMPLETED");
+        }
+        else if (Services.GameService.gameMode == GameMode.MultiPlayer)
+        {
+            titleText.SetText("YOU WON");
         }
     }
 }

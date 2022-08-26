@@ -27,12 +27,14 @@ public class GameLosePopup : TrickyMonoBehaviour
         Services.GameService.gameStatus = GameStatus.TOSTART;
         Services.GameService.DestryoGameplayManager();
         Services.GameService.SetState(typeof(GamePlayState));
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 
     void OnClickHomeButton()
     {
         Services.GameService.SetState(typeof(MenuState));
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 

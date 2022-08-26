@@ -20,16 +20,19 @@ namespace MiniClip.Challenge.States
 			if (Services.GameService.gameStatus == GameStatus.WON)
 			{
 				Services.UIService.ActivateUIPopups(Popups.WIN);
+				Services.AudioService.PlayWinSound();
 			}
 			else if (Services.GameService.gameStatus == GameStatus.LOST)
 			{
 				if (Services.GameService.gameMode == GameMode.SinglePlayer)
 				{
 					Services.UIService.ActivateUIPopups(Popups.FAIL);
+					Services.AudioService.PlayLoseSound();
 				}
 				else
 				{
 					Services.UIService.ActivateUIPopups(Popups.LOSE);
+					Services.AudioService.PlayLoseSound();
 				}
 			}
 

@@ -65,6 +65,7 @@ namespace MiniClip.Challenge.Gameplay
                 transform.position += new Vector3(deltaMovement, 0, 0);
                 Services.GameService.SetShadowPosition(owner, transform.position);
                 Services.GameService.SetShadowScale(owner, this);
+                Services.AudioService.PlayShapeMoveSound();
             }
         }
 

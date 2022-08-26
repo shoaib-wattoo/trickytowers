@@ -10,13 +10,10 @@ namespace MiniClip.Challenge.ProjectServices
 
 		#region Gameplay Spesific
 		public AudioClip shapePlaceSound;
+		public AudioClip shapeMoveSound;
 		public AudioClip explosionSound;
 		public AudioClip blockSpawnSound;
 		#endregion
-
-		#region Audio Sources Fields
-		public AudioSource musicSource;
-		public AudioSource soundSource;
 
 		public AudioClip gameMusic;
 		public AudioClip uiClick;
@@ -25,6 +22,9 @@ namespace MiniClip.Challenge.ProjectServices
 		public AudioClip popUpOpen;
 		public AudioClip popUpClose;
 
+		#region Audio Sources Fields
+		public AudioSource musicSource;
+		public AudioSource soundSource;
 		#endregion
 
 
@@ -83,6 +83,14 @@ namespace MiniClip.Challenge.ProjectServices
 				return;
 
 			soundSource.PlayOneShot(shapePlaceSound);
+		}
+
+		public void PlayShapeMoveSound()
+		{
+			if (!isSoundEnable)
+				return;
+
+			soundSource.PlayOneShot(shapeMoveSound);
 		}
 
 		public void PlayExplosionSound()

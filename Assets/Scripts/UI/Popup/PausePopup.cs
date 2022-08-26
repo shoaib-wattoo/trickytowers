@@ -19,6 +19,7 @@ public class PausePopup : TrickyMonoBehaviour
     void OnClickResumeButton()
     {
         Services.GameService.SetState(typeof(GamePlayState));
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickRestartButton()
@@ -26,10 +27,12 @@ public class PausePopup : TrickyMonoBehaviour
         Services.GameService.DestryoGameplayManager();
         Services.GameService.gameStatus = GameStatus.TOSTART;
         Services.GameService.SetState(typeof(GamePlayState));
+        Services.AudioService.PlayUIClick();
     }
 
     void OnClickExitButton()
     {
         Services.GameService.SetState(typeof(MenuState));
+        Services.AudioService.PlayUIClick();
     }
 }

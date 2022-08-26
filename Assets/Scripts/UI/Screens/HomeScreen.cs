@@ -35,11 +35,13 @@ namespace MiniClip.Challenge.UI
         public void OnClickProfileButton()
         {
             Services.UIService.ActivateUIPopups(Popups.PROFILE);
+            Services.AudioService.PlayUIClick();
         }
 
         public void OnClickSettingsButton()
         {
             Services.UIService.ActivateUIPopups(Popups.SETTINGS);
+            Services.AudioService.PlayUIClick();
         }
 
         public void OnClickCoinPlusButton()
@@ -47,12 +49,14 @@ namespace MiniClip.Challenge.UI
             int randomCoins = Random.Range(500, 1000);
             Services.PlayerService.SetCoins(randomCoins);
             coinText.SetText(Services.PlayerService.GetPlayerCoins().ToString());
+            Services.AudioService.PlayUIClick();
         }
 
         public void OnClickPlayButton()
         {
             Services.UIService.CommonPopup.OpenPopup("Game Mode", "Please select game mode to start game.",
                 "Singleplayer", "Multiplayer", OnClickSinglePlayerButton, OnClickMultiplePlayerButton);
+            Services.AudioService.PlayUIClick();
         }
 
         public void OnClickSinglePlayerButton()

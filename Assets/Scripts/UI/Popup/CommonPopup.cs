@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System;
 using TMPro;
+using MiniClip.Challenge.ProjectServices;
 
 public class CommonPopup : TrickyMonoBehaviour
 {
@@ -35,17 +36,20 @@ public class CommonPopup : TrickyMonoBehaviour
     void OnClickLeftButton()
     {
         leftButtonListener?.Invoke();
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 
     void OnClickRightButton()
     {
         rightButtonListener?.Invoke();
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 
     void OnClickCloseButton()
     {
+        Services.AudioService.PlayUIClick();
         this.Hide();
     }
 }

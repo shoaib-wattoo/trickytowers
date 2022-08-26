@@ -300,7 +300,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -710,17 +710,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSoundEnable: 1
   isMusicEnable: 1
-  shapePlaceSound: {fileID: 8300000, guid: a009cffd439454dc9b3c5dfa60e93c0f, type: 3}
+  shapePlaceSound: {fileID: 8300000, guid: c689de1b537d447a18e9a07a98182387, type: 3}
+  shapeMoveSound: {fileID: 8300000, guid: a009cffd439454dc9b3c5dfa60e93c0f, type: 3}
   explosionSound: {fileID: 8300000, guid: 96bbf34d7aee725449bb8a5f1a46bfbb, type: 3}
   blockSpawnSound: {fileID: 8300000, guid: 14b16ff40093aba47bc467e148746cab, type: 3}
-  musicSource: {fileID: 308786747}
-  soundSource: {fileID: 191836628}
-  gameMusic: {fileID: 0}
-  uiClick: {fileID: 0}
-  winSound: {fileID: 0}
-  loseSound: {fileID: 0}
+  gameMusic: {fileID: 8300000, guid: 699fb26ed613a413cb67b80ddf939f76, type: 3}
+  uiClick: {fileID: 8300000, guid: d25cd30651ffc43cd82f75f253cbefb9, type: 3}
+  winSound: {fileID: 8300000, guid: e4653ca3f702a430baa0d90055e5bca0, type: 3}
+  loseSound: {fileID: 8300000, guid: 116014d9b5a184b53b88832167dd13b0, type: 3}
   popUpOpen: {fileID: 0}
   popUpClose: {fileID: 0}
+  musicSource: {fileID: 308786747}
+  soundSource: {fileID: 191836628}
 --- !u!1 &838531504
 GameObject:
   m_ObjectHideFlags: 0

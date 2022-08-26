@@ -66,11 +66,13 @@ namespace MiniClip.Challenge.UI
         public void OnClickProfileButton()
         {
             Services.UIService.ActivateUIPopups(Popups.PROFILE);
+            Services.AudioService.PlayUIClick();
         }
 
         public void OnClickPauseButton()
         {
             Services.GameService.SetState(typeof(GamePauseState));
+            Services.AudioService.PlayUIClick();
         }
 
 
@@ -223,6 +225,11 @@ namespace MiniClip.Challenge.UI
             Time.timeScale = 1;
             Services.PlayerService.SetTutorial(true);
             tutorialUI.SetActive(false);
+        }
+
+        public void OnClickTutorialButton()
+        {
+            Services.AudioService.PlayUIClick();
         }
 
         #endregion
