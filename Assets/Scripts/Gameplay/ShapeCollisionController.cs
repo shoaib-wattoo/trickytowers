@@ -78,7 +78,7 @@ namespace MiniClip.Challenge.Gameplay
             if (TrickyShape.owner == GameplayOwner.Player1) Services.AudioService.PlayExplosionSound();
             Services.EffectService.PlayEffect(Effects.SmokeExplosionWhite, col.contacts[0].point, TrickyShape.shapeColor);
             Services.GameService.RemoveShapePlacedFromList(TrickyShape.owner, TrickyShape);
-            Services.vibrationService.VibratePhone(HapticPatterns.PresetType.MediumImpact);
+            if (TrickyShape.owner == GameplayOwner.Player1) Services.vibrationService.VibratePhone(HapticPatterns.PresetType.MediumImpact);
             Services.CameraService.UpdateCameraFollowTarget(TrickyShape.owner);
 
             Services.GameService.GetPlayerManager(TrickyShape.owner).OnShapeDestroy( isGameFinished => {

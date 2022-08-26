@@ -41,6 +41,8 @@ namespace MiniClip.Challenge.ProjectServices
             gameplayManager.gameplayCamera = Camera.main;
             Vector3 camPosition = gameplayManager.transform.position;
             Camera.main.transform.position = new Vector3(camPosition.x, camPosition.y, -10);
+            Camera.main.transform.rotation = Quaternion.identity;
+
             return Camera.main;
         }
 
