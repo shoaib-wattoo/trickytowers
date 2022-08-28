@@ -49,6 +49,7 @@ namespace MiniClip.Challenge.Gameplay
             float rotationDegree = (isCw) ? 90.0f : -90.0f;
 
             transform.RotateAround(rotationPivot.position, Vector3.forward, rotationDegree);
+            Services.AudioService.ShapeRotateSound();
 
             Services.GameService.SetShadowScale(owner, this);
         }

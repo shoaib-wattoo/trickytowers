@@ -715,6 +715,7 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: 96bbf34d7aee725449bb8a5f1a46bfbb, type: 3}
   blockSpawnSound: {fileID: 8300000, guid: 14b16ff40093aba47bc467e148746cab, type: 3}
   timeCountDownSound: {fileID: 8300000, guid: 219a092bd311e48bc90a9bb3d7e13135, type: 3}
+  shapeRotateSound: {fileID: 8300000, guid: 4335b7681e3f94e3aabaa170e48aac14, type: 3}
   gameMusic: {fileID: 8300000, guid: 699fb26ed613a413cb67b80ddf939f76, type: 3}
   uiClick: {fileID: 8300000, guid: d25cd30651ffc43cd82f75f253cbefb9, type: 3}
   winSound: {fileID: 8300000, guid: e4653ca3f702a430baa0d90055e5bca0, type: 3}
@@ -1131,7 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   gameplayManager: {fileID: 0}
-  period: 2
+  period: 3
 --- !u!1 &1385459377
 GameObject:
   m_ObjectHideFlags: 0

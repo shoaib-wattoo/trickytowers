@@ -19,10 +19,8 @@ namespace MiniClip.Challenge.ProjectServices
         [SerializeField]
         private InputService _inputService;
 
-
         [SerializeField]
         private AIInputService _aiInputService;
-
 
         [SerializeField]
         private UIService _uiService;

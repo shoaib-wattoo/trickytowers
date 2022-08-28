@@ -76,26 +76,26 @@ namespace MiniClip.Challenge.ProjectServices
                 _currentSwipe = new Vector2(_endPressPosition.x - _startPressPosition.x, _endPressPosition.y - _startPressPosition.y);
 
                 //swipe left
-                if (_currentSwipe.x < -1f && _currentSwipe.y > -1f && _currentSwipe.y < 1f)
+                if (_currentSwipe.x < -0.5f && _currentSwipe.y > -0.5f && _currentSwipe.y < 0.5f)
                 {
                     _startPressPosition = _endPressPosition;
                     MoveHorizontal(Vector2.left);
                 }
                 //swipe right
-                if (_currentSwipe.x > 1f && _currentSwipe.y > -1f && _currentSwipe.y < 1f)
+                if (_currentSwipe.x > 0.5f && _currentSwipe.y > -0.5f && _currentSwipe.y < 0.5f)
                 {
                     _startPressPosition = _endPressPosition;
                     MoveHorizontal(Vector2.right);
                 }
 
                 //swipe down
-                if (_currentSwipe.y < -1f && _currentSwipe.x > -1f && _currentSwipe.x < 1f)
+                if (_currentSwipe.y < -0.5f && _currentSwipe.x > -0.5f && _currentSwipe.x < 0.5f)
                 {
                     InstantFall();
                 }
 
                 //swipe up
-                if (_currentSwipe.y > 1f && _currentSwipe.x > -1f && _currentSwipe.x < 1f)
+                if (_currentSwipe.y > 0.5f && _currentSwipe.x > -0.5f && _currentSwipe.x < 0.5f)
                 {
                     NormalFall();
                 }
@@ -112,7 +112,7 @@ namespace MiniClip.Challenge.ProjectServices
                 _currentSwipe = new Vector2(_endPressPosition.x - _firstPressPosition.x, _endPressPosition.y - _firstPressPosition.y);
 
                 //swipe left
-                if (_currentSwipe.x > -0.1f && _currentSwipe.x < 0.1f && _currentSwipe.y > -0.1f && _currentSwipe.y < 0.1f)
+                if (_currentSwipe.x > -0.05f && _currentSwipe.x < 0.05f && _currentSwipe.y > -0.05f && _currentSwipe.y < 0.05f)
                 {
                     RotateClockWise(true);
                 }

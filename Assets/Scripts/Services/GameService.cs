@@ -92,6 +92,7 @@ namespace MiniClip.Challenge.ProjectServices
 			}
 
 			ResetGameTime();
+            Services.AudioService.RestartGameMusic();
 		}
 
 		public GameplayManager SpawnGamePlay(GameplayOwner gameplayOwner)

@@ -10,7 +10,7 @@ namespace MiniClip.Challenge.ProjectServices
         public GameplayManager gameplayManager;
 
         private float nextActionTime = 5f;
-        public float period = 2f;
+        public float period = 3f;
 
         private void Update()
         {
@@ -28,7 +28,7 @@ namespace MiniClip.Challenge.ProjectServices
         #region Random Input
         void RandomInput()
         {
-            int RandomInput = Random.Range(1, 9);
+            int RandomInput = Random.Range(1, 6);
 
             switch (RandomInput)
             {
@@ -39,21 +39,12 @@ namespace MiniClip.Challenge.ProjectServices
                     MoveHorizontal(Vector2.left);
                     break;
                 case 3:
-                    MoveHorizontal(Vector2.left);
+                    MoveHorizontal(Vector2.right);
                     break;
                 case 4:
-                    MoveHorizontal(Vector2.right);
-                    break;
-                case 5:
-                    MoveHorizontal(Vector2.right);
-                    break;
-                case 6:
                     InstantFall();
                     break;
-                case 7:
-                    NormalFall();
-                    break;
-                case 8:
+                case 5:
                     NormalFall();
                     break;
             }

@@ -14,17 +14,18 @@ namespace MiniClip.Challenge.ProjectServices
 		public AudioClip explosionSound;
 		public AudioClip blockSpawnSound;
 		public AudioClip timeCountDownSound;
-		#endregion
+        public AudioClip shapeRotateSound;
+        #endregion
 
-		public AudioClip gameMusic;
+        public AudioClip gameMusic;
 		public AudioClip uiClick;
 		public AudioClip winSound;
 		public AudioClip loseSound;
 		public AudioClip popUpOpen;
 		public AudioClip popUpClose;
 
-		#region Audio Sources Fields
-		public AudioSource musicSource;
+        #region Audio Sources Fields
+        public AudioSource musicSource;
 		public AudioSource soundSource;
 		#endregion
 
@@ -118,7 +119,15 @@ namespace MiniClip.Challenge.ProjectServices
 			soundSource.PlayOneShot(timeCountDownSound);
 		}
 
-		public void SetSoundFxVolume(float value)
+        public void ShapeRotateSound()
+        {
+            if (!isSoundEnable)
+                return;
+
+            soundSource.PlayOneShot(shapeRotateSound);
+        }
+
+        public void SetSoundFxVolume(float value)
 		{
 			float temp = value + soundSource.volume;
 			if (temp < 0 || temp > 1)
@@ -147,7 +156,14 @@ namespace MiniClip.Challenge.ProjectServices
 			musicSource.Play();
 		}
 
-		public void StopGameMusic()
+        public void RestartGameMusic()
+        {
+            StopGameMusic();
+            musicSource.clip = gameMusic;
+            musicSource.Play();
+        }
+
+        public void StopGameMusic()
 		{
 			musicSource.Stop();
 		}
