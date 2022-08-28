@@ -100,7 +100,8 @@ namespace MiniClip.Challenge.ProjectServices
 
         public void UpdateCameraFollowTarget(GameplayOwner owner)
         {
-            Services.GameService.GetPlayerManager(owner).UpdateCameraFollowTarget();
+            // Disabling it to improve performance
+            //Services.GameService.GetPlayerManager(owner).UpdateCameraFollowTarget();
         }
 
         public void ResetCameraSize()
