@@ -49,19 +49,6 @@ namespace MiniClip.Challenge.Gameplay
             */
         }
 
-        private float nextActionTime = 5f;
-        public float period = 3f;
-
-        private void Update()
-        {
-            if (Time.time > nextActionTime)
-            {
-                nextActionTime += period;
-
-                UpdateCameraFollowTarget();
-            }
-        }
-
         #region Shape Shadow
 
         public void SetShadowScale(TrickyShape shape)
