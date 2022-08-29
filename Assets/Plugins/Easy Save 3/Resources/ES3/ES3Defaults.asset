@@ -33,6 +33,7 @@ MonoBehaviour:
     - IngameDebugConsole.Runtime
     - Assembly-CSharp
     - Lofelt.NiceVibrations
+    - PlayMode
     - PsdPlugin
     - IngameDebugConsole.Editor
     - EditMode
