@@ -53,15 +53,7 @@ public class GameWinPopup : TrickyMonoBehaviour
     void UpdateGameTime()
     {
         float time = Services.GameService.GetGameTime();
-
-        if(time < 60)
-            timeText.SetText(Mathf.FloorToInt(time).ToString() + " Secs");
-
-        if (time > 60 && time < 120)
-            timeText.SetText(Mathf.FloorToInt(time).ToString() + " Min");
-
-        if (time > 120)
-            timeText.SetText(Mathf.FloorToInt(time).ToString() + " Mins");
+        timeText.SetText(Mathf.FloorToInt(time).ToString() + " Secs");
     }
 
     void UpdateGameShapes()

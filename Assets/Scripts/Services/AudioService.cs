@@ -119,7 +119,7 @@ namespace MiniClip.Challenge.ProjectServices
 			soundSource.PlayOneShot(timeCountDownSound);
 		}
 
-        public void ShapeRotateSound()
+        public void PlayShapeRotateSound()
         {
             if (!isSoundEnable)
                 return;
