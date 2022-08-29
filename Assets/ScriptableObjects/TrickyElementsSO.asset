@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8615284bc22574a9babf735d00d421c9, type: 3}
-  m_Name: TrickyElements
+  m_Name: TrickyElementsSO
   m_EditorClassIdentifier: 
   shapeSpawnDelay: 1
   winHeight: 15
