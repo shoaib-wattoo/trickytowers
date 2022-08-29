@@ -76,26 +76,26 @@ namespace MiniClip.Challenge.ProjectServices
                 _currentSwipe = new Vector2(_endPressPosition.x - _startPressPosition.x, _endPressPosition.y - _startPressPosition.y);
 
                 //swipe left
-                if (_currentSwipe.x < -0.5f && _currentSwipe.y > -0.5f && _currentSwipe.y < 0.5f)
+                if (_currentSwipe.x < -0.75f && _currentSwipe.y > -0.75f && _currentSwipe.y < 0.75f)
                 {
                     _startPressPosition = _endPressPosition;
                     MoveHorizontal(Vector2.left);
                 }
                 //swipe right
-                if (_currentSwipe.x > 0.5f && _currentSwipe.y > -0.5f && _currentSwipe.y < 0.5f)
+                if (_currentSwipe.x > 0.75f && _currentSwipe.y > -0.75f && _currentSwipe.y < 0.75f)
                 {
                     _startPressPosition = _endPressPosition;
                     MoveHorizontal(Vector2.right);
                 }
 
                 //swipe down
-                if (_currentSwipe.y < -0.5f && _currentSwipe.x > -0.5f && _currentSwipe.x < 0.5f)
+                if (_currentSwipe.y < -0.75f && _currentSwipe.x > -0.75f && _currentSwipe.x < 0.75f)
                 {
                     InstantFall();
                 }
 
                 //swipe up
-                if (_currentSwipe.y > 0.5f && _currentSwipe.x > -0.5f && _currentSwipe.x < 0.5f)
+                if (_currentSwipe.y > 0.75f && _currentSwipe.x > -0.75f && _currentSwipe.x < 0.75f)
                 {
                     NormalFall();
                 }
