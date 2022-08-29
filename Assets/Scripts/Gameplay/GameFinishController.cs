@@ -32,7 +32,7 @@ namespace MiniClip.Challenge.Gameplay
         {
             if (Time.time > nextActionTime)
             {
-                nextActionTime += period;
+                nextActionTime = Time.time + period;
 
                 if (GetCountofShapesReachedFinish() > 0)
                 {

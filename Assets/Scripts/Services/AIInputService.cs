@@ -19,7 +19,7 @@ namespace MiniClip.Challenge.ProjectServices
 
             if (Time.time > nextActionTime)
             {
-                nextActionTime += period;
+                nextActionTime = Time.time + period;
 
                 RandomInput();
             }
