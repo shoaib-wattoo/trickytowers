@@ -68,7 +68,7 @@ namespace MiniClip.Challenge.Gameplay
             }
 
             SpawnNextShape(Services.TrickyElements.shapeSpawnDelay);
-            rigidbody2D.gravityScale = 1f;
+            rigidbody2D.gravityScale = Services.TrickyElements.shapesGravity;
             PlayEffectOnFirstTimePlaced();
         }
 

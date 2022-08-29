@@ -14,6 +14,8 @@ public class TrickyElements : ScriptableObject
     public int totalLifes = 5;
     public float normalFallingSpeed = 5f;
     public float fastFallingSpeed = 15f;
+    public float shapesGravity = 1f;
+    public float shapesMass = 0.1f;
 
     [Header("Shapes")]
     public List<TrickyShape> shapeTypes;

@@ -45,6 +45,7 @@ namespace MiniClip.Challenge.Gameplay
                     shape.transform.parent = parent;
                     Services.GameService.SetShadowScale(owner, shape);
                     Services.GameService.SetShadowPosition(owner, shape.transform.position);
+                    shape.GetComponent<Rigidbody2D>().mass = Services.TrickyElements.shapesMass;
 
                     if (owner == GameplayOwner.Player1)
                     {
