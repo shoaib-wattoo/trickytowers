@@ -6,10 +6,12 @@ namespace MiniClip.Challenge.Gameplay
 {
     public class SpawnManager : MonoBehaviour
     {
+        #region Variables
         private GameplayOwner owner;
         public TrickyShape nextShape;
         public Color shapeToSpawnColor;
         public Color nextShapeColorOnUI;
+        #endregion
 
         public void Spawn(GameplayOwner owner, Transform parent, TrickyShape shapeToSpawn = null)
         {

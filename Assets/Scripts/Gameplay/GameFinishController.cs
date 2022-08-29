@@ -7,12 +7,14 @@ namespace MiniClip.Challenge.Gameplay
 {
     public class GameFinishController : MonoBehaviour
     {
+        #region Variables
         public GameplayOwner owner;
         public int countDown = 4;
         public List<TrickyShape> shapesReachedFinish;
-
         private float nextActionTime = 1f;
         public float period = 1f;
+        #endregion
+
 
         void OnTriggerEnter2D(Collider2D other)
         {

@@ -8,6 +8,7 @@ namespace MiniClip.Challenge.Gameplay
 {
     public class TrickyShape : MonoBehaviour
     {
+        #region Varialbles
         public bool isPlaced = false;
         public GameplayOwner owner;
         public Color shapeColor;
@@ -17,6 +18,7 @@ namespace MiniClip.Challenge.Gameplay
 
         //Shape speed varialbles
         public float fallingSpeed = 2f;
+        #endregion
 
         void OnEnable()
         {
